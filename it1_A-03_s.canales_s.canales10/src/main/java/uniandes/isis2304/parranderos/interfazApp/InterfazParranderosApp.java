@@ -47,6 +47,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import uniandes.isis2304.parranderos.negocio.Parranderos;
+import uniandes.isis2304.parranderos.negocio.RolDeUsuario;
 import uniandes.isis2304.parranderos.negocio.VOTipoBebida;
 
 /**
@@ -234,6 +235,35 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
         	menuBar.add( menu );
         }        
         setJMenuBar ( menuBar );	
+    }
+    public void agregarRolDeUsuario(){
+    	try 
+    	{
+    		String cargo = JOptionPane.showInputDialog (this, "Cual rol de usuario?", "Adicionar Rol de Usuario", JOptionPane.QUESTION_MESSAGE);
+    		String desc = JOptionPane.showInputDialog (this, "Descripcion", "Adicionar Rol de Usuario", JOptionPane.QUESTION_MESSAGE);
+    		if (cargo != null && desc != null)
+    		{
+        		RolDeUsuario ru = parranderos.adicionarRolDeUsuario (cargo, desc);
+        		if (ru == null)
+        		{
+        			throw new Exception ("No se pudo crear un rol de usuario con nombre: " + cargo);
+        		}
+        		String resultado = "En adicionarTipoBebida\n\n";
+        		resultado += "Tipo de bebida adicionado exitosamente: " + ru;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
     }
     
 	/* ****************************************************************
