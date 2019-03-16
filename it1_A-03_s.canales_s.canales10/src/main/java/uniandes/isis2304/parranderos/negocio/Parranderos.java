@@ -21,7 +21,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import com.google.gson.JsonObject;
-import uniandes.isis2304.parranderos.persistencia.PersistenciaParranderos;
+import uniandes.isis2304.parranderos.persistencia.Persistencia;
 
 /**
  * Clase principal del negocio

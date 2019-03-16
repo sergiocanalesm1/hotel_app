@@ -45,7 +45,7 @@ class SQLTipoBebida
 	/**
 	 * El manejador de persistencia general de la aplicación
 	 */
-	private PersistenciaParranderos pp;
+	private Persistencia p;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -68,7 +68,7 @@ class SQLTipoBebida
 	 */
 	public long adicionarTipoBebida (PersistenceManager pm, long idTipoBebida, String nombre) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaTipoBebida  () + "(id, nombre) values (?, ?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " + p.darTablaTipoBebida  () + "(id, nombre) values (?, ?)");
         q.setParameters(idTipoBebida, nombre);
         return (long) q.executeUnique();            
 	}

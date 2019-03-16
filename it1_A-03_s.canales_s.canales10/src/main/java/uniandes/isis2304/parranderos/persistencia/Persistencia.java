@@ -223,7 +223,7 @@ public class Persistencia
 //		sqlBebida = new SQLBebida(this);
 //		sqlBar = new SQLBar(this);
 //		sqlBebedor = new SQLBebedor(this);
-//		sqlGustan = new SQLGustan(this);
+		sqlGustan = new SQLGustan(this);
 //		sqlSirven = new SQLSirven (this);
 //		sqlVisitan = new SQLVisitan(this);
 		
