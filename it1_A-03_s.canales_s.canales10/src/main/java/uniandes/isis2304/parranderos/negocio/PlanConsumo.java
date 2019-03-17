@@ -4,15 +4,17 @@ public class PlanConsumo
 {
 	private String nombre;
 	
-	private int porcentajeDeDescuento;
+	private int porcentajeDescuento;
 	
 	private String descripcion;
 
-	public String getDescripcion() {
-		return descripcion;
+	public PlanConsumo()
+	{
+		
 	}
-
-	public void setDescripcion(String descripcion) {
+	public PlanConsumo(String nombre, int porcentajeDescuento, String descripcion) {
+		this.nombre = nombre;
+		this.porcentajeDescuento = porcentajeDescuento;
 		this.descripcion = descripcion;
 	}
 
@@ -24,25 +26,23 @@ public class PlanConsumo
 		this.nombre = nombre;
 	}
 
-	public int getPorcentajeDeDescuento() {
-		return porcentajeDeDescuento;
+	public int getPorcentajeDescuento() {
+		return porcentajeDescuento;
 	}
 
-	public void setPorcentajeDeDescuento(int porcentajeDeDescuento) {
-		this.porcentajeDeDescuento = porcentajeDeDescuento;
+	public void setPorcentajeDescuento(int porcentajeDescuento) {
+		this.porcentajeDescuento = porcentajeDescuento;
 	}
 
-	
-	public PlanConsumo(String nombre, int porcentajeDeDescuento, String descripcion) {
-		this.nombre = nombre;
-		this.porcentajeDeDescuento = porcentajeDeDescuento;
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
-	public PlanConsumo()
-	{
-		
-	}
+
 	
 	
 }

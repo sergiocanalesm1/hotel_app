@@ -15,7 +15,9 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -834,6 +836,7 @@ public class HotelAndes
 		{
 			if( th.getCantidadDisponible() == 0 )
 				throw new Exception("No hay habitaciones disponibles para el tipo especificado");
+			
 			h = p.adicionarHabitacion(nombre, tipoHabitacion);
 			p.cambiarCantidadDisponibleTipoHabitacion( nombre, th.getCantidadDisponible()-1);
 		}
@@ -862,14 +865,48 @@ public class HotelAndes
 		log.info ("Adicionando plan consumo: "+ nombre);
 		return s;
 	}
+	//Reserva hab, salon de reuniones, salon de conferencias
 	public Reserva adicionarReserva(String metodoDePago, String numeroPersonas, String fechaComienzo, String fechaFin,
 			String tipoHabitacion, String planConsumo, String idUsuario) throws Exception
 	{
 		log.info("Adicionando reserva para usuario: "+ idUsuario);
-		
-		PlanConsumo s = p.adicionarPlanConsumo(nombre, Integer.parseInt(por), des);
-		log.info ("Adicionando plan consumo: "+ nombre);
+		Date fechaCo = Date.valueOf(fechaComienzo);
+		Date fechaFi = Date.valueOf(fechaFin);
+		System.out.println("comienzo");
+		if( p.getUsuario( Long.parseLong(idUsuario)) == null )
+			throw new Exception("No existe el usuario");
+		System.out.println("Existe usuario");
+		if( !tipoHabitacion.isEmpty() && p.getTipoHabitacion( tipoHabitacion ) == null)
+			throw new Exception("No existe ese tipo de habitacion");
+		System.out.println("Existe TIPO DE HABITACION");
+		if ( !planConsumo.isEmpty() && p.getPlanConsumo(planConsumo) == null )
+			throw new Exception("No existe el plan consumo");
+		System.out.println("Existe PLAN CONSUMO");
+		if( !reservaEstaDisponible( tipoHabitacion, fechaCo, fechaFi))
+			throw new Exception("No hay habitaciones disponibles de ese tipo para esa fecha");
+		System.out.println("RESERVA DISPONIBLE");
+			
+			
+			
+		Reserva s = p.adicionarReserva( metodoDePago,  Integer.parseInt(numeroPersonas),  fechaCo,  fechaFi,
+				 tipoHabitacion,  planConsumo,  idUsuario);
+		log.info ("Adicionando plan consumo: "+ idUsuario);
 		return s;
+	}
+
+	private boolean reservaEstaDisponible(String tipoHabitacion, Date fechaCo, Date fechaFi) 
+	{
+		long totalHabitaciones = p.darTotalHabitaciones( tipoHabitacion );
+		System.out.println(totalHabitaciones);
+		long totalHabitacionesParaRangoFechas = p.getReservasHabitacionEn( tipoHabitacion, fechaCo, fechaFi );
+		return totalHabitacionesParaRangoFechas < totalHabitaciones;
+		
+	}
+	public RolDeUsuario getRolDeUsuario(String cargo){
+		return p.getRolDeUsuario(cargo);
+	}
+	public Habitacion getHabitacion(String numeroHabitacion){
+		return p.getHabitacion(numeroHabitacion);
 	}
 	
 

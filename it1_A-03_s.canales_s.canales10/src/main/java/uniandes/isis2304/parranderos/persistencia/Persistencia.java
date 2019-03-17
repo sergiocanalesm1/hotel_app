@@ -36,6 +36,7 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import uniandes.isis2304.parranderos.negocio.Habitacion;
 import uniandes.isis2304.parranderos.negocio.PlanConsumo;
+import uniandes.isis2304.parranderos.negocio.Reserva;
 import uniandes.isis2304.parranderos.negocio.RolDeUsuario;
 import uniandes.isis2304.parranderos.negocio.Servicio;
 import uniandes.isis2304.parranderos.negocio.TipoHabitacion;
@@ -322,6 +323,19 @@ public class Persistencia
 	public Usuario getUsuario(long id){
 		return sqlUsuario.getUsuario(pmf.getPersistenceManager(),id);
 	}
+	public long darTotalHabitaciones(String tipoHabitacion) 
+	{
+		
+		return sqlHabitacion.darTotalHabitaciones( pmf.getPersistenceManager(), tipoHabitacion );
+	}
+	public Habitacion getHabitacion(String numeroHab){
+		return sqlHabitacion.getHabitacion(pmf.getPersistenceManager(), numeroHab);
+	}
+	public long getReservasHabitacionEn(String tipoHabitacion, Date fechaCo, Date fechaFi) {
+		// TODO Auto-generated method stub
+		
+		return sqlReserva.darReservasHabitacion(pmf.getPersistenceManager(), tipoHabitacion,fechaCo, fechaFi);
+	}
 
 	/* ****************************************************************
 	 * 			REQUERIMIENTOS FUNCIONALES
@@ -373,7 +387,7 @@ public class Persistencia
           log.trace ("Inserción de usuario: " + numeroDoc + ": " + tuplasInsertadas + " tuplas insertadas");
           
           return new Usuario(  nombre,  edad,  tel,  tipoDoc,  numeroDoc,
-      			 correo,  null,  null,  getRolDeUsuario(cargo),  null);
+      			 correo,  null,  null,  cargo,  null);
       }
       catch (Exception e)
       {
@@ -513,25 +527,25 @@ public class Persistencia
 		
 		
 	}
-	public Reserva adicionarReserva(String metodoDePago, int numeroPersonas, Date fechaComienzo, Date fechaFin, String planConsumo, String idUsuario){
+	public Reserva adicionarReserva(String metodoDePago, int numeroPersonas, Date fechaComienzo, Date fechaFin, String tipoHabitacion, String planConsumo, String idUsuario){
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
             long id = nextval ();
-            long tuplasInsertadas = sqlReserva.adicionarReserva(pmf.getPersistenceManager(), id, metodoDePago, numeroPersonas, fechaComienzo, fechaFin, planConsumo, idUsuario);
+            long tuplasInsertadas = sqlReserva.adicionarReserva(pmf.getPersistenceManager(), id, metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario);
             tx.commit();
 
             log.trace ("Inserción de Reserva: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Reserva (id, metodoDePago, numeroPersonas, fechaComienzo, fechaFin, planConsumo, idUsuario);
+            return new Reserva (id, metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario);
         }
         catch (Exception e)
         {
 //        	e.printStackTrace();
         	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-        	return 0;
+        	return null;
         }
         finally
         {
@@ -542,6 +556,7 @@ public class Persistencia
             pm.close();
         }
 	}
+	
 //	public String eliminarRolDeUsuario( String cargo){
 //		
 //		PersistenceManager pm = pmf.getPersistenceManager();
@@ -573,6 +588,10 @@ public class Persistencia
 //		}
 //		
 //	}
+
+	
+
+	
 
 
 }

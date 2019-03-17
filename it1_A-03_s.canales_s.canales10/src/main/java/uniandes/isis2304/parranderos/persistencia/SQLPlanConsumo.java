@@ -39,6 +39,7 @@ public class SQLPlanConsumo {
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + p.darTablaPlanConsumo() + " WHERE nombre = ?");
 		q.setResultClass(PlanConsumo.class);
 		q.setParameters(nombre);
+		System.out.println("ACA LLEGA SQL");
 		return (PlanConsumo) q.executeUnique();
 	}
 

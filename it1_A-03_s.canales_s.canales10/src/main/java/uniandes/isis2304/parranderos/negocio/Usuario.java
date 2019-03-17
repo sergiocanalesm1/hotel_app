@@ -22,94 +22,111 @@ public class Usuario
 	private Timestamp fechaSalida;
 	
 	
-	private RolDeUsuario cargo;
+	private String rol;
 	
-	private Habitacion numeroHabitacion;
+	private String numeroHabitacion;
 
-	public Usuario( String nombre, String edad, String telefono, String tipoDocumento, String numeroDocumento,
-			String correo, Timestamp fechaLlegada, Timestamp fechaSalida, RolDeUsuario cargo, Habitacion numeroHabitacion) {
-		this.nombre = nombre;
-		this.edad = edad;
-		this.telefono = telefono;
-		this.tipoDocumento = tipoDocumento;
-		this.numeroDocumento = numeroDocumento;
-		this.correo = correo;
-		this.fechaLlegada = fechaLlegada;
-		this.fechaSalida = fechaSalida;
-		this.cargo = cargo;
-		this.numeroHabitacion = numeroHabitacion;
-	}
-	
-	public Usuario()
-	{
-		
-	}
+
 
 	public String getNombre() {
 		return nombre;
-	}
-	public String getEdad() {
-		return edad;
-	}
-	public String getTelefono() {
-		return telefono;
-	}
-	public String getTipoDocumento() {
-		return tipoDocumento;
-	}
-	public String getNumeroDocumento() {
-		return numeroDocumento;
-	}
-	public String getCorreo() {
-		return correo;
-	}
-	public Timestamp getFechaLlegada() {
-		return fechaLlegada;
-	}
-	public Timestamp getFechaSalida() {
-		return fechaSalida;
 	}
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	public String getEdad() {
+		return edad;
+	}
+
 	public void setEdad(String edad) {
 		this.edad = edad;
 	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+
+	public String getTipoDocumento() {
+		return tipoDocumento;
+	}
+
 	public void setTipoDocumento(String tipoDocumento) {
 		this.tipoDocumento = tipoDocumento;
 	}
+
+	public String getNumeroDocumento() {
+		return numeroDocumento;
+	}
+
 	public void setNumeroDocumento(String numeroDocumento) {
 		this.numeroDocumento = numeroDocumento;
 	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
+
+	public Timestamp getFechaLlegada() {
+		return fechaLlegada;
+	}
+
 	public void setFechaLlegada(Timestamp fechaLlegada) {
 		this.fechaLlegada = fechaLlegada;
 	}
+
+	public Timestamp getFechaSalida() {
+		return fechaSalida;
+	}
+
 	public void setFechaSalida(Timestamp fechaSalida) {
 		this.fechaSalida = fechaSalida;
 	}
 
-	public void setCargo(RolDeUsuario cargo) {
-		this.cargo = cargo;
+	public String getRol() {
+		return rol;
 	}
 
-	public RolDeUsuario getCargo() {
-		return cargo;
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 
-	public Habitacion getNumeroHabitacion() {
+	public String getNumeroHabitacion() {
 		return numeroHabitacion;
 	}
 
-	public void setNumeroHabitacion(Habitacion numeroHabitacion) {
+	public void setNumeroHabitacion(String numeroHabitacion) {
 		this.numeroHabitacion = numeroHabitacion;
 	}
+
+	public Usuario( String nombre, String edad, String telefono, String tipoDocumento,
+			String numeroDocumento, String correo, Timestamp fechaLlegada, Timestamp fechaSalida, String rol,
+			String numeroHabitacion) {
+		this.nombre = nombre;
+		this.edad = edad;
+		this.telefono = telefono;
+		this.tipoDocumento = tipoDocumento;
+		this.numeroDocumento = numeroDocumento;
+		this.correo = correo;
+		this.fechaLlegada = fechaLlegada;
+		this.fechaSalida = fechaSalida;
+		this.rol = rol;
+		this.numeroHabitacion = numeroHabitacion;
+	}
+	public Usuario()
+	{
+		
+	}
+
 	
 	
 	

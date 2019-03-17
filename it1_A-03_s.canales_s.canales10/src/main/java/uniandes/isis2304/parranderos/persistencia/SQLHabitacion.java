@@ -1,7 +1,11 @@
 package uniandes.isis2304.parranderos.persistencia;
 
+import java.math.BigDecimal;
+
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+
+import uniandes.isis2304.parranderos.negocio.Habitacion;
 
 public class SQLHabitacion {
 
@@ -27,6 +31,22 @@ public class SQLHabitacion {
 		Query q = pm.newQuery(SQL, "INSERT INTO " + persistencia.darTablaHabitacion() + "(numero, tipoHabitacion) values (?,?)");
 		q.setParameters(numero, tipoHabitacion);
 		return q.executeUnique() + "";
+	}
+
+	public long darTotalHabitaciones(PersistenceManager pm, String tipoHabitacion)
+	{
+		Query q = pm.newQuery(SQL, "SELECT COUNT(*) FROM " + persistencia.darTablaHabitacion() + " WHERE tipohabitacion = ?");
+		q.setParameters(tipoHabitacion);
+		return ((BigDecimal) q.executeUnique()).longValue();
+	}
+
+	public Habitacion getHabitacion(PersistenceManager pm, String numeroHab) {
+		
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaHabitacion() + "WHERE numero = ?");
+		q.setResultClass(Habitacion.class);
+		q.setParameters(numeroHab);
+		return (Habitacion) q.executeUnique();
+
 	}
 
 }

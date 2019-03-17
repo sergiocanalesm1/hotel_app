@@ -3,44 +3,34 @@ package uniandes.isis2304.parranderos.negocio;
 import java.sql.Date;
 
 public class Reserva {
-	private int id;
+	private long id;
 	
 	private String metodoDePago;
 	
-	private int numeroPersonas;
+	private int cantidadPersonas;
 	
 	private Date fechaComienzo;
 	
 	private Date fechaFin;
 	
-	private TipoHabitacion tipoHabitacion;
+	private String tipoHabitacion;
 	
-	private PlanConsumo planConsumo;
+	private String planConsumo;
 	
-	private Usuario idUsuario;
+	private String idUsuario;
 
 	
-	public Reserva(int id, String metodoDePago, int numeroPersonas, Date fechaComienzo, Date fechaFin,
-			TipoHabitacion tipoHabitacion, PlanConsumo planConsumo, Usuario idUsuario) {
-		this.id = id;
-		this.metodoDePago = metodoDePago;
-		this.numeroPersonas = numeroPersonas;
-		this.fechaComienzo = fechaComienzo;
-		this.fechaFin = fechaFin;
-		this.tipoHabitacion = tipoHabitacion;
-		this.planConsumo = planConsumo;
-		this.idUsuario = idUsuario;
-	}
-
-
-	public int getId() {
+	
+	public long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+
+	public void setId(long id) {
 		this.id = id;
 	}
+
 
 
 	public String getMetodoDePago() {
@@ -48,19 +38,23 @@ public class Reserva {
 	}
 
 
+
 	public void setMetodoDePago(String metodoDePago) {
 		this.metodoDePago = metodoDePago;
 	}
 
 
-	public int getNumeroPersonas() {
-		return numeroPersonas;
+
+	public int getCantidadPersonas() {
+		return cantidadPersonas;
 	}
 
 
-	public void setNumeroPersonas(int numeroPersonas) {
-		this.numeroPersonas = numeroPersonas;
+
+	public void setCantidadPersonas(int cantidadpersonas) {
+		this.cantidadPersonas = cantidadpersonas;
 	}
+
 
 
 	public Date getFechaComienzo() {
@@ -68,9 +62,11 @@ public class Reserva {
 	}
 
 
+
 	public void setFechaComienzo(Date fechaComienzo) {
 		this.fechaComienzo = fechaComienzo;
 	}
+
 
 
 	public Date getFechaFin() {
@@ -78,39 +74,61 @@ public class Reserva {
 	}
 
 
+
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 
 
-	public TipoHabitacion getTipoHabitacion() {
+
+	public String getTipoHabitacion() {
 		return tipoHabitacion;
 	}
 
 
-	public void setTipoHabitacion(TipoHabitacion tipoHabitacion) {
+
+	public void setTipoHabitacion(String tipoHabitacion) {
 		this.tipoHabitacion = tipoHabitacion;
 	}
 
 
-	public PlanConsumo getPlanConsumo() {
+
+	public String getPlanConsumo() {
 		return planConsumo;
 	}
 
 
-	public void setPlanConsumo(PlanConsumo planConsumo) {
+
+	public void setPlanConsumo(String planConsumo) {
 		this.planConsumo = planConsumo;
 	}
 
 
-	public Usuario getIdUsuario() {
+
+	public String getIdUsuario() {
 		return idUsuario;
 	}
 
 
-	public void setIdUsuario(Usuario idUsuario) {
+
+	public void setIdUsuario(String idUsuario) {
 		this.idUsuario = idUsuario;
 	}
+
+
+
+	public Reserva(long id, String metodoDePago, int cantidadpersonas, Date fechaComienzo, Date fechaFin,
+			String tipoHabitacion, String planConsumo, String idUsuario) {
+		this.id = id;
+		this.metodoDePago = metodoDePago;
+		this.cantidadPersonas = cantidadpersonas;
+		this.fechaComienzo = fechaComienzo;
+		this.fechaFin = fechaFin;
+		this.tipoHabitacion = tipoHabitacion;
+		this.planConsumo = planConsumo;
+		this.idUsuario = idUsuario;
+	}
+
 
 
 	public Reserva()

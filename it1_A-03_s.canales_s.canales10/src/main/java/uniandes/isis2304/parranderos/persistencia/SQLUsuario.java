@@ -38,7 +38,7 @@ public class SQLUsuario {
 
 	public Usuario getUsuario(PersistenceManager pm, long id) {
 		
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaUsuario() + " WHERE id = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaUsuario() + " WHERE numeroDocumento = ?");
 		q.setResultClass(Usuario.class);
 		q.setParameters(id);
 		return (Usuario) q.executeUnique();	

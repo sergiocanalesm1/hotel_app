@@ -49,6 +49,7 @@ import com.google.gson.stream.JsonReader;
 import uniandes.isis2304.parranderos.negocio.Habitacion;
 import uniandes.isis2304.parranderos.negocio.HotelAndes;
 import uniandes.isis2304.parranderos.negocio.PlanConsumo;
+import uniandes.isis2304.parranderos.negocio.Reserva;
 import uniandes.isis2304.parranderos.negocio.RolDeUsuario;
 import uniandes.isis2304.parranderos.negocio.Servicio;
 import uniandes.isis2304.parranderos.negocio.TipoHabitacion;
@@ -451,9 +452,9 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		String idUsuario = JOptionPane.showInputDialog (this, "numero de identificacion del usuario", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
     		String metodoDePago = JOptionPane.showInputDialog (this, "Metodo de pago", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
     		String numeroPersonas = JOptionPane.showInputDialog (this, "Numero de Personas", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
-    		String fechaComienzo = JOptionPane.showInputDialog (this, "Fecha comienzo\nFormato: dd-M-yyyy hh:mm:ss", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
-    		String fechaFin = JOptionPane.showInputDialog (this, "Fecha fin\nFormato: dd-M-yyyy hh:mm:ss", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
-    		String tipoHabitacion = JOptionPane.showInputDialog (this, "tipoDeDescuento", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+    		String fechaComienzo = JOptionPane.showInputDialog (this, "Fecha comienzo\nFormato: yyyy-mm-dd", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+    		String fechaFin = JOptionPane.showInputDialog (this, "Fecha fin\nFormato: yyyy-mm-dd", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+    		String tipoHabitacion = JOptionPane.showInputDialog (this, "Tipo de Habitacion", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
     		String planConsumo = JOptionPane.showInputDialog (this, "Plan Consumo", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
 
     		
