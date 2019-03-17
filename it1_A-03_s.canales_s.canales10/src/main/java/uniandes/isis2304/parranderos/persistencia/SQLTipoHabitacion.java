@@ -25,8 +25,7 @@ public class SQLTipoHabitacion {
 		
 		persistencia = p;
 	}
-	public String adicionarTipoHabitacion(PersistenceManager pm, String nombre, Integer capacidad, Double costoPorNoche,
-			Integer cantidadDisponible) {
+	public String adicionarTipoHabitacion(PersistenceManager pm, String nombre, Integer capacidad, Integer costoPorNoche, Integer cantidadDisponible) {
 		
 		Query q = pm.newQuery(SQL, "INSERT INTO " + persistencia.darTablaTipoHabitacion() + "(nombre, capacidad, costoPorNoche ,cantidadDisponible) values (?,?,?,?)");
 		q.setParameters(nombre, capacidad, costoPorNoche ,cantidadDisponible);
@@ -43,9 +42,11 @@ public class SQLTipoHabitacion {
 	public TipoHabitacion getTipoHabitacion(PersistenceManager pm, String nombre) {
 		
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaTipoHabitacion() + " WHERE nombre = ?");
-		q.setResultClass(RolDeUsuario.class);
+		q.setResultClass(TipoHabitacion.class);
 		q.setParameters(nombre);
-		return (TipoHabitacion) q.executeUnique();
+		TipoHabitacion t = (TipoHabitacion) q.executeUnique();
+		System.out.println(t);
+		return t;
 	}
 
 }

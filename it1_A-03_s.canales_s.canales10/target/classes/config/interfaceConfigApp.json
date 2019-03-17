@@ -1,4 +1,4 @@
-{
+﻿{
 	"title": "Aplicación transaccional de Parranderos Uniandes",
 	"frameH": 600,
 	"frameW": 800,
@@ -17,12 +17,12 @@
 					"event": "registrarUsuario"
 				},
 				{
-					"label": "Borrar por Id",
-					"event": "eliminarTipoBebidaPorId"
+					"label": "RF3: Registrar Tipo de Habitacion",
+					"event": "adicionarTipoDeHabitacion"
 				},
 				{
-					"label": "Buscar por Nombre",
-					"event": "buscarTipoBebidaPorNombre"
+					"label": "RF4: Registrar Habitacion",
+					"event": "adicionarHabitacion"
 				}
 			]
 		},

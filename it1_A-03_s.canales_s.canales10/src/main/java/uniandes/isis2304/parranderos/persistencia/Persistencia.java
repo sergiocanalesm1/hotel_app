@@ -287,7 +287,10 @@ public class Persistencia
 		return sqlRolDeUsuario.getRolDeUsuario(pmf.getPersistenceManager(),cargo);
 	}
 	public TipoHabitacion getTipoHabitacion(String nombre){
-		return sqlTipoHabitacion.getTipoHabitacion(pmf.getPersistenceManager(),nombre);
+		TipoHabitacion s = sqlTipoHabitacion.getTipoHabitacion(pmf.getPersistenceManager(),nombre);
+		System.out.println("llego aca");
+		return s;
+		
 	}
 	public String cambiarCantidadDisponibleTipoHabitacion(String nombre, Integer nuevaCapacidad){
 		return sqlTipoHabitacion.cambiarCantidadDisponible(pmf.getPersistenceManager(), nombre, nuevaCapacidad);
@@ -362,7 +365,7 @@ public class Persistencia
 	}
 	
 	//registrar tipo de habitación RF3
-	public TipoHabitacion adicionarTipoDeHabitacion(String nombre,  Integer capacidad,  Double costoPorNoche, Integer cantidadDisponible ) 
+	public TipoHabitacion adicionarTipoDeHabitacion(String nombre,  Integer capacidad,  Integer costoPorNoche, Integer cantidadDisponible ) 
 	{
 	  PersistenceManager pm = pmf.getPersistenceManager();
      Transaction tx=pm.currentTransaction();
@@ -402,7 +405,7 @@ public class Persistencia
          
          log.trace ("Inserción de tipo de habitación: " + numero + ": " + tuplasInsertadas + " tuplas insertadas");
          
-         return new Habitacion(  numero, tipoHabitacion);
+         return new Habitacion(  numero, getTipoHabitacion(tipoHabitacion));
      }
      catch (Exception e)
      {

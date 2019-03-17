@@ -46,8 +46,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+import uniandes.isis2304.parranderos.negocio.Habitacion;
 import uniandes.isis2304.parranderos.negocio.HotelAndes;
 import uniandes.isis2304.parranderos.negocio.RolDeUsuario;
+import uniandes.isis2304.parranderos.negocio.TipoHabitacion;
 import uniandes.isis2304.parranderos.negocio.Usuario;
 
 
@@ -286,6 +288,75 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
         		}
         		String resultado = "En registrar Usuario\n\n";
         		resultado += "usuario registrado exitosamente: " + u;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    public void adicionarTipoDeHabitacion()
+    {
+    	try 
+    	{
+    		String nombre = JOptionPane.showInputDialog (this, "Nombre", "Registrar tipo de habitacion", JOptionPane.QUESTION_MESSAGE);
+    		String capacidad = JOptionPane.showInputDialog (this, "Capacidad", "Registrar tipo de habitacion", JOptionPane.QUESTION_MESSAGE);
+    		String costoXNoche = JOptionPane.showInputDialog (this, "Costo por noche", "Registrar tipo de habitacion", JOptionPane.QUESTION_MESSAGE);
+    		String cantidadDisponible = JOptionPane.showInputDialog (this, "Cantidad Disponible", "Registrar tipo de habitacion", JOptionPane.QUESTION_MESSAGE);
+    		
+    		
+    		if (nombre != null && capacidad != null && costoXNoche != null && cantidadDisponible != null)
+    		{
+    			
+        		TipoHabitacion th = hotelAndes.adicionarTipoDeHabitacion ( nombre, capacidad, costoXNoche, cantidadDisponible );
+        		if (th == null)
+        		{
+        			throw new Exception ("No se pudo crear un tipo de habitacion con nombre: " + nombre);
+        		}
+        		String resultado = "En registrar tipo de habitacion\n\n";
+        		resultado += "tipo de habitacion exitosamente: " + th;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    public void adicionarHabitacion()
+    {
+    	try 
+    	{
+    		String nombre = JOptionPane.showInputDialog (this, "Número", "Registrar habitacion", JOptionPane.QUESTION_MESSAGE);
+    		String tipoHabitacion = JOptionPane.showInputDialog (this, "Tipo de Habitacion", "Registrar habitacion", JOptionPane.QUESTION_MESSAGE);
+    		
+    		
+    		
+    		if (nombre != null && tipoHabitacion != null )
+    		{
+    			
+        		Habitacion th = hotelAndes.adicionarHabitacion ( nombre, tipoHabitacion);
+        		if (th == null)
+        		{
+        			throw new Exception ("No se pudo crear un tipo de habitacion con nombre: " + nombre);
+        		}
+        		String resultado = "En registrar tipo de habitacion\n\n";
+        		resultado += "tipo de habitacion exitosamente: " + th;
     			resultado += "\n Operación terminada";
     			panelDatos.actualizarInterfaz(resultado);
     		}
