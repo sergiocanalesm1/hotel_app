@@ -564,19 +564,19 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     {
     	try 
     	{
-    		String valor = JOptionPane.showInputDialog (this, "Numero de identificacion del usuario", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
-    		String numeroHabitacionACargar = JOptionPane.showInputDialog (this, "Metodo de pago", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
-    		String idServicio = JOptionPane.showInputDialog (this, "Cantidad de Personas", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String valor = JOptionPane.showInputDialog (this, "Numero de identificacion del usuario", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
+    		String numeroHabitacionACargar = JOptionPane.showInputDialog (this, "Numero Habitacion", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
+    		String idServicio = JOptionPane.showInputDialog (this, "id del Servicio", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
 
     		
     		
-    		if (nombre != null && duracion != null && idServicio != null  )
+    		if (valor != null && numeroHabitacionACargar != null && idServicio != null  )
     		{
     			
-        		Producto th = hotelAndes.adicionarProducto(  nombre, duracion, idServicio);
+        		Producto th = hotelAndes.adicionarConsumo(  valor, numeroHabitacionACargar, idServicio);
         		if (th == null)
         		{
-        			throw new Exception ("No se pudo crear una producto para el usuario con id "+ nombre);
+        			throw new Exception ("No se pudo crear el consumo con valor "+ valor+ " para el servicio "+idServicio);
         		}
         		String resultado = "En registrar plan consumo\n\n";
         		resultado += "tipo de habitacion exitosamente: " + th;
