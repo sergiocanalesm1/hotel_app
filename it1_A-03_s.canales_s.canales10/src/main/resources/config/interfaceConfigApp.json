@@ -31,6 +31,10 @@
 				{
 					"label": "RF6: Registrar Plan Consumo",
 					"event": "adicionarPlanConsumo"
+				},
+				{
+					"label": "RF7: Registrar Reserva",
+					"event": "adicionarReserva"
 				}
 			]
 		},

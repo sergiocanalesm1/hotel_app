@@ -862,6 +862,15 @@ public class HotelAndes
 		log.info ("Adicionando plan consumo: "+ nombre);
 		return s;
 	}
+	public Reserva adicionarReserva(String metodoDePago, String numeroPersonas, String fechaComienzo, String fechaFin,
+			String tipoHabitacion, String planConsumo, String idUsuario) throws Exception
+	{
+		log.info("Adicionando reserva para usuario: "+ idUsuario);
+		
+		PlanConsumo s = p.adicionarPlanConsumo(nombre, Integer.parseInt(por), des);
+		log.info ("Adicionando plan consumo: "+ nombre);
+		return s;
+	}
 	
 
 }

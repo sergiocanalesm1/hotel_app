@@ -444,6 +444,46 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    public void adicionarReserva()
+    {
+    	try 
+    	{
+    		String idUsuario = JOptionPane.showInputDialog (this, "numero de identificacion del usuario", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+    		String metodoDePago = JOptionPane.showInputDialog (this, "Metodo de pago", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+    		String numeroPersonas = JOptionPane.showInputDialog (this, "Numero de Personas", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+    		String fechaComienzo = JOptionPane.showInputDialog (this, "Fecha comienzo\nFormato: dd-M-yyyy hh:mm:ss", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+    		String fechaFin = JOptionPane.showInputDialog (this, "Fecha fin\nFormato: dd-M-yyyy hh:mm:ss", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+    		String tipoHabitacion = JOptionPane.showInputDialog (this, "tipoDeDescuento", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+    		String planConsumo = JOptionPane.showInputDialog (this, "Plan Consumo", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+
+    		
+    		
+    		if (idUsuario != null && metodoDePago != null && numeroPersonas != null && fechaComienzo != null && fechaFin != null && tipoHabitacion != null && planConsumo != null )
+    		{
+    			
+        		Reserva th = hotelAndes.adicionarReserva(  metodoDePago,  numeroPersonas,  fechaComienzo,  fechaFin,
+        				 tipoHabitacion,  planConsumo,  idUsuario);
+        		if (th == null)
+        		{
+        			throw new Exception ("No se pudo crear una reserva para el usuario con id "+ idUsuario);
+        		}
+        		String resultado = "En registrar plan consumo\n\n";
+        		resultado += "tipo de habitacion exitosamente: " + th;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
     
     
 	/* ****************************************************************
