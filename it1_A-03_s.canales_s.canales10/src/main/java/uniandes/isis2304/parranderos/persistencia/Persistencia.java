@@ -33,6 +33,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import uniandes.isis2304.parranderos.negocio.RolDeUsuario;
+import uniandes.isis2304.parranderos.negocio.Usuario;
 
 
 /**
@@ -88,6 +89,20 @@ public class Persistencia
 	
 	private SQLUsuario sqlUsuario;
 	
+	private SQLTipoHabitacion sqlTipoHabitacion;
+	
+	private SQLHabitacion sqlHabitacion;
+	
+	private SQLReserva sqlReserva;
+	
+	private SQLPlanConsumo sqlPlanConsumo;
+	
+	private SQLConsumo sqlConsumo;
+	
+	private SQLServicio sqlServicio;
+	
+	private SQLProducto sqlProducto;
+	
 	
 	
 	/* ****************************************************************
@@ -107,14 +122,15 @@ public class Persistencia
 		tablas.add ("HotelAndes_sequence");
 		tablas.add("USUARIO");
 		tablas.add ("ROLDEUSUARIO");
-		
-//		tablas.add ("BEBIDA");
-//		tablas.add ("BAR");
-//		tablas.add ("BEBEDOR");
-//		tablas.add ("GUSTAN");
-//		tablas.add ("SIRVEN");
-//		tablas.add ("VISITAN");
-}
+		tablas.add ("TIPOHABITACION");
+		tablas.add("HABITACION");
+		tablas.add ("RESERVA");
+		tablas.add("PLANCONSUMO");
+		tablas.add("CONSUMO");
+		tablas.add("SERVICIO");
+		tablas.add("PRODUCTO");
+
+	}
 
 	/**
 	 * Constructor privado, que recibe los nombres de las tablas en un objeto Json - Patrón SINGLETON
@@ -188,19 +204,17 @@ public class Persistencia
 	 */
 	private void crearClasesSQL ()
 	{
-//		sqlTipoBebida = new SQLTipoBebida(this);
-//		sqlBebida = new SQLBebida(this);
-//		sqlBar = new SQLBar(this);
-//		sqlBebedor = new SQLBebedor(this);
-//		sqlGustan = new SQLGustan(this);
-//		sqlSirven = new SQLSirven (this);
-//		sqlVisitan = new SQLVisitan(this);
-		
-//		sqlPersona = new SQLPersona(this);
-//		sqlServicio = new SQLServicio(this);
-//		sqlHabitacion = new SQLHabitacion(this);
+
 		sqlUtil = new SQLUtil(this);
 		sqlRolDeUsuario = new SQLRolDeUsuario(this);
+		sqlUsuario = new SQLUsuario(this);
+		sqlTipoHabitacion = new SQLTipoHabitacion(this);
+		sqlHabitacion = new SQLHabitacion(this);
+		sqlReserva = new SQLReserva(this);
+		sqlPlanConsumo = new SQLPlanConsumo(this);
+		sqlConsumo = new SQLConsumo(this);
+		sqlServicio = new SQLServicio(this);
+		sqlHabitacion = new SQLHabitacion(this);
 		
 		
 	}
@@ -228,6 +242,14 @@ public class Persistencia
 		
 		return tablas.get(2);
 	}
+	public String darTablaTipoHabitacion(){
+		
+		return tablas.get(3);
+	}
+	public String darTablaHabitacion(){
+		return tablas.get(4);
+	}
+	
 //
 //	/**
 //	 * @return La cadena de caracteres con el nombre de la tabla de Bebida de parranderos
@@ -306,10 +328,10 @@ public class Persistencia
 	}
 
 	/* ****************************************************************
-	 * 			Métodos para manejar los ROLES DE USUARIO
+	 * 			REQUERIMIENTOS FUNCIONALES
 	 *****************************************************************/
 
-
+	//registrarRolDeUsuario RF1
 	public RolDeUsuario adicionarRolesDeUsuario(String cargo, String desc) {
 		PersistenceManager pm = pmf.getPersistenceManager();
       Transaction tx=pm.currentTransaction();
@@ -322,6 +344,37 @@ public class Persistencia
           log.trace ("Inserción de rol de usuario: " + cargo + ": " + tuplasInsertadas + " tuplas insertadas");
           
           return new RolDeUsuario( cargo, desc );
+      }
+      catch (Exception e)
+      {
+//      	e.printStackTrace();
+      	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+      	return null;
+      }
+      finally
+      {
+          if (tx.isActive())
+          {
+              tx.rollback();
+          }
+          pm.close();
+      }
+	}
+	
+	//registrarUsuario RF2
+	public RolDeUsuario adicionarUsuario(String nombre, String edad, String telefono, String tipoDocumento, String numeroDocumento,
+			String correo, Timestamp fechaLlegada, Timestamp fechaSalida, String cargo) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+      Transaction tx=pm.currentTransaction();
+      try
+      {
+          tx.begin();
+          String tuplasInsertadas = sqlUsuario.adicionarUsuario(pm, nombre, telefono, tipoDocumento,numeroDocumento, correo,fechaLlegada, fechaSalida, cargo);
+          tx.commit();
+          
+          log.trace ("Inserción de usuario: " + numeroDocumento + ": " + tuplasInsertadas + " tuplas insertadas");
+          
+          return new Usuario( nombre, telefono, tipoDocumento,numeroDocumento, correo,fechaLlegada, fechaSalida ,cargo);
       }
       catch (Exception e)
       {
