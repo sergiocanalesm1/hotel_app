@@ -27,6 +27,10 @@
 				{
 					"label": "RF5: Registrar Servicio",
 					"event": "adicionarServicio"
+				},
+				{
+					"label": "RF6: Registrar Plan Consumo",
+					"event": "adicionarPlanConsumo"
 				}
 			]
 		},

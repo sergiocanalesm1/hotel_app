@@ -33,6 +33,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import uniandes.isis2304.parranderos.negocio.Habitacion;
+import uniandes.isis2304.parranderos.negocio.PlanConsumo;
 import uniandes.isis2304.parranderos.negocio.RolDeUsuario;
 import uniandes.isis2304.parranderos.negocio.Servicio;
 import uniandes.isis2304.parranderos.negocio.TipoHabitacion;
@@ -466,19 +467,19 @@ public class Persistencia
         }
 	}
 	//registrar plan consumo RF6
-	public PlanConsumo adicionarPlanConsumo(String nombre, int porcentajeDescuento){
+	public PlanConsumo adicionarPlanConsumo(String nombre, int porcentajeDescuento, String des){
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
-            String tuplasInsertadas = sqlPlanConsumo.adicionarPlanConsumo(pmf.getPersistenceManager(), nombre, porcentajeDescuento);
+            String tuplasInsertadas = sqlPlanConsumo.adicionarPlanConsumo(pmf.getPersistenceManager(), nombre, porcentajeDescuento, des);
             tx.commit();
 
             log.trace ("Inserción de plan de consumo: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new PlanConsumo (nombre, porcentajeDescuento);
+            return new PlanConsumo (nombre, porcentajeDescuento, des);
         }
         catch (Exception e)
         {

@@ -25,10 +25,10 @@ public class SQLPlanConsumo {
 		this.p = p;
 	}
 
-	public String adicionarPlanConsumo(PersistenceManager pm, String nombre, int porcentajeDescuento) {
+	public String adicionarPlanConsumo(PersistenceManager pm, String nombre, int porcentajeDescuento, String des) {
 		
-		Query q = pm.newQuery(SQL, "INSERT INTO " + p.darTablaPlanConsumo() + "(nombre, porcentajeDescuento) values (?, ?)");
-        q.setParameters( nombre, porcentajeDescuento);
+		Query q = pm.newQuery(SQL, "INSERT INTO " + p.darTablaPlanConsumo() + "(nombre, porcentajeDescuento, descripcion) values (?, ?, ?)");
+        q.setParameters( nombre, porcentajeDescuento, des);
         return  q.executeUnique() + "";
 	}
 

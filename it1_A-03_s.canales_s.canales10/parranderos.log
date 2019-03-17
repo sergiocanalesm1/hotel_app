@@ -44,3 +44,19 @@ ORA-02289: sequence does not exist
 11:51:53,659 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando habitacion: Salon de Reunion
 11:53:55,388 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando servicio: Salon de Conferencia
 11:53:55,442 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando habitacion: Salon de Conferencia
+12:15:48,785 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+12:15:48,786 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+12:15:48,812 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+12:16:12,647 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: Larga Estadia
+12:16:12,805 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: Larga Estadia
+12:20:38,115 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+12:20:38,116 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+12:20:38,137 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+12:21:12,446 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: LARGA ESTADIA
+12:21:12,594 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: LARGA ESTADIA
+12:22:48,660 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: TIEMPO COMPLETO
+12:22:48,692 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: TIEMPO COMPLETO
+12:24:26,468 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: TODO INCLUIDO
+12:24:26,492 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: TODO INCLUIDO
+12:25:43,440 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: SEMANA SANTA
+12:25:43,475 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: SEMANA SANTA

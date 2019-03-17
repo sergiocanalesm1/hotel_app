@@ -853,6 +853,15 @@ public class HotelAndes
 		log.info ("Adicionando habitacion: "+ nombre);
 		return s;
 	}
+
+	public PlanConsumo adicionarPlanConsumo(String nombre, String por, String des) 
+	{
+		log.info("Adicionando plan consumo: "+ nombre);
+		
+		PlanConsumo s = p.adicionarPlanConsumo(nombre, Integer.parseInt(por), des);
+		log.info ("Adicionando plan consumo: "+ nombre);
+		return s;
+	}
 	
 
 }
