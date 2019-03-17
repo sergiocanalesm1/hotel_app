@@ -16,6 +16,7 @@
 package uniandes.isis2304.parranderos.negocio;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
@@ -865,39 +866,44 @@ public class HotelAndes
 		log.info ("Adicionando plan consumo: "+ nombre);
 		return s;
 	}
-	//Reserva hab, salon de reuniones, salon de conferencias
+	//Reserva hab, salon de reuniones, salon de conferencias, SPA
 	public Reserva adicionarReserva(String metodoDePago, String numeroPersonas, String fechaComienzo, String fechaFin,
-			String tipoHabitacion, String planConsumo, String idUsuario) throws Exception
+			String tipoHabitacion, String planConsumo, String idUsuario, String idProducto) throws Exception
 	{
 		log.info("Adicionando reserva para usuario: "+ idUsuario);
-		Date fechaCo = Date.valueOf(fechaComienzo);
-		Date fechaFi = Date.valueOf(fechaFin);
-		System.out.println("comienzo");
+		
+		Timestamp fechaCo = Timestamp.valueOf(fechaComienzo);
+		Timestamp fechaFi = Timestamp.valueOf(fechaFin);
 		if( p.getUsuario( Long.parseLong(idUsuario)) == null )
 			throw new Exception("No existe el usuario");
-		System.out.println("Existe usuario");
+		
 		if( !tipoHabitacion.isEmpty() && p.getTipoHabitacion( tipoHabitacion ) == null)
 			throw new Exception("No existe ese tipo de habitacion");
-		System.out.println("Existe TIPO DE HABITACION");
 		if ( !planConsumo.isEmpty() && p.getPlanConsumo(planConsumo) == null )
 			throw new Exception("No existe el plan consumo");
-		System.out.println("Existe PLAN CONSUMO");
-		if( !reservaEstaDisponible( tipoHabitacion, fechaCo, fechaFi))
+		System.out.println(idProducto);
+		if( idProducto.equals("-1") && !reservaDeHabitacionEstaDisponible( tipoHabitacion, fechaCo, fechaFi))
 			throw new Exception("No hay habitaciones disponibles de ese tipo para esa fecha");
-		System.out.println("RESERVA DISPONIBLE");
+		else if( !idProducto.equals("-1") && !reservaDeServicioDisponible( idProducto, fechaCo, fechaFi) )
+			throw new Exception("No esta disponible el servicio para esa fecha");
 			
-			
+		//VER SI PRODUCTO EXISTE	
 			
 		Reserva s = p.adicionarReserva( metodoDePago,  Integer.parseInt(numeroPersonas),  fechaCo,  fechaFi,
-				 tipoHabitacion,  planConsumo,  idUsuario);
+				 tipoHabitacion,  planConsumo,  idUsuario, idProducto);
 		log.info ("Adicionando plan consumo: "+ idUsuario);
 		return s;
 	}
 
-	private boolean reservaEstaDisponible(String tipoHabitacion, Date fechaCo, Date fechaFi) 
+	private boolean reservaDeServicioDisponible(String idProducto, Timestamp fechaCo, Timestamp fechaFi) 
+	{
+		p.getReservasHabitacionEn(idProducto, fechaCo, fechaFi);
+		return false;
+	}
+
+	private boolean reservaDeHabitacionEstaDisponible(String tipoHabitacion, Timestamp fechaCo, Timestamp fechaFi) 
 	{
 		long totalHabitaciones = p.darTotalHabitaciones( tipoHabitacion );
-		System.out.println(totalHabitaciones);
 		long totalHabitacionesParaRangoFechas = p.getReservasHabitacionEn( tipoHabitacion, fechaCo, fechaFi );
 		return totalHabitacionesParaRangoFechas < totalHabitaciones;
 		

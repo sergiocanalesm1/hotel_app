@@ -49,6 +49,7 @@ import com.google.gson.stream.JsonReader;
 import uniandes.isis2304.parranderos.negocio.Habitacion;
 import uniandes.isis2304.parranderos.negocio.HotelAndes;
 import uniandes.isis2304.parranderos.negocio.PlanConsumo;
+import uniandes.isis2304.parranderos.negocio.Producto;
 import uniandes.isis2304.parranderos.negocio.Reserva;
 import uniandes.isis2304.parranderos.negocio.RolDeUsuario;
 import uniandes.isis2304.parranderos.negocio.Servicio;
@@ -445,7 +446,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
-    public void adicionarReserva()
+    public void adicionarReservaAlojamiento()
     {
     	try 
     	{
@@ -462,8 +463,8 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		if (idUsuario != null && metodoDePago != null && numeroPersonas != null && fechaComienzo != null && fechaFin != null && tipoHabitacion != null && planConsumo != null )
     		{
     			
-        		Reserva th = hotelAndes.adicionarReserva(  metodoDePago,  numeroPersonas,  fechaComienzo,  fechaFin,
-        				 tipoHabitacion,  planConsumo,  idUsuario);
+        		Reserva th = hotelAndes.adicionarReserva(  metodoDePago,  numeroPersonas,  fechaComienzo+" 00:00:00",  fechaFin+" 00:00:00",
+        				 tipoHabitacion,  planConsumo,  idUsuario, "-1");
         		if (th == null)
         		{
         			throw new Exception ("No se pudo crear una reserva para el usuario con id "+ idUsuario);
@@ -485,7 +486,80 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
-    
+    public void adicionarReservaServicio()
+    {
+    	try 
+    	{
+    		String idUsuario = JOptionPane.showInputDialog (this, "Numero de identificacion del usuario", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+    		String metodoDePago = JOptionPane.showInputDialog (this, "Metodo de pago", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+    		String cantidadPersonas = JOptionPane.showInputDialog (this, "Cantidad de Personas", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+    		String fechaComienzo = JOptionPane.showInputDialog (this, "Fecha comienzo\nFormato: yyyy-mm-dd hh:mm", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+    		String fechaFin = JOptionPane.showInputDialog (this, "Fecha fin\nFormato: yyyy-mm-dd hh:mm", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+    		String idProducto = JOptionPane.showInputDialog (this, "Plan Consumo", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+
+    		
+    		
+    		if (idUsuario != null && metodoDePago != null && fechaComienzo != null && cantidadPersonas != null && fechaFin != null && idProducto != null )
+    		{
+    			
+        		Reserva th = hotelAndes.adicionarReserva(  metodoDePago,  cantidadPersonas,  fechaComienzo,  fechaFin,
+        				 "",  "",  idUsuario, idProducto);
+        		if (th == null)
+        		{
+        			throw new Exception ("No se pudo crear una reserva para el usuario con id "+ idUsuario);
+        		}
+        		String resultado = "En registrar plan consumo\n\n";
+        		resultado += "tipo de habitacion exitosamente: " + th;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    public void adicionarProducto()
+    {
+    	try 
+    	{
+    		String nombre = JOptionPane.showInputDialog (this, "Numero de identificacion del usuario", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String duracion = JOptionPane.showInputDialog (this, "Metodo de pago", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String idServicio = JOptionPane.showInputDialog (this, "Cantidad de Personas", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+
+    		
+    		
+    		if (nombre != null && duracion != null && idServicio != null  )
+    		{
+    			
+        		Producto th = hotelAndes.adicionarProducto(  nombre, duracion, idServicio);
+        		if (th == null)
+        		{
+        			throw new Exception ("No se pudo crear una producto para el usuario con id "+ nombre);
+        		}
+        		String resultado = "En registrar plan consumo\n\n";
+        		resultado += "tipo de habitacion exitosamente: " + th;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
     
 	/* ****************************************************************
 	 * 			CRUD de TipoBebida

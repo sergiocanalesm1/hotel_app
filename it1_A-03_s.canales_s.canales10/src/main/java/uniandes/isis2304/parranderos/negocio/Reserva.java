@@ -1,6 +1,6 @@
 package uniandes.isis2304.parranderos.negocio;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Reserva {
 	private long id;
@@ -9,21 +9,50 @@ public class Reserva {
 	
 	private int cantidadPersonas;
 	
-	private Date fechaComienzo;
+	private Timestamp fechaComienzo;
 	
-	private Date fechaFin;
+	private Timestamp fechaFin;
 	
 	private String tipoHabitacion;
 	
 	private String planConsumo;
 	
 	private String idUsuario;
+	
+	private long idProducto;
 
 	
 	
+	
+
+
+
+	public Reserva(long id, String metodoDePago, int cantidadPersonas, Timestamp fechaComienzo, Timestamp fechaFin,
+			String tipoHabitacion, String planConsumo, String idUsuario, long idProducto) {
+		this.id = id;
+		this.metodoDePago = metodoDePago;
+		this.cantidadPersonas = cantidadPersonas;
+		this.fechaComienzo = fechaComienzo;
+		this.fechaFin = fechaFin;
+		this.tipoHabitacion = tipoHabitacion;
+		this.planConsumo = planConsumo;
+		this.idUsuario = idUsuario;
+		this.idProducto = idProducto;
+	}
+
+
+
+
+
+
+
 	public long getId() {
 		return id;
 	}
+
+
+
+
 
 
 
@@ -33,9 +62,17 @@ public class Reserva {
 
 
 
+
+
+
+
 	public String getMetodoDePago() {
 		return metodoDePago;
 	}
+
+
+
+
 
 
 
@@ -45,39 +82,67 @@ public class Reserva {
 
 
 
+
+
+
+
 	public int getCantidadPersonas() {
 		return cantidadPersonas;
 	}
 
 
 
-	public void setCantidadPersonas(int cantidadpersonas) {
-		this.cantidadPersonas = cantidadpersonas;
+
+
+
+
+	public void setCantidadPersonas(int cantidadPersonas) {
+		this.cantidadPersonas = cantidadPersonas;
 	}
 
 
 
-	public Date getFechaComienzo() {
+
+
+
+
+	public Timestamp getFechaComienzo() {
 		return fechaComienzo;
 	}
 
 
 
-	public void setFechaComienzo(Date fechaComienzo) {
+
+
+
+
+	public void setFechaComienzo(Timestamp fechaComienzo) {
 		this.fechaComienzo = fechaComienzo;
 	}
 
 
 
-	public Date getFechaFin() {
+
+
+
+
+	public Timestamp getFechaFin() {
 		return fechaFin;
 	}
 
 
 
-	public void setFechaFin(Date fechaFin) {
+
+
+
+
+	public void setFechaFin(Timestamp fechaFin) {
 		this.fechaFin = fechaFin;
 	}
+
+
+
+
 
 
 
@@ -87,9 +152,17 @@ public class Reserva {
 
 
 
+
+
+
+
 	public void setTipoHabitacion(String tipoHabitacion) {
 		this.tipoHabitacion = tipoHabitacion;
 	}
+
+
+
+
 
 
 
@@ -99,9 +172,17 @@ public class Reserva {
 
 
 
+
+
+
+
 	public void setPlanConsumo(String planConsumo) {
 		this.planConsumo = planConsumo;
 	}
+
+
+
+
 
 
 
@@ -111,23 +192,37 @@ public class Reserva {
 
 
 
+
+
+
+
 	public void setIdUsuario(String idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
 
 
-	public Reserva(long id, String metodoDePago, int cantidadpersonas, Date fechaComienzo, Date fechaFin,
-			String tipoHabitacion, String planConsumo, String idUsuario) {
-		this.id = id;
-		this.metodoDePago = metodoDePago;
-		this.cantidadPersonas = cantidadpersonas;
-		this.fechaComienzo = fechaComienzo;
-		this.fechaFin = fechaFin;
-		this.tipoHabitacion = tipoHabitacion;
-		this.planConsumo = planConsumo;
-		this.idUsuario = idUsuario;
+
+
+
+
+	public long getIdProducto() {
+		return idProducto;
 	}
+
+
+
+
+
+
+
+	public void setIdProducto(long idProducto) {
+		this.idProducto = idProducto;
+	}
+
+
+
+
 
 
 

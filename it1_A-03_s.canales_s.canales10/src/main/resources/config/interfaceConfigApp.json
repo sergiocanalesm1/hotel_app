@@ -33,8 +33,16 @@
 					"event": "adicionarPlanConsumo"
 				},
 				{
-					"label": "RF7: Registrar Reserva",
-					"event": "adicionarReserva"
+					"label": "RF7: Registrar Reserva de alojamiento",
+					"event": "adicionarReservaAlojamiento"
+				},
+				{
+					"label": "RF8: Registrar Reserva de servicio",
+					"event": "adicionarReservaServicio"
+				},
+				{
+					"label": "Registrar Producto",
+					"event": "adicionarProducto"
 				}
 			]
 		},

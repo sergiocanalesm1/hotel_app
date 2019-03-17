@@ -328,10 +328,11 @@ public class Persistencia
 		
 		return sqlHabitacion.darTotalHabitaciones( pmf.getPersistenceManager(), tipoHabitacion );
 	}
-	public Habitacion getHabitacion(String numeroHab){
+	public Habitacion getHabitacion(String numeroHab)
+	{
 		return sqlHabitacion.getHabitacion(pmf.getPersistenceManager(), numeroHab);
 	}
-	public long getReservasHabitacionEn(String tipoHabitacion, Date fechaCo, Date fechaFi) {
+	public long getReservasHabitacionEn(String tipoHabitacion, Timestamp fechaCo, Timestamp fechaFi) {
 		// TODO Auto-generated method stub
 		
 		return sqlReserva.darReservasHabitacion(pmf.getPersistenceManager(), tipoHabitacion,fechaCo, fechaFi);
@@ -527,19 +528,19 @@ public class Persistencia
 		
 		
 	}
-	public Reserva adicionarReserva(String metodoDePago, int numeroPersonas, Date fechaComienzo, Date fechaFin, String tipoHabitacion, String planConsumo, String idUsuario){
+	public Reserva adicionarReserva(String metodoDePago, int numeroPersonas, Timestamp fechaComienzo, Timestamp fechaFin, String tipoHabitacion, String planConsumo, String idUsuario, String idProducto){
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
             long id = nextval ();
-            long tuplasInsertadas = sqlReserva.adicionarReserva(pmf.getPersistenceManager(), id, metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario);
+            long tuplasInsertadas = sqlReserva.adicionarReserva(pmf.getPersistenceManager(), id, metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario, "-1");
             tx.commit();
 
             log.trace ("Inserción de Reserva: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Reserva (id, metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario);
+            return new Reserva (id, metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario, Long.parseLong(idProducto));
         }
         catch (Exception e)
         {
