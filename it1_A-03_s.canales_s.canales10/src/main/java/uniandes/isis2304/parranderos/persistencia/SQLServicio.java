@@ -3,6 +3,9 @@ package uniandes.isis2304.parranderos.persistencia;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.parranderos.negocio.Producto;
+import uniandes.isis2304.parranderos.negocio.Servicio;
+
 public class SQLServicio {
 
 	/* ****************************************************************
@@ -40,6 +43,14 @@ public class SQLServicio {
 		Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaServicio() + "(id, nombre, descripcion, costo) values (?, ?, ?, ?)");
         q.setParameters(idServicio, nombre, descripcion, costo);
         return (long) q.executeUnique();
+	}
+
+	public Servicio getServicio(PersistenceManager pm, String id) {
+		
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaProducto() + "WHERE id = ?");
+		q.setResultClass(Servicio.class);
+		q.setParameters(id);
+		return (Servicio) q.executeUnique();
 	}
 
 }

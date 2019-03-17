@@ -3,6 +3,9 @@ package uniandes.isis2304.parranderos.persistencia;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.parranderos.negocio.Habitacion;
+import uniandes.isis2304.parranderos.negocio.Producto;
+
 public class SQLProducto {
 	/**
 	 * tipo de consulta a sql
@@ -28,6 +31,14 @@ public class SQLProducto {
 		q.setParameters(id, nombre,duracion,idServicio);
 		return (long) q.executeUnique() ;
 		
+	}
+
+	public Producto getProducto(PersistenceManager pm, String id) {
+		
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaProducto() + "WHERE id = ?");
+		q.setResultClass(Producto.class);
+		q.setParameters(id);
+		return (Producto) q.executeUnique();
 	}
 
 }
