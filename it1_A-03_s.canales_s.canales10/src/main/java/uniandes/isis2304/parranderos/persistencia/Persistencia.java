@@ -86,6 +86,8 @@ public class Persistencia
 
 	private SQLRolDeUsuario sqlRolDeUsuario;
 	
+	private SQLUsuario sqlUsuario;
+	
 	
 	
 	/* ****************************************************************
@@ -303,14 +305,18 @@ public class Persistencia
 		return resp;
 	}
 
+	/* ****************************************************************
+	 * 			Métodos para manejar los ROLES DE USUARIO
+	 *****************************************************************/
+
+
 	public RolDeUsuario adicionarRolesDeUsuario(String cargo, String desc) {
-		System.out.println("llega a persistencia");
 		PersistenceManager pm = pmf.getPersistenceManager();
       Transaction tx=pm.currentTransaction();
       try
       {
           tx.begin();
-          long tuplasInsertadas = sqlRolDeUsuario.adicionarRolDeUsuario(pm, cargo, desc);
+          String tuplasInsertadas = sqlRolDeUsuario.adicionarRolDeUsuario(pm, cargo, desc);
           tx.commit();
           
           log.trace ("Inserción de rol de usuario: " + cargo + ": " + tuplasInsertadas + " tuplas insertadas");
@@ -332,10 +338,38 @@ public class Persistencia
           pm.close();
       }
 	}
-
-	/* ****************************************************************
-	 * 			Métodos para manejar los TIPOS DE BEBIDA
-	 *****************************************************************/
+	
+//	public String eliminarRolDeUsuario( String cargo){
+//		
+//		PersistenceManager pm = pmf.getPersistenceManager();
+//	      Transaction tx=pm.currentTransaction();
+//	      try
+//	      {
+//	          tx.begin();
+//	          String tuplasInsertadas = sqlRolDeUsuario.adicionarRolDeUsuario(pm, cargo, desc);
+//	          tx.commit();
+//	          
+//	          log.trace ("Inserción de rol de usuario: " + cargo + ": " + tuplasInsertadas + " tuplas insertadas");
+//	          
+//	          return new RolDeUsuario( cargo, desc );
+//	      }
+//	      catch (Exception e)
+//	      {
+////	      	e.printStackTrace();
+//	      	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+//	      	return null;
+//	      }
+//	      finally
+//	      {
+//	          if (tx.isActive())
+//	          {
+//	              tx.rollback();
+//	          }
+//	          pm.close();
+//	      }
+//		}
+//		
+//	}
 
 	/**
 	 * Método que inserta, de manera transaccional, una tupla en la tabla TipoBebida
