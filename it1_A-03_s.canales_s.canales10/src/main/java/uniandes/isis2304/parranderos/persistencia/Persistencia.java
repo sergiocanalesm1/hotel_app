@@ -248,55 +248,10 @@ public class Persistencia
 	public String darTablaHabitacion(){
 		return tablas.get(4);
 	}
-	
-//
-//	/**
-//	 * @return La cadena de caracteres con el nombre de la tabla de Bebida de parranderos
-//	 */
-//	public String darTablaBebida ()
-//	{
-//		return tablas.get (2);
-//	}
-//
-//	/**
-//	 * @return La cadena de caracteres con el nombre de la tabla de Bar de parranderos
-//	 */
-//	public String darTablaBar ()
-//	{
-//		return tablas.get (3);
-//	}
-//
-//	/**
-//	 * @return La cadena de caracteres con el nombre de la tabla de Bebedor de parranderos
-//	 */
-//	public String darTablaBebedor ()
-//	{
-//		return tablas.get (4);
-//	}
-//
-//	/**
-//	 * @return La cadena de caracteres con el nombre de la tabla de Gustan de parranderos
-//	 */
-//	public String darTablaGustan ()
-//	{
-//		return tablas.get (5);
-//	}
-//
-//	/**
-//	 * @return La cadena de caracteres con el nombre de la tabla de Sirven de parranderos
-//	 */
-//	public String darTablaSirven ()
-//	{
-//		return tablas.get (6);
-//	}
-//
-//	/**
-//	 * @return La cadena de caracteres con el nombre de la tabla de Visitan de parranderos
-//	 */
-//	public String darTablaVisitan ()
-//	{
-//		return tablas.get (7);
-//	}
+	public String darTablaReserva(){
+		return tablas.get(5);
+	}
+
 	
 	/**
 	 * Transacción para el generador de secuencia de Parranderos
@@ -330,6 +285,12 @@ public class Persistencia
 		
 		 
 		return sqlRolDeUsuario.getRolDeUsuario(pmf.getPersistenceManager(),cargo);
+	}
+	public TipoHabitacion getTipoHabitacion(String nombre){
+		return sqlTipoHabitacion.getTipoHabitacion(pmf.getPersistenceManager(),nombre);
+	}
+	public String cambiarCantidadDisponibleTipoHabitacion(String nombre, Integer nuevaCapacidad){
+		return sqlTipoHabitacion.cambiarCantidadDisponible(pmf.getPersistenceManager(), nombre, nuevaCapacidad);
 	}
 
 	/* ****************************************************************
@@ -414,6 +375,34 @@ public class Persistencia
          log.trace ("Inserción de tipo de habitación: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
          
          return new TipoHabitacion(  nombre, capacidad, costoPorNoche, cantidadDisponible);
+     }
+     catch (Exception e)
+     {
+//     	e.printStackTrace();
+     	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+     	return null;
+     }
+     finally
+     {
+         if (tx.isActive())
+         {
+             tx.rollback();
+         }
+         pm.close();
+     }
+	}
+	public Habitacion adicionarHabitacion(String numero, String tipoHabitacion){
+	  PersistenceManager pm = pmf.getPersistenceManager();
+     Transaction tx=pm.currentTransaction();
+     try
+     {
+         tx.begin();
+         String tuplasInsertadas = sqlHabitacion.adicionarHabitacion(pm,numero,  tipoHabitacion);
+         tx.commit();
+         
+         log.trace ("Inserción de tipo de habitación: " + numero + ": " + tuplasInsertadas + " tuplas insertadas");
+         
+         return new Habitacion(  numero, tipoHabitacion);
      }
      catch (Exception e)
      {
