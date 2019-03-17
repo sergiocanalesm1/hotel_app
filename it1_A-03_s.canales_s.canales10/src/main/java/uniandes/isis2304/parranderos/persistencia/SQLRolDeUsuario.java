@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.parranderos.negocio.RolDeUsuario;
+
 public class SQLRolDeUsuario {
 	/**
 	 * tipo de consulta a sql
@@ -32,5 +34,13 @@ public class SQLRolDeUsuario {
 		String rol = q.executeUnique() + "";
 		return rol;
 	}
+
+	public RolDeUsuario getRolDeUsuario(PersistenceManager pm, String cargo) {
+		
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaRolesDeUsuario() + " WHERE cargo = ?");
+		q.setResultClass(RolDeUsuario.class);
+		q.setParameters(cargo);
+		return (RolDeUsuario) q.executeUnique();	
+		}
 
 }

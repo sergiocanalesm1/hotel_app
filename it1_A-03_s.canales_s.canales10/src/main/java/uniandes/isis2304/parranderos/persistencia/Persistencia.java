@@ -326,6 +326,12 @@ public class Persistencia
 		}
 		return resp;
 	}
+	
+	public RolDeUsuario getRolDeUsuario(String cargo){
+		
+		 
+		return sqlRolDeUsuario.getRolDeUsuario(pmf.getPersistenceManager(),cargo);
+	}
 
 	/* ****************************************************************
 	 * 			REQUERIMIENTOS FUNCIONALES
