@@ -828,18 +828,14 @@ public class HotelAndes
 	{
 		log.info("Adicionando habitacion: "+ nombre);
 		Habitacion h = null;
-		System.out.println("el que creemos");
 		TipoHabitacion th = p.getTipoHabitacion( tipoHabitacion );
-		System.out.println("negocio1");
+		
 		if( th != null )
 		{
 			if( th.getCantidadDisponible() == 0 )
 				throw new Exception("No hay habitaciones disponibles para el tipo especificado");
-			System.out.println("negocio2");
 			h = p.adicionarHabitacion(nombre, tipoHabitacion);
-			System.out.println("negocio3");
 			p.cambiarCantidadDisponibleTipoHabitacion( nombre, th.getCantidadDisponible()-1);
-			System.out.println("negocio4");
 		}
 		else
 		{

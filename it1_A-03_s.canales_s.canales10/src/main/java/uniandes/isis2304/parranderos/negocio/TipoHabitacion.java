@@ -4,11 +4,11 @@ public class TipoHabitacion {
 	
 	private String nombre;
 	
-	private Integer capacidad;
+	private int capacidad;
 	
-	private Integer costoPorNoche;
+	private double costoPorNoche;
 	
-	private Integer cantidadDisponible;
+	private int cantidadDisponible;
 
 	public String getNombre() {
 		return nombre;
@@ -26,27 +26,31 @@ public class TipoHabitacion {
 		this.capacidad = capacidad;
 	}
 
-	public Integer getCostoPorNoche() {
+	public double getCostoPorNoche() {
 		return costoPorNoche;
 	}
 
-	public void setCostoPorNoche(Integer costoPorNoche) {
+	public void setCostoPorNoche(double costoPorNoche) {
 		this.costoPorNoche = costoPorNoche;
 	}
 
-	public Integer getCantidadDisponible() {
+	public int getCantidadDisponible() {
 		return cantidadDisponible;
 	}
 
-	public void setCantidadDisponible(Integer cantidadDisponible) {
+	public void setCantidadDisponible(int cantidadDisponible) {
 		this.cantidadDisponible = cantidadDisponible;
 	}
 
-	public TipoHabitacion(String nombre, Integer capacidad, Integer costoPorNoche, Integer cantidadDisponible) {
+	public TipoHabitacion(String nombre, int capacidad, double costoPorNoche, int cantidadDisponible) {
 		this.nombre = nombre;
 		this.capacidad = capacidad;
 		this.costoPorNoche = costoPorNoche;
 		this.cantidadDisponible = cantidadDisponible;
+	}
+	public TipoHabitacion()
+	{
+		
 	}
 	
 	

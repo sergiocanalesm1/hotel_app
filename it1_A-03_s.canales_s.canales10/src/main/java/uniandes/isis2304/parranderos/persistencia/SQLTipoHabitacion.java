@@ -1,5 +1,7 @@
 package uniandes.isis2304.parranderos.persistencia;
 
+import java.util.List;
+
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
@@ -36,7 +38,7 @@ public class SQLTipoHabitacion {
 	public String cambiarCantidadDisponible(PersistenceManager pm, String nombre, Integer nuevaCapacidad){
 		
 		 Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaTipoHabitacion () + " SET capacidad = ? WHERE nombre = ?");
-	     q.setParameters(nombre, nuevaCapacidad);
+	     q.setParameters(nuevaCapacidad, nombre);
 	     return q.executeUnique() +""; 
 	}
 	public TipoHabitacion getTipoHabitacion(PersistenceManager pm, String nombre) {
@@ -44,9 +46,9 @@ public class SQLTipoHabitacion {
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaTipoHabitacion() + " WHERE nombre = ?");
 		q.setResultClass(TipoHabitacion.class);
 		q.setParameters(nombre);
-		TipoHabitacion t = (TipoHabitacion) q.executeUnique();
-		System.out.println(t);
-		return t;
+		return (TipoHabitacion) q.executeUnique();
+		
+		
 	}
 
 }

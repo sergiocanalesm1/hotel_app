@@ -286,9 +286,9 @@ public class Persistencia
 		 
 		return sqlRolDeUsuario.getRolDeUsuario(pmf.getPersistenceManager(),cargo);
 	}
-	public TipoHabitacion getTipoHabitacion(String nombre){
+	public TipoHabitacion getTipoHabitacion(String nombre)
+	{
 		TipoHabitacion s = sqlTipoHabitacion.getTipoHabitacion(pmf.getPersistenceManager(),nombre);
-		System.out.println("llego aca");
 		return s;
 		
 	}

@@ -55,7 +55,7 @@ import uniandes.isis2304.parranderos.negocio.Usuario;
 
 /**
  * Clase principal de la interfaz
- * @author Germán Bravo
+ * @author Wan y Sai
  */
 @SuppressWarnings("serial")
 
