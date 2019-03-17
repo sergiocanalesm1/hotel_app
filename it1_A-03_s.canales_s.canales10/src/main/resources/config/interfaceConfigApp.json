@@ -23,6 +23,10 @@
 				{
 					"label": "RF4: Registrar Habitacion",
 					"event": "adicionarHabitacion"
+				},
+				{
+					"label": "RF5: Registrar Servicio",
+					"event": "adicionarServicio"
 				}
 			]
 		},

@@ -49,6 +49,7 @@ import com.google.gson.stream.JsonReader;
 import uniandes.isis2304.parranderos.negocio.Habitacion;
 import uniandes.isis2304.parranderos.negocio.HotelAndes;
 import uniandes.isis2304.parranderos.negocio.RolDeUsuario;
+import uniandes.isis2304.parranderos.negocio.Servicio;
 import uniandes.isis2304.parranderos.negocio.TipoHabitacion;
 import uniandes.isis2304.parranderos.negocio.Usuario;
 
@@ -356,6 +357,41 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
         			throw new Exception ("No se pudo crear un tipo de habitacion con nombre: " + nombre);
         		}
         		String resultado = "En registrar tipo de habitacion\n\n";
+        		resultado += "tipo de habitacion exitosamente: " + th;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    public void adicionarServicio()
+    {
+    	try 
+    	{
+    		String nombre = JOptionPane.showInputDialog (this, "Nombre", "Registrar servicio", JOptionPane.QUESTION_MESSAGE);
+    		String descripcion = JOptionPane.showInputDialog (this, "Descripcion", "Registrar servicio", JOptionPane.QUESTION_MESSAGE);
+    		String costo = JOptionPane.showInputDialog (this, "Costo", "Registrar servicio", JOptionPane.QUESTION_MESSAGE);
+
+    		
+    		
+    		if (nombre != null && descripcion != null && costo != null )
+    		{
+    			
+        		Servicio th = hotelAndes.adicionarServicio ( nombre, descripcion, costo);
+        		if (th == null)
+        		{
+        			throw new Exception ("No se pudo crear un servicio con nombre: " + nombre);
+        		}
+        		String resultado = "En registrar servicio\n\n";
         		resultado += "tipo de habitacion exitosamente: " + th;
     			resultado += "\n Operación terminada";
     			panelDatos.actualizarInterfaz(resultado);

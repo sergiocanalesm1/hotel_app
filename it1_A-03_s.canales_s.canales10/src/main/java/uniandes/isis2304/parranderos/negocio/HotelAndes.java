@@ -844,6 +844,15 @@ public class HotelAndes
 		log.info ("Adicionando habitacion: "+ nombre);
 		return h;
 	}
+
+	public Servicio adicionarServicio(String nombre, String descripcion, String costo) throws Exception
+	{
+		log.info("Adicionando servicio: "+ nombre);
+		
+		Servicio s = p.adicionarServicio(nombre, descripcion, Integer.parseInt(costo));
+		log.info ("Adicionando habitacion: "+ nombre);
+		return s;
+	}
 	
 
 }
