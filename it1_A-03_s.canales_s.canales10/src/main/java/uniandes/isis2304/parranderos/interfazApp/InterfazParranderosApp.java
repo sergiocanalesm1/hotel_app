@@ -46,6 +46,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+import uniandes.isis2304.parranderos.negocio.Consumo;
 import uniandes.isis2304.parranderos.negocio.Habitacion;
 import uniandes.isis2304.parranderos.negocio.HotelAndes;
 import uniandes.isis2304.parranderos.negocio.PlanConsumo;
@@ -573,7 +574,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		if (valor != null && numeroHabitacionACargar != null && idServicio != null  )
     		{
     			
-        		Producto th = hotelAndes.adicionarConsumo(  valor, numeroHabitacionACargar, idServicio);
+        		Consumo th = hotelAndes.adicionarConsumo(  valor, numeroHabitacionACargar, idServicio);
         		if (th == null)
         		{
         			throw new Exception ("No se pudo crear el consumo con valor "+ valor+ " para el servicio "+idServicio);
@@ -595,6 +596,15 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    public void registrarLlegadaCliente()
+    {
+    	
+    }
+    public void registrarSalidaCliente()
+    {
+    	
+    }
+    
     
 	/* ****************************************************************
 	 * 			CRUD de TipoBebida

@@ -45,8 +45,16 @@
 					"event": "adicionarProducto"
 				},
 				{
-					"label": "Registrar Consumo",
+					"label": "RF9: Registrar Llegada Cliente",
+					"event": "registrarLlegadaCliente"
+				},
+				{
+					"label": "RF10: Registrar Consumo",
 					"event": "adicionarConsumo"
+				},
+				{
+					"label": "RF11: Registrar Salida Cliente",
+					"event": "registrarSalidaCliente"
 				}
 			]
 		},

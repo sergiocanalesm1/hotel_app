@@ -9,8 +9,6 @@ public class Servicio
 	private String descripcion;
 	
 	private int costo;
-
-	
 	
 	
 	public Servicio(long id, String cantidad, String descripcion, int costo) {
