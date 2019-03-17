@@ -1,6 +1,5 @@
 package uniandes.isis2304.parranderos.persistencia;
 
-import java.sql.Timestamp;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;

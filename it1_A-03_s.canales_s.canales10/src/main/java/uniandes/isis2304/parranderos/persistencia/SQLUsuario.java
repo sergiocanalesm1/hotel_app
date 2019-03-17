@@ -6,7 +6,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import uniandes.isis2304.parranderos.negocio.Habitacion;
-import uniandes.isis2304.parranderos.negocio.RolDeUsuario;
+import uniandes.isis2304.parranderos.negocio.Usuario;
 
 public class SQLUsuario {
 	/**
@@ -35,6 +35,14 @@ public class SQLUsuario {
 		
 		return q.executeUnique() + "";
 	}
+
+	public Usuario getUsuario(PersistenceManager pm, long id) {
+		
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaPlanConsumo() + " WHERE id = ?");
+		q.setResultClass(Usuario.class);
+		q.setParameters(id);
+		return (Usuario) q.executeUnique();	
+		}
 	
 
 }

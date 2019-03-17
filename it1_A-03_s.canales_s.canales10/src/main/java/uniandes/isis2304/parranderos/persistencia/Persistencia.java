@@ -17,6 +17,7 @@ package uniandes.isis2304.parranderos.persistencia;
 
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,6 +32,7 @@ import org.apache.log4j.Logger;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import uniandes.isis2304.parranderos.negocio.Habitacion;
 import uniandes.isis2304.parranderos.negocio.PlanConsumo;
@@ -64,6 +66,7 @@ public class Persistencia
 	 * Cadena para indicar el tipo de sentencias que se va a utilizar en una consulta
 	 */
 	public final static String SQL = "javax.jdo.query.SQL";
+	
 
 	/* ****************************************************************
 	 * 			Atributos
@@ -84,7 +87,6 @@ public class Persistencia
 	 */
 	private List <String> tablas;
 	
-	private long idGlobal;
 	
 	/**
 	 * Atributo para el acceso a las sentencias SQL propias a PersistenciaParranderos
@@ -293,6 +295,11 @@ public class Persistencia
 		return resp;
 	}
 	
+	/* ****************************************************************
+	 * 			CRUDs requeridos
+	 *****************************************************************/
+	
+	
 	public RolDeUsuario getRolDeUsuario(String cargo){
 		
 		 
@@ -306,6 +313,14 @@ public class Persistencia
 	}
 	public String cambiarCantidadDisponibleTipoHabitacion(String nombre, Integer nuevaCapacidad){
 		return sqlTipoHabitacion.cambiarCantidadDisponible(pmf.getPersistenceManager(), nombre, nuevaCapacidad);
+	}
+	
+	public PlanConsumo getPlanConsumo(String nombre){
+		return sqlPlanConsumo.getPlanConsumo(pmf.getPersistenceManager(),nombre);
+	}
+	
+	public Usuario getUsuario(long id){
+		return sqlUsuario.getUsuario(pmf.getPersistenceManager(),id);
 	}
 
 	/* ****************************************************************
@@ -497,6 +512,35 @@ public class Persistencia
         }
 		
 		
+	}
+	public Reserva adicionarReserva(String metodoDePago, int numeroPersonas, Date fechaComienzo, Date fechaFin, String planConsumo, String idUsuario){
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlReserva.adicionarReserva(pmf.getPersistenceManager(), id, metodoDePago, numeroPersonas, fechaComienzo, fechaFin, planConsumo, idUsuario);
+            tx.commit();
+
+            log.trace ("Inserción de Reserva: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Reserva (id, metodoDePago, numeroPersonas, fechaComienzo, fechaFin, planConsumo, idUsuario);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return 0;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
 	}
 //	public String eliminarRolDeUsuario( String cargo){
 //		

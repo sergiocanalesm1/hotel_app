@@ -3,6 +3,8 @@ package uniandes.isis2304.parranderos.persistencia;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.parranderos.negocio.PlanConsumo;
+
 public class SQLPlanConsumo {
 	
 	/* ****************************************************************
@@ -30,6 +32,14 @@ public class SQLPlanConsumo {
 		Query q = pm.newQuery(SQL, "INSERT INTO " + p.darTablaPlanConsumo() + "(nombre, porcentajeDescuento, descripcion) values (?, ?, ?)");
         q.setParameters( nombre, porcentajeDescuento, des);
         return  q.executeUnique() + "";
+	}
+
+	public PlanConsumo getPlanConsumo(PersistenceManager pm, String nombre) {
+		
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + p.darTablaPlanConsumo() + " WHERE nombre = ?");
+		q.setResultClass(PlanConsumo.class);
+		q.setParameters(nombre);
+		return (PlanConsumo) q.executeUnique();
 	}
 
 }
