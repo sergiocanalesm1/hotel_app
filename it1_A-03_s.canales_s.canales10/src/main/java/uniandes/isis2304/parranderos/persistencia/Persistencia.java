@@ -31,8 +31,10 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import uniandes.isis2304.parranderos.negocio.Consumo;
 import uniandes.isis2304.parranderos.negocio.Habitacion;
 import uniandes.isis2304.parranderos.negocio.PlanConsumo;
+import uniandes.isis2304.parranderos.negocio.Producto;
 import uniandes.isis2304.parranderos.negocio.Reserva;
 import uniandes.isis2304.parranderos.negocio.RolDeUsuario;
 import uniandes.isis2304.parranderos.negocio.Servicio;
@@ -338,10 +340,11 @@ public class Persistencia
 		
 		return sqlReserva.darReservasHabitacion(pmf.getPersistenceManager(), tipoHabitacion,fechaCo, fechaFi);
 	}
-	public String getProducto(String id){
+	public Producto getProducto(String id){
 		return sqlProducto.getProducto(pmf.getPersistenceManager(), id);
 	}
-	String getServicio(String id){
+	public Servicio getServicio(String id){
+		return sqlServicio.getServicio(pmf.getPersistenceManager(), id);
 		
 	}
 	
@@ -581,7 +584,7 @@ public class Persistencia
 
             log.trace ("Inserción de producto: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Producto (id, nombre, Integer.parseInt(duracion), idServicio);
+            return new Producto (id, nombre, Integer.parseInt(duracion), Long.parseLong(idServicio));
         }
         catch (Exception e)
         {
@@ -611,7 +614,7 @@ public class Persistencia
 
             log.trace ("Inserción de consumo: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Consumo (id, valor, fechaRegistro, numeroHabitacionACargar, idServicioACargar);
+            return new Consumo (id, Integer.parseInt(valor), fechaRegistro, numeroHabitacionACargar, Long.parseLong(idServicioACargar));
         }
         catch (Exception e)
         {
