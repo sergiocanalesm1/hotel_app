@@ -35,5 +35,6 @@ public class SQLUsuario {
 		
 		return q.executeUnique() + "";
 	}
+	
 
 }

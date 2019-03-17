@@ -34,6 +34,7 @@ import com.google.gson.JsonObject;
 
 import uniandes.isis2304.parranderos.negocio.Habitacion;
 import uniandes.isis2304.parranderos.negocio.RolDeUsuario;
+import uniandes.isis2304.parranderos.negocio.TipoHabitacion;
 import uniandes.isis2304.parranderos.negocio.Usuario;
 
 
@@ -399,6 +400,36 @@ public class Persistencia
       }
 	}
 	
+	//registrar tipo de habitación RF3
+	public TipoHabitacion adicionarTipoDeHabitacion(String nombre,  Integer capacidad,  Double costoPorNoche, Integer cantidadDisponible ) 
+	{
+	  PersistenceManager pm = pmf.getPersistenceManager();
+     Transaction tx=pm.currentTransaction();
+     try
+     {
+         tx.begin();
+         String tuplasInsertadas = sqlTipoHabitacion.adicionarTipoHabitacion(pm,nombre,  capacidad,  costoPorNoche,  cantidadDisponible);
+         tx.commit();
+         
+         log.trace ("Inserción de tipo de habitación: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+         
+         return new TipoHabitacion(  nombre, capacidad, costoPorNoche, cantidadDisponible);
+     }
+     catch (Exception e)
+     {
+//     	e.printStackTrace();
+     	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+     	return null;
+     }
+     finally
+     {
+         if (tx.isActive())
+         {
+             tx.rollback();
+         }
+         pm.close();
+     }
+	}
 //	public String eliminarRolDeUsuario( String cargo){
 //		
 //		PersistenceManager pm = pmf.getPersistenceManager();
