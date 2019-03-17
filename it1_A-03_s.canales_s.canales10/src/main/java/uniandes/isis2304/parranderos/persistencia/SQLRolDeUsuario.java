@@ -24,11 +24,13 @@ public class SQLRolDeUsuario {
 		persistencia = p;
 	}
 	
-	public String adicionarRolDeUsuario(PersistenceManager pm, String cargo, String descripcion ){
+	public long adicionarRolDeUsuario(PersistenceManager pm, String cargo, String descripcion ){
+		System.out.println("llega a sqlRolDeUsuario");
 		
-		Query q = pm.newQuery(SQL, "INSERT INTO " + persistencia.darTablaUsuario() + "(cargo, descripcion)");
+		Query q = pm.newQuery(SQL, "INSERT INTO " + persistencia.darTablaRolesDeUsuario() + "(cargo, descripcion) values (?,?)");
 		q.setParameters(cargo, descripcion);
-		return (String) q.executeUnique();
+		
+		return (long)q.executeUnique();
 	}
 
 }

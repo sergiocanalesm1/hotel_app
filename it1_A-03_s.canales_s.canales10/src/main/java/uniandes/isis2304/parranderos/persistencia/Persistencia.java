@@ -31,13 +31,9 @@ import org.apache.log4j.Logger;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import uniandes.isis2304.parranderos.negocio.Bar;
-import uniandes.isis2304.parranderos.negocio.Bebedor;
-import uniandes.isis2304.parranderos.negocio.Bebida;
-import uniandes.isis2304.parranderos.negocio.Gustan;
-import uniandes.isis2304.parranderos.negocio.Sirven;
-import uniandes.isis2304.parranderos.negocio.TipoBebida;
-import uniandes.isis2304.parranderos.negocio.Visitan;
+
+import uniandes.isis2304.parranderos.negocio.RolDeUsuario;
+
 
 /**
  * Clase para el manejador de persistencia del proyecto Parranderos
@@ -87,6 +83,8 @@ public class Persistencia
 	 * Atributo para el acceso a las sentencias SQL propias a PersistenciaParranderos
 	 */
 	private SQLUtil sqlUtil;
+
+	private SQLRolDeUsuario sqlRolDeUsuario;
 	
 	
 	
@@ -105,7 +103,9 @@ public class Persistencia
 		// Define los nombres por defecto de las tablas de la base de datos
 		tablas = new LinkedList<String> ();
 		tablas.add ("HotelAndes_sequence");
-//		tablas.add ("TIPOBEBIDA");
+		tablas.add("USUARIO");
+		tablas.add ("ROLDEUSUARIO");
+		
 //		tablas.add ("BEBIDA");
 //		tablas.add ("BAR");
 //		tablas.add ("BEBEDOR");
@@ -198,6 +198,7 @@ public class Persistencia
 //		sqlServicio = new SQLServicio(this);
 //		sqlHabitacion = new SQLHabitacion(this);
 		sqlUtil = new SQLUtil(this);
+		sqlRolDeUsuario = new SQLRolDeUsuario(this);
 		
 		
 	}
@@ -216,6 +217,14 @@ public class Persistencia
 	public String darTablaUsuario ()
 	{
 		return tablas.get (1);
+	}
+	
+	public String darTablaRolesDeUsuario()
+	{
+		
+			System.out.println(tablas);
+		
+		return tablas.get(2);
 	}
 //
 //	/**
@@ -292,6 +301,36 @@ public class Persistencia
 			return je.getNestedExceptions() [0].getMessage();
 		}
 		return resp;
+	}
+
+	public RolDeUsuario adicionarRolesDeUsuario(String cargo, String desc) {
+		System.out.println("llega a persistencia");
+		PersistenceManager pm = pmf.getPersistenceManager();
+      Transaction tx=pm.currentTransaction();
+      try
+      {
+          tx.begin();
+          long tuplasInsertadas = sqlRolDeUsuario.adicionarRolDeUsuario(pm, cargo, desc);
+          tx.commit();
+          
+          log.trace ("Inserción de rol de usuario: " + cargo + ": " + tuplasInsertadas + " tuplas insertadas");
+          
+          return new RolDeUsuario( cargo, desc );
+      }
+      catch (Exception e)
+      {
+//      	e.printStackTrace();
+      	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+      	return null;
+      }
+      finally
+      {
+          if (tx.isActive())
+          {
+              tx.rollback();
+          }
+          pm.close();
+      }
 	}
 
 	/* ****************************************************************
