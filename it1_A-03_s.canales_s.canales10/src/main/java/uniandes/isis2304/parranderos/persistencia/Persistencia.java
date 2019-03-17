@@ -405,7 +405,7 @@ public class Persistencia
          pm.close();
      }
 	}
-	//registrar habitación R4
+	//registrar habitación RF4
 	public Habitacion adicionarHabitacion(String numero, String tipoHabitacion){
 	  PersistenceManager pm = pmf.getPersistenceManager();
      Transaction tx=pm.currentTransaction();
@@ -434,6 +434,7 @@ public class Persistencia
          pm.close();
      }
 	}
+	//registrar servicio RF5
 	public Servicio adicionarServicio(String nombre, String descripcion, int costo){
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -463,6 +464,38 @@ public class Persistencia
             }
             pm.close();
         }
+	}
+	//registrar plan consumo RF6
+	public PlanConsumo adicionarPlanConsumo(String nombre, int porcentajeDescuento){
+		
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            String tuplasInsertadas = sqlPlanConsumo.adicionarPlanConsumo(pmf.getPersistenceManager(), nombre, porcentajeDescuento);
+            tx.commit();
+
+            log.trace ("Inserción de plan de consumo: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new PlanConsumo (nombre, porcentajeDescuento);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+		
+		
 	}
 //	public String eliminarRolDeUsuario( String cargo){
 //		
