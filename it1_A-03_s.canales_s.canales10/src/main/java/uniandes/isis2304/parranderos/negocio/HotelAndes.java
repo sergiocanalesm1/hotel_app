@@ -894,6 +894,14 @@ public class HotelAndes
 		log.info ("Adicionando plan consumo: "+ idUsuario);
 		return s;
 	}
+	public Producto adicionarProducto(String nombre, String duracion, String idServicio) {
+		
+		log.info("Adicionando producto: "+ nombre);
+		
+		Producto s = p.adicionarProducto(nombre, duracion, idServicio);
+		log.info ("Adicionando producto: "+ nombre);
+		return s;
+	}
 
 	private boolean reservaDeServicioDisponible(String idProducto, Timestamp fechaCo, Timestamp fechaFi) 
 	{
@@ -914,6 +922,8 @@ public class HotelAndes
 	public Habitacion getHabitacion(String numeroHabitacion){
 		return p.getHabitacion(numeroHabitacion);
 	}
+
+	
 	
 
 }

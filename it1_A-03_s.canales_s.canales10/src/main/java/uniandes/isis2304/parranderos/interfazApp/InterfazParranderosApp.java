@@ -560,6 +560,41 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    public void adicionarConsumo()
+    {
+    	try 
+    	{
+    		String valor = JOptionPane.showInputDialog (this, "Numero de identificacion del usuario", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String numeroHabitacionACargar = JOptionPane.showInputDialog (this, "Metodo de pago", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String idServicio = JOptionPane.showInputDialog (this, "Cantidad de Personas", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+
+    		
+    		
+    		if (nombre != null && duracion != null && idServicio != null  )
+    		{
+    			
+        		Producto th = hotelAndes.adicionarProducto(  nombre, duracion, idServicio);
+        		if (th == null)
+        		{
+        			throw new Exception ("No se pudo crear una producto para el usuario con id "+ nombre);
+        		}
+        		String resultado = "En registrar plan consumo\n\n";
+        		resultado += "tipo de habitacion exitosamente: " + th;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
     
 	/* ****************************************************************
 	 * 			CRUD de TipoBebida
