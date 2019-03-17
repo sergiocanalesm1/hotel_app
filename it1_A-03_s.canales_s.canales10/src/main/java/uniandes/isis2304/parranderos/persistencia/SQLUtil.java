@@ -41,7 +41,7 @@ class SQLUtil
 	/**
 	 * El manejador de persistencia general de la aplicación
 	 */
-	private Persistencia pp;
+	private Persistencia persistencia;
 
 	/* ****************************************************************
 	 * 			Métodos
@@ -53,7 +53,7 @@ class SQLUtil
 	 */
 	public SQLUtil (Persistencia pp)
 	{
-		this.pp = pp;
+		persistencia = pp;
 	}
 	
 	/**
@@ -61,13 +61,13 @@ class SQLUtil
 	 * @param pm - El manejador de persistencia
 	 * @return El número de secuencia generado
 	 */
-//	public long nextval (PersistenceManager pm)
-//	{
-//        Query q = pm.newQuery(SQL, "SELECT "+ pp.darSeqParranderos () + ".nextval FROM DUAL");
-//        q.setResultClass(Long.class);
-//        long resp = (long) q.executeUnique();
-//        return resp;
-//	}
+	public long nextval (PersistenceManager pm)
+	{
+        Query q = pm.newQuery(SQL, "SELECT "+ persistencia.darSeqHotelAndes() + ".nextval FROM DUAL");
+        q.setResultClass(Long.class);
+        long resp = (long) q.executeUnique();
+        return resp;
+	}
 //
 //	/**
 //	 * Crea y ejecuta las sentencias SQL para cada tabla de la base de datos - EL ORDEN ES IMPORTANTE 

@@ -32,6 +32,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import uniandes.isis2304.parranderos.negocio.Bebedor;
 import uniandes.isis2304.parranderos.negocio.Habitacion;
 import uniandes.isis2304.parranderos.negocio.RolDeUsuario;
 import uniandes.isis2304.parranderos.negocio.TipoHabitacion;
@@ -251,19 +252,27 @@ public class Persistencia
 	public String darTablaReserva(){
 		return tablas.get(5);
 	}
-
+	public String darTablaPlanConsumo(){
+		return tablas.get(6);
+	}
+	public String darTablaConsumo(){
+		return tablas.get(7);
+	}
+	public String darTablaServicio(){
+		return tablas.get(8);
+	}
 	
 	/**
 	 * Transacción para el generador de secuencia de Parranderos
 	 * Adiciona entradas al log de la aplicación
 	 * @return El siguiente número del secuenciador de Parranderos
 	 */
-//	private long nextval ()
-//	{
-//        long resp = sqlUtil.nextval (pmf.getPersistenceManager());
-//        log.trace ("Generando secuencia: " + resp);
-//        return resp;
-//    }
+	private long nextval ()
+	{
+        long resp = sqlUtil.nextval (pmf.getPersistenceManager());
+        log.trace ("Generando secuencia: " + resp);
+        return resp;
+    }
 	
 	/**
 	 * Extrae el mensaje de la exception JDODataStoreException embebido en la Exception e, que da el detalle específico del problema encontrado
@@ -394,6 +403,7 @@ public class Persistencia
          pm.close();
      }
 	}
+	//registrar habitación R4
 	public Habitacion adicionarHabitacion(String numero, String tipoHabitacion){
 	  PersistenceManager pm = pmf.getPersistenceManager();
      Transaction tx=pm.currentTransaction();
@@ -421,6 +431,36 @@ public class Persistencia
          }
          pm.close();
      }
+	}
+	public Servicio adicionarServicio(String nombre, String descripcion, int costo){
+		
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long idServicio = nextval ();
+            long tuplasInsertadas = sqlServicio.adicionarServicio(pmf.getPersistenceManager(), idServicio, nombre, descripcion, costo);
+            tx.commit();
+
+            log.trace ("Inserción de servicio: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Servicio (idServicio, nombre, descripcion, costo);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
 	}
 //	public String eliminarRolDeUsuario( String cargo){
 //		
@@ -454,40 +494,5 @@ public class Persistencia
 //		
 //	}
 
-	/**
-	 * Método que inserta, de manera transaccional, una tupla en la tabla TipoBebida
-	 * Adiciona entradas al log de la aplicación
-	 * @param nombre - El nombre del tipo de bebida
-	 * @return El objeto TipoBebida adicionado. null si ocurre alguna Excepción
-	 */
-//	public Usuario adicionarUsuario(String nombre)
-//	{
-//		PersistenceManager pm = pmf.getPersistenceManager();
-//        Transaction tx=pm.currentTransaction();
-//        try
-//        {
-//            tx.begin();
-//            long idTipoBebida = nextval ();
-//            long tuplasInsertadas = sqlTipoBebida.adicionarTipoBebida(pm, idTipoBebida, nombre);
-//            tx.commit();
-//            
-//            log.trace ("Inserción de tipo de bebida: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
-//            
-//            return new TipoBebida (idTipoBebida, nombre);
-//        }
-//        catch (Exception e)
-//        {
-////        	e.printStackTrace();
-//        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-//        	return null;
-//        }
-//        finally
-//        {
-//            if (tx.isActive())
-//            {
-//                tx.rollback();
-//            }
-//            pm.close();
-//        }
-//	}
+
 }
