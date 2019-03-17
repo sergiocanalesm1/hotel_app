@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 
 public class Usuario 
 {
-	private String id;
 	
 	private String nombre;
 	
@@ -22,13 +21,13 @@ public class Usuario
 	
 	private Timestamp fechaSalida;
 	
-	//private RolDeUsuario cargo;
 	
-	//private Habitacion numeroHabitacion;
+	private RolDeUsuario cargo;
+	
+	private Habitacion numeroHabitacion;
 
-	public Usuario(String id, String nombre, String edad, String telefono, String tipoDocumento, String numeroDocumento,
-			String correo, Timestamp fechaLlegada, Timestamp fechaSalida) {
-		this.id = id;
+	public Usuario( String nombre, String edad, String telefono, String tipoDocumento, String numeroDocumento,
+			String correo, Timestamp fechaLlegada, Timestamp fechaSalida, RolDeUsuario cargo, Habitacion numeroHabitacion) {
 		this.nombre = nombre;
 		this.edad = edad;
 		this.telefono = telefono;
@@ -37,15 +36,15 @@ public class Usuario
 		this.correo = correo;
 		this.fechaLlegada = fechaLlegada;
 		this.fechaSalida = fechaSalida;
+		this.cargo = cargo;
+		this.numeroHabitacion = numeroHabitacion;
 	}
 	
 	public Usuario()
 	{
 		
 	}
-	public String getId() {
-		return id;
-	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -70,9 +69,7 @@ public class Usuario
 	public Timestamp getFechaSalida() {
 		return fechaSalida;
 	}
-	public void setId(String id) {
-		this.id = id;
-	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -96,6 +93,22 @@ public class Usuario
 	}
 	public void setFechaSalida(Timestamp fechaSalida) {
 		this.fechaSalida = fechaSalida;
+	}
+
+	public void setCargo(RolDeUsuario cargo) {
+		this.cargo = cargo;
+	}
+
+	public RolDeUsuario getCargo() {
+		return cargo;
+	}
+
+	public Habitacion getNumeroHabitacion() {
+		return numeroHabitacion;
+	}
+
+	public void setNumeroHabitacion(Habitacion numeroHabitacion) {
+		this.numeroHabitacion = numeroHabitacion;
 	}
 	
 	

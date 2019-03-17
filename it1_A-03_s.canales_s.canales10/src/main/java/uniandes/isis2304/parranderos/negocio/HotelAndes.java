@@ -29,7 +29,7 @@ import uniandes.isis2304.parranderos.persistencia.Persistencia;
  *
  * @author Germán Bravo
  */
-public class Parranderos 
+public class HotelAndes 
 {
 	/* ****************************************************************
 	 * 			Constantes
@@ -37,7 +37,7 @@ public class Parranderos
 	/**
 	 * Logger para escribir la traza de la ejecución
 	 */
-	private static Logger log = Logger.getLogger(Parranderos.class.getName());
+	private static Logger log = Logger.getLogger(HotelAndes.class.getName());
 	
 	/* ****************************************************************
 	 * 			Atributos
@@ -53,7 +53,7 @@ public class Parranderos
 	/**
 	 * El constructor por defecto
 	 */
-	public Parranderos ()
+	public HotelAndes ()
 	{
 		p = Persistencia.getInstance ();
 	}
@@ -62,7 +62,7 @@ public class Parranderos
 	 * El constructor qye recibe los nombres de las tablas en tableConfig
 	 * @param tableConfig - Objeto Json con los nombres de las tablas y de la unidad de persistencia
 	 */
-	public Parranderos (JsonObject tableConfig)
+	public HotelAndes (JsonObject tableConfig)
 	{
 		p = Persistencia.getInstance (tableConfig);
 	}
@@ -787,10 +787,31 @@ public class Parranderos
 	{
 		
 		log.info("Adicionando rol de usuario: "+ cargo);
-		System.out.println("llega al negocio");
 		RolDeUsuario rol = p.adicionarRolesDeUsuario( cargo, desc );
 		log.info ("Adicionando Tipo de bebida: " + rol);
 		return rol;
 	}
+
+	public Usuario registrarUsuario(String nombre, String edad, String tel, String tipoDoc, String numeroDoc,
+			String correo, String cargo) throws Exception {
+		log.info("Adicionando usuario: "+ nombre);
+		Usuario us = null;
+		RolDeUsuario rol = p.getRolDeUsuario( cargo );
+		if( rol != null )
+		{
+			us = p.adicionarUsuario(  nombre,  edad,  tel,  tipoDoc,  numeroDoc,
+					 correo,  cargo);
+			
+		}
+		else
+		{
+			throw new Exception("No existe el rol de usuario especificado");
+		}
+		log.info ("Adicionando usuario: "+ nombre);
+		;
+		
+		return us;
+	}
+	
 
 }

@@ -32,6 +32,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import uniandes.isis2304.parranderos.negocio.Habitacion;
 import uniandes.isis2304.parranderos.negocio.RolDeUsuario;
 import uniandes.isis2304.parranderos.negocio.Usuario;
 
@@ -236,10 +237,7 @@ public class Persistencia
 	}
 	
 	public String darTablaRolesDeUsuario()
-	{
-		
-			System.out.println(tablas);
-		
+	{		
 		return tablas.get(2);
 	}
 	public String darTablaTipoHabitacion(){
@@ -368,19 +366,22 @@ public class Persistencia
 	}
 	
 	//registrarUsuario RF2
-	public RolDeUsuario adicionarUsuario(String nombre, String edad, String telefono, String tipoDocumento, String numeroDocumento,
-			String correo, Timestamp fechaLlegada, Timestamp fechaSalida, String cargo) {
-		PersistenceManager pm = pmf.getPersistenceManager();
+	public Usuario adicionarUsuario(String nombre,  String edad,  String tel,  String tipoDoc, String numeroDoc,
+			 String correo,  String cargo) 
+	{
+	  PersistenceManager pm = pmf.getPersistenceManager();
       Transaction tx=pm.currentTransaction();
       try
       {
           tx.begin();
-          String tuplasInsertadas = sqlUsuario.adicionarUsuario(pm, nombre, telefono, tipoDocumento,numeroDocumento, correo,fechaLlegada, fechaSalida, cargo);
+          String tuplasInsertadas = sqlUsuario.adicionarUsuario(pm,nombre,  edad,  tel,  tipoDoc,  numeroDoc,
+					 correo,  null,  null,  cargo,  null);
           tx.commit();
           
-          log.trace ("Inserción de usuario: " + numeroDocumento + ": " + tuplasInsertadas + " tuplas insertadas");
+          log.trace ("Inserción de usuario: " + numeroDoc + ": " + tuplasInsertadas + " tuplas insertadas");
           
-          return new Usuario( nombre, telefono, tipoDocumento,numeroDocumento, correo,fechaLlegada, fechaSalida ,cargo);
+          return new Usuario(  nombre,  edad,  tel,  tipoDoc,  numeroDoc,
+      			 correo,  null,  null,  getRolDeUsuario(cargo),  null);
       }
       catch (Exception e)
       {

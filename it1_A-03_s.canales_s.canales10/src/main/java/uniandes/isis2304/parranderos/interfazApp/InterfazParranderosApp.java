@@ -46,8 +46,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
-import uniandes.isis2304.parranderos.negocio.Parranderos;
+import uniandes.isis2304.parranderos.negocio.HotelAndes;
 import uniandes.isis2304.parranderos.negocio.RolDeUsuario;
+import uniandes.isis2304.parranderos.negocio.Usuario;
 
 
 /**
@@ -87,7 +88,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     /**
      * Asociación a la clase principal del negocio.
      */
-    private Parranderos parranderos;
+    private HotelAndes hotelAndes;
     
 	/* ****************************************************************
 	 * 			Atributos de interfaz
@@ -127,7 +128,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
         }
         
         tableConfig = openConfig ("Tablas BD", CONFIG_TABLAS);
-        parranderos = new Parranderos (tableConfig);
+        hotelAndes = new HotelAndes (tableConfig);
         
     	String path = guiConfig.get("bannerPath").getAsString();
         panelDatos = new PanelDatos ( );
@@ -243,7 +244,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		String desc = JOptionPane.showInputDialog (this, "Descripcion", "Adicionar Rol de Usuario", JOptionPane.QUESTION_MESSAGE);
     		if (cargo != null && desc != null)
     		{
-        		RolDeUsuario ru = parranderos.adicionarRolDeUsuario (cargo, desc);
+        		RolDeUsuario ru = hotelAndes.adicionarRolDeUsuario (cargo, desc);
         		if (ru == null)
         		{
         			throw new Exception ("No se pudo crear un rol de usuario con nombre: " + cargo);
@@ -265,6 +266,42 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
     }
+    public void registrarUsuario(){
+    	try 
+    	{
+    		String nombre = JOptionPane.showInputDialog (this, "Nombre y Apellido", "Registrar Usuario", JOptionPane.QUESTION_MESSAGE);
+    		String rol = JOptionPane.showInputDialog (this, "Rol", "Registrar Usuario", JOptionPane.QUESTION_MESSAGE);
+    		String edad = JOptionPane.showInputDialog (this, "Edad", "Registrar Usuario", JOptionPane.QUESTION_MESSAGE);
+    		String tel = JOptionPane.showInputDialog (this, "Telefono", "Registrar Usuario", JOptionPane.QUESTION_MESSAGE);
+    		String tipoDoc = JOptionPane.showInputDialog (this, "Tipo de Documento", "Registrar Usuario", JOptionPane.QUESTION_MESSAGE);
+    		String numeroDoc = JOptionPane.showInputDialog (this, "Numero documento", "Registrar Usuario", JOptionPane.QUESTION_MESSAGE);
+    		String correo = JOptionPane.showInputDialog (this, "Correo", "Registrar Usuario", JOptionPane.QUESTION_MESSAGE);
+    		if (nombre != null && rol != null && edad != null && tel != null && tipoDoc != null && numeroDoc != null && correo != null )
+    		{
+    			
+        		Usuario u = hotelAndes.registrarUsuario ( nombre,  edad,  tel,  tipoDoc, numeroDoc,  correo, rol );
+        		if (u == null)
+        		{
+        			throw new Exception ("No se pudo crear un rol de usuario con nombre: " + numeroDoc);
+        		}
+        		String resultado = "En registrar Usuario\n\n";
+        		resultado += "usuario registrado exitosamente: " + u;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
     
 	/* ****************************************************************
 	 * 			CRUD de TipoBebida

@@ -29,7 +29,7 @@ public class SQLRolDeUsuario {
 	public String adicionarRolDeUsuario(PersistenceManager pm, String cargo, String descripcion){
 		
 		
-		Query q = pm.newQuery(SQL, "INSERT INTO " + persistencia.darTablaUsuario() + "(cargo, descripcion) values (?,?)");
+		Query q = pm.newQuery(SQL, "INSERT INTO " + persistencia.darTablaRolesDeUsuario() + "(cargo, descripcion) values (?,?)");
 		q.setParameters(cargo, descripcion);
 		String rol = q.executeUnique() + "";
 		return rol;

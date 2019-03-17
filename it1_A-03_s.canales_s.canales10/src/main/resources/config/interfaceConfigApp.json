@@ -5,16 +5,16 @@
 	"bannerPath": "./src/main/resources/config/logo.png",
 	"menuBar":
 	[
-		{ "menuTitle": "Roles de Usuario",
+		{ "menuTitle": "Requerimientos",
 		  "options":
 			[
 				{
-					"label": "Adicionar",
+					"label": "RF1: Adicionar roles de usuario",
 					"event": "adicionarRolDeUsuario"
 				},
 				{
-					"label": "Listar",
-					"event": "listarTipoBebida"
+					"label": "RF2: Registrar usuario",
+					"event": "registrarUsuario"
 				},
 				{
 					"label": "Borrar por Id",
