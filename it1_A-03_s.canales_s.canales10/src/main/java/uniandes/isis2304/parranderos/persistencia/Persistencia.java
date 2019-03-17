@@ -16,8 +16,6 @@
 package uniandes.isis2304.parranderos.persistencia;
 
 
-import java.math.BigDecimal;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,7 +30,6 @@ import org.apache.log4j.Logger;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import uniandes.isis2304.parranderos.negocio.Habitacion;
 import uniandes.isis2304.parranderos.negocio.PlanConsumo;
@@ -224,6 +221,7 @@ public class Persistencia
 		sqlConsumo = new SQLConsumo(this);
 		sqlServicio = new SQLServicio(this);
 		sqlHabitacion = new SQLHabitacion(this);
+		sqlProducto = new SQLProducto(this);
 		
 		
 	}
@@ -266,6 +264,9 @@ public class Persistencia
 	}
 	public String darTablaServicio(){
 		return tablas.get(8);
+	}
+	public String darTablaProducto(){
+		return tablas.get(9);
 	}
 	
 	/**
@@ -337,6 +338,13 @@ public class Persistencia
 		
 		return sqlReserva.darReservasHabitacion(pmf.getPersistenceManager(), tipoHabitacion,fechaCo, fechaFi);
 	}
+	public String getProducto(String id){
+		return sqlProducto.getProducto(pmf.getPersistenceManager(), id);
+	}
+	String getServicio(String id){
+		
+	}
+	
 
 	/* ****************************************************************
 	 * 			REQUERIMIENTOS FUNCIONALES
@@ -528,6 +536,7 @@ public class Persistencia
 		
 		
 	}
+	//RF8
 	public Reserva adicionarReserva(String metodoDePago, int numeroPersonas, Timestamp fechaComienzo, Timestamp fechaFin, String tipoHabitacion, String planConsumo, String idUsuario, String idProducto){
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -541,6 +550,68 @@ public class Persistencia
             log.trace ("Inserción de Reserva: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
             return new Reserva (id, metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario, Long.parseLong(idProducto));
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	//RF8
+	public Producto adicionarProducto(String nombre, String duracion, String idServicio){
+		
+		
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlProducto.adicionarProducto(pmf.getPersistenceManager(), id, nombre, duracion, idServicio);
+            tx.commit();
+
+            log.trace ("Inserción de producto: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Producto (id, nombre, Integer.parseInt(duracion), idServicio);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+	public Consumo adicionarConsumo(String valor, Timestamp fechaRegistro, String numeroHabitacionACargar, String idServicioACargar){
+		
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long id = nextval ();
+            long tuplasInsertadas = sqlConsumo.adicionarConsumo(pmf.getPersistenceManager(), id, valor, fechaRegistro, numeroHabitacionACargar, idServicioACargar);
+            tx.commit();
+
+            log.trace ("Inserción de consumo: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            
+            return new Consumo (id, valor, fechaRegistro, numeroHabitacionACargar, idServicioACargar);
         }
         catch (Exception e)
         {
