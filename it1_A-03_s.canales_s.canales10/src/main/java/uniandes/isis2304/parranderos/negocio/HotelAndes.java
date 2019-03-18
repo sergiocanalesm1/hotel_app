@@ -891,14 +891,21 @@ public class HotelAndes
 			if(!reservaDeServicioDisponible( idProducto, fechaCo, fechaFi) )
 				throw new Exception("No esta disponible el servicio para esa fecha");
 		}
-
-
-		//VER SI PRODUCTO EXISTE	
-
 		Reserva s = p.adicionarReserva( metodoDePago,  Integer.parseInt(numeroPersonas),  fechaCo,  fechaFi,
 				tipoHabitacion,  planConsumo,  idUsuario, idProducto);
 		log.info ("Adicionando plan consumo: "+ idUsuario);
 		return s;
+	}
+	public boolean registrarLlegadaCliente(String idUsuario, String fechaLlegada) 
+	{
+		log.info("Adicionando reserva para usuario: "+ idUsuario);
+
+		Timestamp fechaLleg = Timestamp.valueOf(fechaLlegada);
+		if( p.getUsuario( Long.parseLong(idUsuario)) == null )
+			throw new Exception("No existe el usuario");
+		Boolean logrado = p.registrarLlegadaUsuario( idUsuario, fechaLleg );
+		log.info ("Adicionando plan consumo: "+ idUsuario);
+		return logrado;
 	}
 	public Producto adicionarProducto(String nombre, String duracion, String idServicio) throws Exception {
 
@@ -938,6 +945,8 @@ public class HotelAndes
 	public Habitacion getHabitacion(String numeroHabitacion){
 		return p.getHabitacion(numeroHabitacion);
 	}
+
+	
 
 
 
