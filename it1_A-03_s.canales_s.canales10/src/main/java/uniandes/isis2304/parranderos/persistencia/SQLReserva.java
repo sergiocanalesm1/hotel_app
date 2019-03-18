@@ -3,6 +3,7 @@ package uniandes.isis2304.parranderos.persistencia;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
@@ -67,7 +68,7 @@ public class SQLReserva {
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaReserva() + " WHERE idUsuario = ? AND fechaComienzo = ?");
 		q.setResultClass(Reserva.class);
 		q.setParameters(idUsuario, llegada);
-		return (Reserva) q.executeUnique();
+		return ((List<Reserva>) q.executeList()).get(0);
 	}
 
 	

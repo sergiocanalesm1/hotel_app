@@ -36,7 +36,7 @@ public class SQLUsuario {
 		return q.executeUnique() + "";
 	}
 
-	public Usuario getUsuario(PersistenceManager pm, long id) {
+	public Usuario getUsuario(PersistenceManager pm, String id) {
 		
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaUsuario() + " WHERE numeroDocumento = ?");
 		q.setResultClass(Usuario.class);
@@ -45,11 +45,11 @@ public class SQLUsuario {
 		}
 
 
-		public void updateReserva(PersistenceManager pm,String idUsuario, Timestamp llegada) {
+		public String updateReserva(PersistenceManager pm,String idUsuario, Timestamp llegada) {
 			
 			Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaUsuario () + " SET fechaLlegada = ? WHERE idUsuario = ?");
 		     q.setParameters(llegada, idUsuario );
-		     q.executeUnique();
+		     return  q.executeUnique() + "";
 		}
 	
 	

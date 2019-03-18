@@ -323,7 +323,7 @@ public class Persistencia
 		return sqlPlanConsumo.getPlanConsumo(pmf.getPersistenceManager(),nombre);
 	}
 	
-	public Usuario getUsuario(long id){
+	public Usuario getUsuario(String id){
 		return sqlUsuario.getUsuario(pmf.getPersistenceManager(),id);
 	}
 	public long darTotalHabitaciones(String tipoHabitacion) 
@@ -635,25 +635,28 @@ public class Persistencia
         }
 	}
 	//RF9
-	public boolean registrarLlegadaUsuario(String idUsuario, Timestamp llegada){
+	public String registrarLlegadaUsuario(String idUsuario, Timestamp llegada){
 		
-		//if(getReserva(idUsuario, llegada) == null) return false;
+		Reserva reserva = getReserva(idUsuario, llegada);
+		if( reserva== null) return "";
 		
-		System.out.println("existe reserva con el usuario");
+		System.out.println("existe reserva con el usuario, id: ");
+		System.out.println(reserva.getId());
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
-            sqlUsuario.updateReserva(pm,idUsuario, llegada);
+            String id = sqlUsuario.updateReserva(pm,idUsuario, llegada);
+            System.out.println("sale de updateReserva");
             tx.commit();
-            return true;
+            return id;
         }
         catch (Exception e)
         {
 //        	e.printStackTrace();
         	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-            return false;
+        	return "";
         }
         finally
         {

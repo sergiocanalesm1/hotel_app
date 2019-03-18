@@ -874,7 +874,7 @@ public class HotelAndes
 
 		Timestamp fechaCo = Timestamp.valueOf(fechaComienzo);
 		Timestamp fechaFi = Timestamp.valueOf(fechaFin);
-		if( p.getUsuario( Long.parseLong(idUsuario)) == null )
+		if( p.getUsuario( idUsuario) == null )
 			throw new Exception("No existe el usuario");
 
 		if( !tipoHabitacion.isEmpty() && p.getTipoHabitacion( tipoHabitacion ) == null)
@@ -901,11 +901,11 @@ public class HotelAndes
 		log.info("Adicionando reserva para usuario: "+ idUsuario);
 
 		Timestamp fechaLleg = Timestamp.valueOf(fechaLlegada);
-		if( p.getUsuario( Long.parseLong(idUsuario)) == null )
+		if( p.getUsuario( idUsuario) == null )
 			throw new Exception("No existe el usuario");
-		Boolean logrado = p.registrarLlegadaUsuario( idUsuario, fechaLleg );
-		log.info ("Adicionando plan consumo: "+ idUsuario);
-		return logrado;
+		String logrado = p.registrarLlegadaUsuario( idUsuario, fechaLleg );
+		log.info ("Adicionando plan consumo: "+ logrado);
+		return !logrado.equals("");
 	}
 	public Producto adicionarProducto(String nombre, String duracion, String idServicio) throws Exception {
 
