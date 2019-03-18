@@ -645,7 +645,7 @@ public class Persistencia
         try
         {
             tx.begin();
-            sqlReserva.updateReserva(pm,idUsuario, llegada);
+            sqlUsuario.updateReserva(pm,idUsuario, llegada);
             tx.commit();
             return true;
         }
