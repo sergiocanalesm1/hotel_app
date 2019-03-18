@@ -1,0 +1,6 @@
+Las pruebas de unicidad de tuplas funcionaron. El elemento b lanza sqlException porque se repite la primary key de la tabla
+
+las pruebas de integridad funcionaron. El elemento b lanza sqlException porque no está en la tabla referenciada
+
+no se lograron las pruebas de integridad con restricciones de chequeo.
+
