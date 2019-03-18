@@ -350,6 +350,9 @@ public class Persistencia
 	public Reserva getReserva(String idUsuario, Timestamp llegada){
 		return sqlReserva.getReservado(pmf.getPersistenceManager(),idUsuario, llegada);
 	}
+	public Reserva getReservaBySalida(String idUsuario, Timestamp fechaSalida) {
+		return sqlReserva.getReservadoBySalida(pmf.getPersistenceManager(),idUsuario, fechaSalida);
+	}
 	
 
 	/* ****************************************************************
@@ -668,6 +671,40 @@ public class Persistencia
         }
 		
 	}
+
+	public String registrarSalidaUsuario(String idUsuario, Timestamp fechaSalida) {
+		Reserva reserva = getReservaBySalida(idUsuario, fechaSalida);
+		if( reserva== null) return "";
+		
+		System.out.println("existe reserva con el usuario, id: ");
+		System.out.println(reserva.getId());
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            String id = sqlUsuario.updateReservaBySalida(pm,idUsuario, fechaSalida);
+            System.out.println("sale de updateReserva");
+            tx.commit();
+            return id;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return "";
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
+	
 	
 //	public String eliminarRolDeUsuario( String cargo){
 //		

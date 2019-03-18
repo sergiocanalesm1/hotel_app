@@ -51,6 +51,12 @@ public class SQLUsuario {
 		     q.setParameters(llegada, idUsuario );
 		     return  q.executeUnique() + "";
 		}
+
+		public String updateReservaBySalida(PersistenceManager pm, String idUsuario, Timestamp fechaSalida) {
+			Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaUsuario () + " SET fechafin = ? WHERE idUsuario = ?");
+		     q.setParameters(fechaSalida, idUsuario );
+		     return  q.executeUnique() + "";
+		}
 	
 	
 

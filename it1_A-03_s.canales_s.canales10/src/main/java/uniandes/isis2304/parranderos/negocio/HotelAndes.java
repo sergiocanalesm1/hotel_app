@@ -946,6 +946,17 @@ public class HotelAndes
 		return p.getHabitacion(numeroHabitacion);
 	}
 
+	public boolean registrarSalidaCliente(String idUsuario, String salida) throws Exception {
+		
+		log.info("Adicionando reserva para usuario: "+ idUsuario);
+
+		Timestamp fechaSalida = Timestamp.valueOf(salida);
+		if( p.getUsuario( idUsuario) == null )
+			throw new Exception("No existe el usuario");
+		String logrado = p.registrarSalidaUsuario( idUsuario, fechaSalida );
+		log.info ("Adicionando plan consumo: "+ logrado);
+		return !logrado.equals("");	}
+
 	
 
 

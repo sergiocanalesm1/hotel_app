@@ -627,7 +627,35 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		}
     }
     public void registrarSalidaCliente()
+    
     {
+    	try 
+    	{
+    		String idUsuario = JOptionPane.showInputDialog (this, "Id Usuario", "Registrar Llegada Cliente", JOptionPane.QUESTION_MESSAGE);
+    		String fechaSalida = JOptionPane.showInputDialog (this, "Fecha comienzo\nFormato: yyyy-mm-dd", "Registrar Llegada Cliente", JOptionPane.QUESTION_MESSAGE);
+    		if (idUsuario != null && fechaSalida != null   )
+    		{
+    			
+        		if (!hotelAndes.registrarSalidaCliente(  idUsuario, fechaSalida+" 00:00:00" ))
+        		{
+        			throw new Exception ("No se pudo registrar la llegada del cliente con id" + idUsuario);
+        		}
+        		String resultado = "En registrar llegada cliente\n\n";
+        		resultado += "tipo de habitacion exitosamente: " + idUsuario;
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
     	
     }
     

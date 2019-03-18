@@ -71,6 +71,15 @@ public class SQLReserva {
 		return ((List<Reserva>) q.executeList()).get(0);
 	}
 
+	public Reserva getReservadoBySalida(PersistenceManager pm, String idUsuario,
+			Timestamp fechaSalida) {
+
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaReserva() + " WHERE idUsuario = ? AND fechafin = ?");
+		q.setResultClass(Reserva.class);
+		q.setParameters(idUsuario, fechaSalida);
+		return ((List<Reserva>) q.executeList()).get(0);
+	}
+
 	
 
 	
