@@ -35,3 +35,7 @@ ORA-00904: "IDUSUARIO": identificador no válido
 ORA-00904: "IDUSUARIO": identificador no válido
 
 20:51:23,881 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: 
+21:11:18,931 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+21:11:18,932 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+21:11:18,954 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+21:12:52,668 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
