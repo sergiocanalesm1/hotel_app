@@ -26,7 +26,7 @@ public class SQLConsumo {
 	}
 	public long adicionarConsumo(PersistenceManager pm, long id, String valor, Timestamp fechaRegistro,	String numeroHabitacionACargar, String idServicioACargar) {
 		
-		Query q = pm.newQuery(SQL, "INSERT INTO " + persistencia.darTablaConsumo() + " (id, valor, fechaRegistro,numeroHabitacionACargar, idServicioACargar) values (?,?,?,?,?)");
+		Query q = pm.newQuery(SQL, "INSERT INTO " + persistencia.darTablaConsumo() + " (id, valor, fechaRegistro,numeroHabitacionACargar, idserviciocargado) values (?,?,?,?,?)");
 		q.setParameters(id, valor, fechaRegistro,numeroHabitacionACargar, idServicioACargar);
 		return (long) q.executeUnique() ;
 	}

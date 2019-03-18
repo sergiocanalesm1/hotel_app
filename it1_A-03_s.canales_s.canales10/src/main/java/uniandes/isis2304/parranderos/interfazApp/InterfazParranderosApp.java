@@ -565,7 +565,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     {
     	try 
     	{
-    		String valor = JOptionPane.showInputDialog (this, "Numero de identificacion del usuario", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
+    		String valor = JOptionPane.showInputDialog (this, "Valor de consumo", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
     		String numeroHabitacionACargar = JOptionPane.showInputDialog (this, "Numero Habitacion", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
     		String idServicio = JOptionPane.showInputDialog (this, "id del Servicio", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
 
