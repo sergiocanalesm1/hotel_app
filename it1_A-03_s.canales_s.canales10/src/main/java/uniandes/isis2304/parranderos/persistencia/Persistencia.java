@@ -584,7 +584,7 @@ public class Persistencia
 
             log.trace ("Inserción de producto: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Producto (id, nombre, Integer.parseInt(duracion), Long.parseLong(idServicio));
+            return new Producto (id+"", nombre, Integer.parseInt(duracion), Long.parseLong(idServicio));
         }
         catch (Exception e)
         {

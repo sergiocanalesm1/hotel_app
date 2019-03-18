@@ -496,14 +496,14 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		String cantidadPersonas = JOptionPane.showInputDialog (this, "Cantidad de Personas", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
     		String fechaComienzo = JOptionPane.showInputDialog (this, "Fecha comienzo\nFormato: yyyy-mm-dd hh:mm", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
     		String fechaFin = JOptionPane.showInputDialog (this, "Fecha fin\nFormato: yyyy-mm-dd hh:mm", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
-    		String idProducto = JOptionPane.showInputDialog (this, "Plan Consumo", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
+    		String idProducto = JOptionPane.showInputDialog (this, "id del Producto", "Registrar Reserva", JOptionPane.QUESTION_MESSAGE);
 
     		
     		
     		if (idUsuario != null && metodoDePago != null && fechaComienzo != null && cantidadPersonas != null && fechaFin != null && idProducto != null )
     		{
     			
-        		Reserva th = hotelAndes.adicionarReserva(  metodoDePago,  cantidadPersonas,  fechaComienzo,  fechaFin,
+        		Reserva th = hotelAndes.adicionarReserva(  metodoDePago,  cantidadPersonas,  fechaComienzo+":00",  fechaFin+":00",
         				 "",  "",  idUsuario, idProducto);
         		if (th == null)
         		{
@@ -530,9 +530,9 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     {
     	try 
     	{
-    		String nombre = JOptionPane.showInputDialog (this, "Numero de identificacion del usuario", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
-    		String duracion = JOptionPane.showInputDialog (this, "Metodo de pago", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
-    		String idServicio = JOptionPane.showInputDialog (this, "Cantidad de Personas", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String nombre = JOptionPane.showInputDialog (this, "Nombre Producto", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String duracion = JOptionPane.showInputDialog (this, "Duracion", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
+    		String idServicio = JOptionPane.showInputDialog (this, "id Del Servicio", "Registrar Producto", JOptionPane.QUESTION_MESSAGE);
 
     		
     		

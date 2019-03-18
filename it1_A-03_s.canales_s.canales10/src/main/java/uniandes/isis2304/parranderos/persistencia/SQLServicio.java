@@ -40,16 +40,16 @@ public class SQLServicio {
 	public long adicionarServicio(PersistenceManager pm, long idServicio, String nombre,
 			String descripcion, int costo) {
 		
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaServicio() + "(id, nombre, descripcion, costo) values (?, ?, ?, ?)");
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaServicio() + " (id, nombre, descripcion, costo) values (?, ?, ?, ?)");
         q.setParameters(idServicio, nombre, descripcion, costo);
         return (long) q.executeUnique();
 	}
 
 	public Servicio getServicio(PersistenceManager pm, String id) {
 		
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaProducto() + "WHERE id = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaServicio() + " WHERE id = ?");
 		q.setResultClass(Servicio.class);
-		q.setParameters(id);
+		q.setParameters(Long.parseLong(id));
 		return (Servicio) q.executeUnique();
 	}
 

@@ -900,7 +900,7 @@ public class HotelAndes
 		log.info ("Adicionando plan consumo: "+ idUsuario);
 		return s;
 	}
-	public Producto adicionarProducto(String nombre, String duracion, String idServicio) {
+	public Producto adicionarProducto(String nombre, String duracion, String idServicio) throws Exception {
 
 		log.info("Adicionando producto: "+ nombre);
 		if( p.getServicio( idServicio ) == null)
@@ -909,7 +909,7 @@ public class HotelAndes
 		log.info ("Adicionando producto: "+ nombre);
 		return s;
 	}
-	public Consumo adicionarConsumo(String valor, String numeroHabitacionACargar, String idServicio) 
+	public Consumo adicionarConsumo(String valor, String numeroHabitacionACargar, String idServicio) throws Exception
 	{
 		log.info("Adicionando consumo para servicio: "+ valor + ";"+idServicio);
 		if( p.getServicio( idServicio ) == null)
@@ -921,8 +921,8 @@ public class HotelAndes
 
 	private boolean reservaDeServicioDisponible(String idProducto, Timestamp fechaCo, Timestamp fechaFi) 
 	{
-		p.getReservasHabitacionEn(idProducto, fechaCo, fechaFi);
-		return false;
+		
+		return p.getReservasHabitacionEn(idProducto, fechaCo, fechaFi) == 0;
 	}
 
 	private boolean reservaDeHabitacionEstaDisponible(String tipoHabitacion, Timestamp fechaCo, Timestamp fechaFi) 
