@@ -7,6 +7,9 @@ import java.sql.Timestamp;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import uniandes.isis2304.parranderos.negocio.Producto;
+import uniandes.isis2304.parranderos.negocio.Reserva;
+
 public class SQLReserva {
 	/**
 	 * tipo de consulta a sql
@@ -59,4 +62,20 @@ public class SQLReserva {
 		return ((BigDecimal) q.executeUnique()).longValue();
 	}
 
+	public Reserva getReservado(PersistenceManager pm,String idUsuario, Timestamp llegada) {
+		
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaReserva() + " WHERE idUsuario = ? AND fechaComienzo = ?");
+		q.setResultClass(Reserva.class);
+		q.setParameters(idUsuario, llegada);
+		return (Reserva) q.executeUnique();
+	}
+
+	public void updateReserva(PersistenceManager pm,String idUsuario, Timestamp llegada) {
+		
+		Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaReserva () + " SET fechaComienzo = ? WHERE idUsuario = ?");
+	     q.setParameters(llegada, idUsuario );
+	     q.executeUnique();
+	}
+
+	
 }
