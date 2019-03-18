@@ -637,9 +637,9 @@ public class Persistencia
 	//RF9
 	public boolean registrarLlegadaUsuario(String idUsuario, Timestamp llegada){
 		
-		if(getReserva(idUsuario, llegada) == null) return false;
+		//if(getReserva(idUsuario, llegada) == null) return false;
 		
-		
+		System.out.println("existe reserva con el usuario");
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
