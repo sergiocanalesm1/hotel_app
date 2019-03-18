@@ -896,7 +896,7 @@ public class HotelAndes
 		log.info ("Adicionando plan consumo: "+ idUsuario);
 		return s;
 	}
-	public boolean registrarLlegadaCliente(String idUsuario, String fechaLlegada) 
+	public boolean registrarLlegadaCliente(String idUsuario, String fechaLlegada) throws Exception
 	{
 		log.info("Adicionando reserva para usuario: "+ idUsuario);
 

@@ -555,7 +555,7 @@ public class Persistencia
 
             log.trace ("Inserción de Reserva: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Reserva (id, metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario, Long.parseLong(idProducto));
+            return new Reserva (id+"", metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario, idProducto);
         }
         catch (Exception e)
         {

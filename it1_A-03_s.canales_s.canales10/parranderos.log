@@ -194,3 +194,12 @@ ORA-00904: "IDSERVICIOACARGAR": invalid identifier
 19:35:01,929 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando consumo para servicio: 15000;4
 19:35:02,137 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando consumo para servicio: 15000;4
 >>>>>>> master
+20:05:09,768 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+20:05:09,769 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+20:05:09,788 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+20:05:53,667 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
+20:08:42,777 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+20:08:42,778 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+20:08:42,795 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+20:09:11,598 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
+20:09:11,961 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: 112233

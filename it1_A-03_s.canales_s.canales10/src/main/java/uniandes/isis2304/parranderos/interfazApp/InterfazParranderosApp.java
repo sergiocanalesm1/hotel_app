@@ -605,8 +605,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		if (idUsuario != null && fechaLlegada != null   )
     		{
     			
-        		;
-        		if (hotelAndes.registrarLlegadaCliente(  idUsuario, fechaLlegada+" 00:00:00" ))
+        		if (!hotelAndes.registrarLlegadaCliente(  idUsuario, fechaLlegada+" 00:00:00" ))
         		{
         			throw new Exception ("No se pudo registrar la llegada del cliente con id" + idUsuario);
         		}

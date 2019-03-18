@@ -3,7 +3,7 @@ package uniandes.isis2304.parranderos.negocio;
 import java.sql.Timestamp;
 
 public class Reserva {
-	private long id;
+	private String id;
 	
 	private String metodoDePago;
 	
@@ -19,7 +19,7 @@ public class Reserva {
 	
 	private String idUsuario;
 	
-	private long idProducto;
+	private String idProducto;
 
 	
 	
@@ -27,8 +27,12 @@ public class Reserva {
 
 
 
-	public Reserva(long id, String metodoDePago, int cantidadPersonas, Timestamp fechaComienzo, Timestamp fechaFin,
-			String tipoHabitacion, String planConsumo, String idUsuario, long idProducto) {
+
+
+
+
+	public Reserva(String id, String metodoDePago, int cantidadPersonas, Timestamp fechaComienzo, Timestamp fechaFin,
+			String tipoHabitacion, String planConsumo, String idUsuario, String idProducto) {
 		this.id = id;
 		this.metodoDePago = metodoDePago;
 		this.cantidadPersonas = cantidadPersonas;
@@ -46,7 +50,11 @@ public class Reserva {
 
 
 
-	public long getId() {
+
+
+
+
+	public String getId() {
 		return id;
 	}
 
@@ -56,9 +64,17 @@ public class Reserva {
 
 
 
-	public void setId(long id) {
+
+
+
+
+	public void setId(String id) {
 		this.id = id;
 	}
+
+
+
+
 
 
 
@@ -76,9 +92,17 @@ public class Reserva {
 
 
 
+
+
+
+
 	public void setMetodoDePago(String metodoDePago) {
 		this.metodoDePago = metodoDePago;
 	}
+
+
+
+
 
 
 
@@ -96,9 +120,17 @@ public class Reserva {
 
 
 
+
+
+
+
 	public void setCantidadPersonas(int cantidadPersonas) {
 		this.cantidadPersonas = cantidadPersonas;
 	}
+
+
+
+
 
 
 
@@ -116,9 +148,17 @@ public class Reserva {
 
 
 
+
+
+
+
 	public void setFechaComienzo(Timestamp fechaComienzo) {
 		this.fechaComienzo = fechaComienzo;
 	}
+
+
+
+
 
 
 
@@ -136,9 +176,17 @@ public class Reserva {
 
 
 
+
+
+
+
 	public void setFechaFin(Timestamp fechaFin) {
 		this.fechaFin = fechaFin;
 	}
+
+
+
+
 
 
 
@@ -156,9 +204,17 @@ public class Reserva {
 
 
 
+
+
+
+
 	public void setTipoHabitacion(String tipoHabitacion) {
 		this.tipoHabitacion = tipoHabitacion;
 	}
+
+
+
+
 
 
 
@@ -176,9 +232,17 @@ public class Reserva {
 
 
 
+
+
+
+
 	public void setPlanConsumo(String planConsumo) {
 		this.planConsumo = planConsumo;
 	}
+
+
+
+
 
 
 
@@ -196,6 +260,10 @@ public class Reserva {
 
 
 
+
+
+
+
 	public void setIdUsuario(String idUsuario) {
 		this.idUsuario = idUsuario;
 	}
@@ -206,7 +274,11 @@ public class Reserva {
 
 
 
-	public long getIdProducto() {
+
+
+
+
+	public String getIdProducto() {
 		return idProducto;
 	}
 
@@ -216,9 +288,17 @@ public class Reserva {
 
 
 
-	public void setIdProducto(long idProducto) {
+
+
+
+
+	public void setIdProducto(String idProducto) {
 		this.idProducto = idProducto;
 	}
+
+
+
+
 
 
 
