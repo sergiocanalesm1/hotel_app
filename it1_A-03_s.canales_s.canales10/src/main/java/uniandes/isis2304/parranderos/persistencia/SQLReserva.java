@@ -70,12 +70,7 @@ public class SQLReserva {
 		return (Reserva) q.executeUnique();
 	}
 
-	public void updateReserva(PersistenceManager pm,String idUsuario, Timestamp llegada) {
-		
-		Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaReserva () + " SET fechaComienzo = ? WHERE idUsuario = ?");
-	     q.setParameters(llegada, idUsuario );
-	     q.executeUnique();
-	}
+	
 
 	
 }
