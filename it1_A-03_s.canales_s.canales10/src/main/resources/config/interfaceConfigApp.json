@@ -1,11 +1,11 @@
 ﻿{
-	"title": "Aplicación transaccional de Parranderos Uniandes",
+	"title": "Aplicación transaccional de HotelAndes",
 	"frameH": 600,
 	"frameW": 800,
 	"bannerPath": "./src/main/resources/config/logo.png",
 	"menuBar":
 	[
-		{ "menuTitle": "Requerimientos",
+		{ "menuTitle": "Requerimientos I1",
 		  "options":
 			[
 				{
@@ -55,6 +55,15 @@
 				{
 					"label": "RF11: Registrar Salida Cliente",
 					"event": "registrarSalidaCliente"
+				}
+			]
+		},		
+		{ "menuTitle": "Requerimientos I2",
+		  "options":
+			[
+				{
+					"label": "RF12: Reservar alojamiento y servicios para una convención",
+					"event": "reservarAlojamientoYServicios"
 				}
 			]
 		},
