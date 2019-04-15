@@ -672,10 +672,15 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		if(alojamientos != null && fechaComienzoAlojamiento != null && fechaFinAlojamiento != null )
     		{
     			hotelAndes.reservarAlojamientoYServicio(alojamientos, fechaComienzoAlojamiento+" 00:00:00", fechaFinAlojamiento+" 00:00:00");
-    			
+    			panelDatos.actualizarInterfaz("Fin del requerimiento");
     				
     		}
-    		panelDatos.actualizarInterfaz("Succesful!");
+    		else 
+			{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+    			
+    		
 		} 
     	catch (Exception e) 
     	{
