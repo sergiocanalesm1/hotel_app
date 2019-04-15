@@ -965,16 +965,16 @@ public class HotelAndes
 	{
 		//Ver cantidad maxima de tipo de habitacion. int getCantidadDeHabitacionPorTipo( String (tipo))
 		String[] ar = alojamientos.split(";");
-		//Map<String, String> tipoHabitacionCanFechas = new HashMap<String, String>();
+		//Map<String, String> map = new HashMap<String, String>();
 		//map.put("dog", "type of animal");
-		int cantidadSolicitada = 0;
+		
 		for (int i = 0; i < ar.length; i++) 
 		{
 			String nombreTipoHabitacion = ar[i].split(":")[0];
 			System.out.println("Nombre Tipo de Habitacion: "+nombreTipoHabitacion);
 			int cantidadMaxima = p.getCantidadDeHabitacionPorTipo(nombreTipoHabitacion);
 			System.out.println("Cantidad Maxima: "+ cantidadMaxima);
-			cantidadSolicitada = Integer.parseInt(ar[i].split(":")[1]);
+			int cantidadSolicitada = Integer.parseInt(ar[i].split(":")[1]);
 			System.out.println("Cantidad Solicitada: "+cantidadSolicitada);
 			if( cantidadSolicitada > cantidadMaxima ) throw new Exception ("No hay suficientes habitaciones disponibles en el hotel de tipo "+nombreTipoHabitacion);
 			System.out.println("Hay suficientes habitaciones en el hotel");
@@ -984,64 +984,19 @@ public class HotelAndes
 			if( cantidadTipoHabitacionReservadas + cantidadSolicitada > cantidadMaxima ) throw new Exception ("Para el rango de fechas definido, no hay suficientes habitaciones de tipo "+nombreTipoHabitacion);
 			System.out.println("Hay habitaciones para el rango definido de fechas");
 			
-		}
-		//Ver si existe el servicio String getDescripcionServicio( nombreServicio )
-		
-		
-		
-		//Reservar habitaciones
-		for (int j = 0; j < ar.length; j++) 
-		{
-			String[] it = ar[j].split(":");
-			for (int i = 0; i < Integer.parseInt(it[1]); i++) adicionarReserva("Tarjeta de credito", "1", fechaInicio, fechaFin, it[0], "", "1", "-1");
+			
+			//Reservar habitaciones
+			for (int j = 0; j < cantidadSolicitada; j++) adicionarReserva("Tarjeta de credito", "1", fechaInicio, fechaFin, nombreTipoHabitacion, "", "1", "-1");
+			
+			
+			//map.put(nombreTipoHabitacion, cantidadMaxima);
 		}
 		System.out.println("Termino 1");
 		
-		
+		//Ver si existe el servicio String getDescripcionServicio( nombreServicio )
 		//if(nombreServicio == salon ) ver la cantidad reservada para esos servicios para esas fechas int getCantidadReservada( fechaInicio, fechaFin, nombreServicio)	
 		//else ver si hay reserva para esas fechas int( fechaInicio, fechaFin, nombreServicio )
 		//Reservar ambos dos 
-	}
-	public void reservarServicioParaConvencion( String infoServicios ) throws Exception
-	{
-		String[] servicios = infoServicios.split(";");
-		for (int i = 0; i < servicios.length; i++) 
-		{
-			String[] servicio = servicios[i].split(":");
-			String nombre = servicio[0];
-			String cantidad = servicio[1];
-			String fechaComienzo = servicio[2];
-			String fechaFin = servicio[3];
-			List<String> descripcion = p.getDescripcion( nombre );
-			for (String itDesc : descripcion) 
-			{
-				if( descripcion.equals("")) throw new Exception( "No existe el servicio: "+nombre);
-				String capacidadSt = itDesc.split(";")[0];
-				if(capacidadSt.split(":")[0].equals("Capacidad"))  
-					if(  Integer.parseInt(cantidad)> Integer.parseInt(itDesc.split(";")[0].split(":")[1]) ) throw new Exception("La cantidad solicitada es mayor a la cantidad del servicio");
-					else
-					{
-						
-					}
-					
-				
-			}
-			
-			
-			if( nombre.contains("Salon")  ) 
-			{
-				getCantidadReservada( fechaComienzo, fechaFin, nombre) ;
-				throw new Exception("No hay salones disponibles para las fechas indicadas");
-			}
-			else
-			{
-				
-			}
-		}
-	}
-	private void getCantidadReservada( String fechaComienzo, String fechaFin, String nombre)
-	{
-		
 	}
 
 	
