@@ -48,5 +48,12 @@ public class SQLHabitacion {
 		return (Habitacion) q.executeUnique();
 
 	}
+public Integer getCantidadDeHabitacionPorTipo(PersistenceManager pm, String tipo) {
+		
+		Query q = pm.newQuery(SQL, "SELECT COUNT(*) FROM "  + persistencia.darTablaHabitacion() + " WHERE tipohabitacion = ?");
+		q.setResultClass(Integer.class);
+		q.setParameters(tipo);
+		return (Integer) q.executeUnique();
+	}
 
 }

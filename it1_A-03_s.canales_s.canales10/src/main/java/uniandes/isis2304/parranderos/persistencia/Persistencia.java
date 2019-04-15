@@ -355,7 +355,7 @@ public class Persistencia
 	}
 	//desde aquí
 	public int getCantidadDeHabitacionPorTipo(String tipo){
-		return sqlTipoHabitacion.getCantidadDeHabitacionPorTipo(pmf.getPersistenceManager(),tipo);
+		return sqlHabitacion.getCantidadDeHabitacionPorTipo(pmf.getPersistenceManager(),tipo);
 	}
 	public int getReservasTipoHabitacionXFecha(Timestamp fechaInic , Timestamp fechaFin, String tipoHabitacion){
 		return sqlReserva.getReservasTipoHabitacionXFecha(pmf.getPersistenceManager(),fechaInic, fechaFin, tipoHabitacion);

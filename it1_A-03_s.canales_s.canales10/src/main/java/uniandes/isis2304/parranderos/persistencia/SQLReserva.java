@@ -82,8 +82,8 @@ public class SQLReserva {
 
 	public Integer getReservasTipoHabitacionXFecha(PersistenceManager pm, Timestamp fechaInic, Timestamp fechaFin, String tipoHabitacion) {
 		
-		Query q = pm.newQuery(SQL, "SELECT COUNT(*) "
-				+ "FROM " + persistencia.darTablaTipoHabitacion() + " as tipo, " + persistencia.darTablaReserva() + " as reserva"
+		Query q = pm.newQuery(SQL, "SELECT DISTINCT COUNT(*) "
+				+ "FROM " + persistencia.darTablaTipoHabitacion() + " tipo, " + persistencia.darTablaReserva() + " reserva"
 						+ " WHERE tipo.nombre = reserva.tipoHabitacion AND tipo.nombre = ? "
 						+ " AND reserva.fechaComienzo = ? AND reserva.fechaFin = ?");
 		q.setResultClass(Integer.class);
