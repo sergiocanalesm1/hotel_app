@@ -19,11 +19,15 @@ import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import com.google.gson.JsonObject;
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
 import uniandes.isis2304.parranderos.persistencia.Persistencia;
 
 /**
@@ -956,6 +960,36 @@ public class HotelAndes
 		String logrado = p.registrarSalidaUsuario( idUsuario, fechaSalida );
 		log.info ("Adicionando plan consumo: "+ logrado);
 		return !logrado.equals("");	}
+
+	public void reservarAlojamientoYServicio(String alojamientos, String fechaInicio, String fechaFin) throws Exception
+	{
+		//Ver cantidad maxima de tipo de habitacion. int getCantidadDeHabitacionPorTipo( String (tipo))
+		String[] ar = alojamientos.split(":");
+		//Map<String, String> map = new HashMap<String, String>();
+		//map.put("dog", "type of animal");
+		
+		for (int i = 0; i < ar.length; i++) 
+		{
+			String nombreTipoHabitacion = ar[i].split(":")[0];
+			System.out.println("Nombre Tipo de Habitacion: "+nombreTipoHabitacion);
+			int cantidadMaxima = p.getCantidadDeHabitacionPorTipo(nombreTipoHabitacion);
+			System.out.println("Cantidad Maxima: "+ cantidadMaxima);
+			int cantidadSolicitada = Integer.parseInt(ar[i].split(":")[1]);
+			System.out.println("Cantidad Solicitada: "+cantidadSolicitada);
+			if( cantidadSolicitada > cantidadMaxima ) throw new Exception ("No hay suficientes habitaciones disponibles en el hotel de tipo "+nombreTipoHabitacion);
+			System.out.println("Hay suficientes habitaciones en el hotel");
+			int cantidadTipoHabitacionReservadas = getReservasTipoHabitacionXFecha(fechaInicio, fechaFin, nombreTipoHabitacion);
+			System.out.println("Cantidad de habitaciones reservadas en el rango de fechas: " + cantidadTipoHabitacionReservadas );
+			if( cantidadTipoHabitacionReservadas + cantidadSolicitada > cantidadMaxima ) throw new Exception ("Para el rango de fechas definido, no hay suficientes habitaciones de tipo "+nombreTipoHabitacion);
+			//map.put(nombreTipoHabitacion, cantidadMaxima);
+		}
+		System.out.println("Termino 1");
+		//Ver cantidad en esas fechas para los tipos de habitacion. int getReservasTipoHabitacionXFecha(fechaInicio, fechaFin, tipo)
+		//Ver si existe el servicio String getDescripcionServicio( nombreServicio )
+		//if(nombreServicio == salon ) ver la cantidad reservada para esos servicios para esas fechas int getCantidadReservada( fechaInicio, fechaFin, nombreServicio)	
+		//else ver si hay reserva para esas fechas int( fechaInicio, fechaFin, nombreServicio )
+		//Reservar ambos dos 
+	}
 
 	
 
