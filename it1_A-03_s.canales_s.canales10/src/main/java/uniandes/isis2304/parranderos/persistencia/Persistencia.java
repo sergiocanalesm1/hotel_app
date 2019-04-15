@@ -353,7 +353,6 @@ public class Persistencia
 	public Reserva getReservaBySalida(String idUsuario, Timestamp fechaSalida) {
 		return sqlReserva.getReservadoBySalida(pmf.getPersistenceManager(),idUsuario, fechaSalida);
 	}
-	//desde aquí
 	public int getCantidadDeHabitacionPorTipo(String tipo){
 		return sqlHabitacion.getCantidadDeHabitacionPorTipo(pmf.getPersistenceManager(),tipo);
 	}
@@ -363,7 +362,9 @@ public class Persistencia
 	public List<Servicio> getServicios(String nombre){
 		return sqlServicio.getServicios(pmf.getPersistenceManager(), nombre);
 	}
-//	public int getCantidadReservada()
+	public int getCantidadReservada(Long id, Timestamp fechaInic, Timestamp fechaFin){
+		return sqlReserva.getCanitdadReservada(pmf.getPersistenceManager(), id, fechaInic, fechaFin);
+	}
 
 	/* ****************************************************************
 	 * 			REQUERIMIENTOS FUNCIONALES
