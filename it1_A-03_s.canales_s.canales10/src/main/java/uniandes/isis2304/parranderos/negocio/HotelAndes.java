@@ -1004,10 +1004,13 @@ public class HotelAndes
 		//else ver si hay reserva para esas fechas int( fechaInicio, fechaFin, nombreServicio )
 		//Reservar ambos dos 
 	}
-	public void reservarServicioParaConvencion( String infoServicios ) throws Exception
+	public void reservarServicioParaConvencion( String infoServicios, String idUsuario ) throws Exception
 	{
 		List<String> serviciosPermitidos = new ArrayList<>(Arrays.asList("Restaurante", "Bar","Salon de Reunion", "Salon de Conferencia"));
 		String[] servicios = infoServicios.split(";");
+		ArrayList<String[]> infoServiciosAAgregar = new ArrayList<String[]>();
+		
+		
 		for (int i = 0; i < servicios.length; i++) 
 		{
 			String[] servicio = servicios[i].split(":");
@@ -1016,36 +1019,58 @@ public class HotelAndes
 			String cantidad = servicio[1];
 			String fechaComienzo = servicio[2];
 			String fechaFin = servicio[3];
-			ArrayList<String> descripcion = p.getDescripcion( nombre );
-			if( descripcion.isEmpty() )throw new Exception( "No existe el servicio: "+nombre);
-			for (String itDesc : descripcion) 
+			ArrayList<Servicio> serv = p.getServicios( nombre );
+			if( serv.isEmpty() )throw new Exception( "No existe el servicio: "+nombre);
+			String mensaje = "";
+			for (Servicio itServ : serv) 
 			{
-				String capacidadSt = itDesc.split(";")[0];
-				if(  Integer.parseInt(cantidad)> Integer.parseInt(capacidadSt.split(":")[1]) ) throw new Exception("La cantidad solicitada es mayor a la cantidad del servicio");
-				if(!reservaDeServicioDisponibleParaFechas( nombre, itDesc, fechaComienzo, fechaFin) )
-					throw new Exception("No esta disponible el servicio para esa fecha");
-				
+				String capacidadSt = itServ.getDescripcion().split(";")[0];
+				if(  Integer.parseInt(cantidad)> Integer.parseInt(capacidadSt.split(":")[1]) ) 
+				{
+					log.info("id servicio " +itServ.getId()+"\tError: La cantidad solicitada es mayor a la cantidad del servicio");
+					continue;
+				}
+				int numeroReservas = getCantidadReservada( itServ.getId(), Timestamp.valueOf(fechaComienzo), Timestamp.valueOf(fechaFin));
+				if(nombre.contains("Salon") && numeroReservas > 0) 
+				{
+					log.info("id servicio " +itServ.getId()+"\tError: No se pudo reservar el salon para esas fechas");
+					continue;
+				}
+				if( numeroReservas + Integer.parseInt(cantidad)>= Integer.parseInt(capacidadSt.split(":")[1])) 
+				{
+					log.info("id servicio " +itServ.getId()+"\tError: No se pudo reservar el servicio para esas fechas porque ya esta lleno");
+					continue;
+				}
+				String[] info = new String[7];
+				info[0] = idUsuario;
+				info[1] = itServ.getNombre();
+				info[2] = ""+itServ.getId();
+				info[3] = cantidad;
+				info[4] = fechaComienzo;
+				info[5] = fechaFin;
+				infoServiciosAAgregar.add(info);
+				break;
 				
 			}
-			
-			
-			if( nombre.contains("Salon")  ) 
-			{
-				getCantidadReservada( fechaComienzo, fechaFin, nombre) ;
-				throw new Exception("No hay salones disponibles para las fechas indicadas");
-			}
-			else
-			{
-				
-			}
+		
 		}
-	}
-	private void getCantidadReservada( String fechaComienzo, String fechaFin, String nombre)
-	{
+		//0idUsuario,1nombreServicio,2idServicio,3cantidad,4fechaCom,5fechaFin
+		//hay que pasar ademas del servicio, las fechas y el id del usuario (1), cantidad
+		for (String[] itInfo : infoServiciosAAgregar) 
+		{
+			String idUsuarioo = itInfo[0];
+			String duracion = ""+ (int)(Math.random()*150)+50;
+			int cantidad = Integer.parseInt(itInfo[3]);
+			Timestamp fechaComienzo = Timestamp.valueOf(itInfo[4]);
+			Timestamp fechaFin = Timestamp.valueOf(itInfo[5]);
+			Producto pro = p.adicionarProducto(idUsuarioo+":"+itInfo[1], duracion, itInfo[2]);
+			p.adicionarReserva("Tarjeta de Credito", cantidad, fechaComienzo, fechaFin, null, "", idUsuarioo, ""+pro.getId());
+			
+		}
+		
 		
 	}
 
-	
 
 
 
