@@ -655,9 +655,35 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 //			e.printStackTrace();
 			String resultado = generarMensajeError(e);
 			panelDatos.actualizarInterfaz(resultado);
+			
 		}
     	
+    	
     }
+    public void reservarAlojamientoYServicios()
+	{
+    	try 
+    	{
+    		String alojamientos = JOptionPane.showInputDialog (this, "Alojamiento(s)\nFormato:<Tipo Habitacion 1>:<Cantidad>; ...", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
+    		String fechaComienzoAlojamiento = JOptionPane.showInputDialog (this, "Fecha inicio del alojamiento\nFormato:yyyy-mm-dd", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
+    		String fechaFinAlojamiento = JOptionPane.showInputDialog (this, "Fecha fin del alojamiento\nFormato:yyyy-mm-dd", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
+
+    		//String servicio = JOptionPane.showInputDialog (this, "Servicios\nFormato:<Nombre servicio 1>;<Nombre servicio 2>; ...", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
+    		if(alojamientos != null && fechaComienzoAlojamiento != null && fechaFinAlojamiento != null )
+    		{
+    			hotelAndes.reservarAlojamientoYServicio(alojamientos, fechaComienzoAlojamiento+" 00:00:00", fechaFinAlojamiento+" 00:00:00");
+    			
+    				
+    		}
+    		panelDatos.actualizarInterfaz("Succesful!");
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
     
     
 	/* ****************************************************************
