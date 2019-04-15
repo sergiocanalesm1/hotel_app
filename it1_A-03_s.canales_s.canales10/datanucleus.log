@@ -4885,3 +4885,4 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 20:40:08,522 (main) DEBUG [DataNucleus.Persistence] - ValueGeneration : txn-isolation=read-committed connection=New
 20:40:08,522 (main) DEBUG [DataNucleus.Persistence] - Cache : Level1 (soft), Level2 (soft, mode=UNSPECIFIED), QueryResults (soft), Collections/Maps 
 20:40:08,522 (main) DEBUG [DataNucleus.Persistence] - ================================================
+
