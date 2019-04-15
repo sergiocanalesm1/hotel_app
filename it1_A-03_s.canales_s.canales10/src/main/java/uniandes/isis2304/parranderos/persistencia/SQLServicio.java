@@ -1,5 +1,7 @@
 package uniandes.isis2304.parranderos.persistencia;
 
+import java.util.List;
+
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
@@ -51,6 +53,13 @@ public class SQLServicio {
 		q.setResultClass(Servicio.class);
 		q.setParameters(Long.parseLong(id));
 		return (Servicio) q.executeUnique();
+	}
+
+	public List<String> getDescripcion(PersistenceManager pm, String nombre) {
+		Query q = pm.newQuery(SQL, "SELECT descripcion FROM " + pp.darTablaServicio() + " WHERE nombre = ?");
+		q.setResultClass(String.class);
+		q.setParameters(nombre);
+		return (List<String>) q.executeList();
 	}
 
 }
