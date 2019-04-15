@@ -978,19 +978,21 @@ public class HotelAndes
 			System.out.println("Cantidad Solicitada: "+cantidadSolicitada);
 			if( cantidadSolicitada > cantidadMaxima ) throw new Exception ("No hay suficientes habitaciones disponibles en el hotel de tipo "+nombreTipoHabitacion);
 			System.out.println("Hay suficientes habitaciones en el hotel");
+			//Ver cantidad en esas fechas para los tipos de habitacion. int getReservasTipoHabitacionXFecha(fechaInicio, fechaFin, tipo)
 			int cantidadTipoHabitacionReservadas = p.getReservasTipoHabitacionXFecha(Timestamp.valueOf(fechaInicio), Timestamp.valueOf(fechaFin), nombreTipoHabitacion);
 			System.out.println("Cantidad de habitaciones reservadas en el rango de fechas: " + cantidadTipoHabitacionReservadas );
 			if( cantidadTipoHabitacionReservadas + cantidadSolicitada > cantidadMaxima ) throw new Exception ("Para el rango de fechas definido, no hay suficientes habitaciones de tipo "+nombreTipoHabitacion);
-			System.out.println("1");
-			for (int j = 0; j < cantidadSolicitada; j++)
-			{
-				adicionarReserva("Tarjeta de credito", "1", fechaInicio, fechaFin, nombreTipoHabitacion, "", "1", "-1");
-			}
+			System.out.println("Hay habitaciones para el rango definido de fechas");
+			
+			
+			//Reservar habitaciones
+			for (int j = 0; j < cantidadSolicitada; j++) adicionarReserva("Tarjeta de credito", "1", fechaInicio, fechaFin, nombreTipoHabitacion, "", "1", "-1");
+			
 			
 			//map.put(nombreTipoHabitacion, cantidadMaxima);
 		}
 		System.out.println("Termino 1");
-		//Ver cantidad en esas fechas para los tipos de habitacion. int getReservasTipoHabitacionXFecha(fechaInicio, fechaFin, tipo)
+		
 		//Ver si existe el servicio String getDescripcionServicio( nombreServicio )
 		//if(nombreServicio == salon ) ver la cantidad reservada para esos servicios para esas fechas int getCantidadReservada( fechaInicio, fechaFin, nombreServicio)	
 		//else ver si hay reserva para esas fechas int( fechaInicio, fechaFin, nombreServicio )
