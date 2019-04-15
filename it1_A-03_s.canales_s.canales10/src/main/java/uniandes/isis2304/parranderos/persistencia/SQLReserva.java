@@ -80,16 +80,27 @@ public class SQLReserva {
 		return ((List<Reserva>) q.executeList()).get(0);
 	}
 
-	public Integer getReservasTipoHabitacionXFecha(PersistenceManager pm, Timestamp fechaInic, Timestamp fechaFin, String tipoHabitacion) {
-		
+	public Integer getReservasTipoHabitacionXFecha(PersistenceManager pm, Timestamp fechaCo, Timestamp fechaFi, String tipoHabitacion) {
+		String fechas = " AND (fechacomienzo >=  ? AND fechacomienzo < ?) or ( fechafin > ? and fechaFin <= ?) or (fechacomienzo <= ? AND fechafin >= ?)";
 		Query q = pm.newQuery(SQL, "SELECT DISTINCT COUNT(*) "
 				+ "FROM " + persistencia.darTablaTipoHabitacion() + " tipo, " + persistencia.darTablaReserva() + " reserva"
 						+ " WHERE tipo.nombre = reserva.tipoHabitacion AND tipo.nombre = ? "
-						+ " AND reserva.fechaComienzo = ? AND reserva.fechaFin = ?");
+						+ fechas);
 		q.setResultClass(Integer.class);
-		q.setParameters(tipoHabitacion, fechaInic, fechaFin);
+		q.setParameters(tipoHabitacion, fechaCo, fechaFi, fechaCo, fechaFi, fechaCo, fechaFi);
 		return (Integer) q.executeUnique();
 					
+	}
+
+	public Integer getCanitdadReservada(PersistenceManager pm, Long id, Timestamp fechaCo,
+			Timestamp fechaFi) {
+		
+		String join = " WHERE r.idProducto = p.id AND p.id = ?";
+		String fechas = " AND (fechacomienzo >=  ? AND fechacomienzo < ?) or ( fechafin > ? and fechaFin <= ?) or (fechacomienzo <= ? AND fechafin >= ?)";
+		Query q = pm.newQuery(SQL, "SELECT COUNT(*) FROM Reservas r, Servicios s, Productos p " + join + fechas);
+		q.setResultClass(Integer.class);
+		q.setParameters(id ,fechaCo, fechaFi, fechaCo, fechaFi, fechaCo, fechaFi );
+		return (Integer) q.executeUnique();
 	}
 
 	
