@@ -73,3 +73,49 @@ ORA-00904: "IDUSUARIO": identificador no válido
 17:48:17,397 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando Tipo de bebida: uniandes.isis2304.parranderos.negocio.RolDeUsuario@17b90412
 17:50:56,079 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando usuario: Dave Grohl
 17:50:56,175 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando usuario: Dave Grohl
+19:25:19,628 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+19:25:19,629 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+19:25:19,648 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:27:55,757 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+19:27:55,758 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+19:27:55,776 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:31:45,062 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+19:31:45,063 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+19:31:45,081 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:38:32,883 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+19:38:32,884 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+19:38:32,902 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:38:56,608 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 1
+19:39:45,033 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+19:39:45,034 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+19:39:45,053 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:40:21,908 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 1
+19:41:56,838 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+19:41:56,839 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+19:41:56,858 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:42:29,293 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 1
+19:43:26,892 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+19:43:26,893 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+19:43:26,911 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:43:40,380 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 1
+19:53:58,237 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+19:53:58,237 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+19:53:58,256 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+19:54:13,882 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 1
+19:54:14,118 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: 1
+20:31:25,923 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+20:31:25,924 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+20:31:25,943 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+20:33:12,389 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+20:33:12,390 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+20:33:12,407 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+20:33:40,711 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 1
+20:33:40,875 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: 1
+20:33:40,875 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 1
+20:35:44,472 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+20:35:44,473 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+20:35:44,491 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+20:40:06,622 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+20:40:06,623 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+20:40:06,642 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+
