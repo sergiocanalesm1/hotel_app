@@ -680,6 +680,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     	catch (Exception e) 
     	{
 //			e.printStackTrace();
+    		System.out.println("wan");
 			String resultado = generarMensajeError(e);
 			panelDatos.actualizarInterfaz(resultado);
 		}
