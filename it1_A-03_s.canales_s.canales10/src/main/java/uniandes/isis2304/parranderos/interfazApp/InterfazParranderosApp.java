@@ -664,16 +664,17 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 	{
     	try 
     	{
-    		String alojamientos = JOptionPane.showInputDialog (this, "Alojamiento(s)\nFormato:<Tipo Habitacion 1>:<Cantidad>; ...", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
-    		String fechaComienzoAlojamiento = JOptionPane.showInputDialog (this, "Fecha inicio del alojamiento\nFormato:yyyy-mm-dd", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
-    		String fechaFinAlojamiento = JOptionPane.showInputDialog (this, "Fecha fin del alojamiento\nFormato:yyyy-mm-dd", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
-
-    		//String servicio = JOptionPane.showInputDialog (this, "Servicios\nFormato:<Nombre servicio 1>;<Nombre servicio 2>; ...", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
-    		if(alojamientos != null && fechaComienzoAlojamiento != null && fechaFinAlojamiento != null )
+//    		String alojamientos = JOptionPane.showInputDialog (this, "Alojamiento(s)\nFormato:<Tipo Habitacion 1>:<Cantidad>; ...", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
+//    		String fechaComienzoAlojamiento = JOptionPane.showInputDialog (this, "Fecha inicio del alojamiento\nFormato:yyyy-mm-dd", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
+//    		String fechaFinAlojamiento = JOptionPane.showInputDialog (this, "Fecha fin del alojamiento\nFormato:yyyy-mm-dd", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
+//    		if(alojamientos != null && fechaComienzoAlojamiento != null && fechaFinAlojamiento != null )
+//    		{
+//    			hotelAndes.reservarAlojamientoYServicio(alojamientos, fechaComienzoAlojamiento+" 00:00:00", fechaFinAlojamiento+" 00:00:00");		
+//    		}
+    		String servicios = JOptionPane.showInputDialog (this, "Indique nombre, cantidad, fecha comienzo con hora, fecha fin con hora\nFormato:<Nombre servicio>:<Cantidad>:yyyy-mm-dd hh:mm:yyyy-mm-dd hh:mm", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
+    		if( servicios != null )
     		{
-    			hotelAndes.reservarAlojamientoYServicio(alojamientos, fechaComienzoAlojamiento+" 00:00:00", fechaFinAlojamiento+" 00:00:00");
-    			
-    				
+    			hotelAndes.reservarServicioParaConvencion(servicios);
     		}
     		panelDatos.actualizarInterfaz("Succesful!");
 		} 
