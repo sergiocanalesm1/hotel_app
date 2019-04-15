@@ -360,9 +360,9 @@ public class Persistencia
 	public int getReservasTipoHabitacionXFecha(Timestamp fechaInic , Timestamp fechaFin, String tipoHabitacion){
 		return sqlReserva.getReservasTipoHabitacionXFecha(pmf.getPersistenceManager(),fechaInic, fechaFin, tipoHabitacion);
 	}
-//	public String getDescripcionServicio(String nombre){
-//		
-//	}
+	public List<Servicio> getServicios(String nombre){
+		return sqlServicio.getServicios(pmf.getPersistenceManager(), nombre);
+	}
 //	public int getCantidadReservada()
 
 	/* ****************************************************************
