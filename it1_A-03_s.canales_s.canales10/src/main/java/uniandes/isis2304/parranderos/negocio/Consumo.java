@@ -13,18 +13,28 @@ public class Consumo
 	private String numeroHabitacionACargar;
 	
 	private long idServicioCargado;
+	
+	private String idConvencion;
 
 	public Consumo(long id, int valor, Timestamp fechaRegistro, String numeroHabitacionACargar,
-			long idServicioCargado) {
+			long idServicioCargado, String idConvencion) {
 		this.id = id;
 		this.valor = valor;
 		this.fechaRegistro = fechaRegistro;
 		this.numeroHabitacionACargar = numeroHabitacionACargar;
 		this.idServicioCargado = idServicioCargado;
+		this.idConvencion = idConvencion;
 	}
 	public Consumo()
 	{
 		
+	}
+	
+	public String getIdConvencion() {
+		return idConvencion;
+	}
+	public void setIdConvencion(String idConvencion) {
+		this.idConvencion = idConvencion;
 	}
 	public long getId() {
 		return id;

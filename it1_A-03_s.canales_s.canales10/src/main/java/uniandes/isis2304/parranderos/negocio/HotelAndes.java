@@ -226,12 +226,16 @@ public class HotelAndes
 		log.info ("Adicionando producto: "+ nombre);
 		return s;
 	}
-	public Consumo adicionarConsumo(String valor, String numeroHabitacionACargar, String idServicio) throws Exception
+	public Consumo adicionarConsumo(String valor, String numeroHabitacionACargar, String idServicio, String idConvencion) throws Exception
 	{
 		log.info("Adicionando consumo para servicio: "+ valor + ";"+idServicio);
-		if( p.getServicio( idServicio ) == null)
-			throw new Exception( "No existe el servicio con el id especificado");
-		Consumo s = p.adicionarConsumo(valor, new Timestamp(System.currentTimeMillis()),numeroHabitacionACargar, idServicio);
+		if( numeroHabitacionACargar.equals("N/A")) idServicio = null;
+		if( idServicio.equals("N/A")) numeroHabitacionACargar = null;
+		if( idConvencion.equals("N/A")) idConvencion = null;
+		if( p.getServicio( idServicio ) == null) throw new Exception( "No existe el servicio con el id especificado");
+		if( p.getHabitacion(numeroHabitacionACargar) == null )throw new Exception( "No existe el numero de habitacion "+numeroHabitacionACargar);
+		if( !p.getRolDeUsuarioById( idConvencion ).equals( "Organizador Eventos") )throw new Exception( "No existe la convencion con el id especificado");
+		Consumo s = p.adicionarConsumo(valor, new Timestamp(System.currentTimeMillis()),numeroHabitacionACargar, idServicio, idConvencion);
 		log.info("Adicionando consumo para servicio: "+ valor + ";"+idServicio);
 		return s;
 	}

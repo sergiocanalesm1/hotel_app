@@ -567,15 +567,17 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     	try 
     	{
     		String valor = JOptionPane.showInputDialog (this, "Valor de consumo", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
-    		String numeroHabitacionACargar = JOptionPane.showInputDialog (this, "Numero Habitacion", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
-    		String idServicio = JOptionPane.showInputDialog (this, "id del Servicio", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
+    		String numeroHabitacionACargar = JOptionPane.showInputDialog (this, "Numero Habitacion a cargar\nDe no requerir por favor escribir N/A", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
+    		String idServicio = JOptionPane.showInputDialog (this, "id del Servicio\nDe no requerir por favor escribir N/A", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
+    		String idConvencion = JOptionPane.showInputDialog (this, "id de la convencion\nDe no requerir por favor escribir N/A", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
+
 
     		
     		
-    		if (valor != null && numeroHabitacionACargar != null && idServicio != null  )
+    		if (valor != null && numeroHabitacionACargar != null && idServicio != null && idConvencion != null  )
     		{
     			
-        		Consumo th = hotelAndes.adicionarConsumo(  valor, numeroHabitacionACargar, idServicio);
+        		Consumo th = hotelAndes.adicionarConsumo(  valor, numeroHabitacionACargar, idServicio idConvencion);
         		if (th == null)
         		{
         			throw new Exception ("No se pudo crear el consumo con valor "+ valor+ " para el servicio "+idServicio);
