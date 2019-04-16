@@ -621,7 +621,7 @@ public class Persistencia
             pm.close();
         }
 	}
-	public Consumo adicionarConsumo(String valor, Timestamp fechaRegistro, String numeroHabitacionACargar, String idServicioACargar){
+	public Consumo adicionarConsumo(String valor, Timestamp fechaRegistro, String numeroHabitacionACargar, String idServicioACargar, String idConvencion){
 		
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -629,12 +629,12 @@ public class Persistencia
         {
             tx.begin();
             long id = nextval ();
-            long tuplasInsertadas = sqlConsumo.adicionarConsumo(pmf.getPersistenceManager(), id, valor, fechaRegistro, numeroHabitacionACargar, idServicioACargar);
+            long tuplasInsertadas = sqlConsumo.adicionarConsumo(pmf.getPersistenceManager(), id, valor, fechaRegistro, numeroHabitacionACargar, idServicioACargar, idConvencion);
             tx.commit();
 
             log.trace ("Inserción de consumo: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Consumo (id, Integer.parseInt(valor), fechaRegistro, numeroHabitacionACargar, Long.parseLong(idServicioACargar));
+            return new Consumo (id, Integer.parseInt(valor), fechaRegistro, numeroHabitacionACargar, Long.parseLong(idServicioACargar), idConvencion);
         }
         catch (Exception e)
         {
@@ -758,9 +758,9 @@ public class Persistencia
             tx.begin();
             //
             tx.commit();
-
-            log.trace ("id organizador de las reservas borradas: " + idOrganizador + " - sql answer: " );
-            return  0 ;
+            long acumuladoConvencion = sqlConsumo.finDeConvencion(pmf.getPersistenceManager(), idOrganizador);
+            log.trace ("id organizador de la convención finalizada: " + idOrganizador + " - sql answer: " + acumuladoConvencion );
+            return  acumuladoConvencion ;
         }
         catch (Exception e)
         {
