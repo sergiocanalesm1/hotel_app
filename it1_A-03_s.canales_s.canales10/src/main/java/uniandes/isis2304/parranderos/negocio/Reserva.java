@@ -20,10 +20,18 @@ public class Reserva {
 	private String idUsuario;
 	
 	private String idProducto;
+	
+	private String pagado;
 
 	
 	
 	
+
+
+
+
+
+
 
 
 
@@ -32,7 +40,7 @@ public class Reserva {
 
 
 	public Reserva(String id, String metodoDePago, int cantidadPersonas, Timestamp fechaComienzo, Timestamp fechaFin,
-			String tipoHabitacion, String planConsumo, String idUsuario, String idProducto) {
+			String tipoHabitacion, String planConsumo, String idUsuario, String idProducto, String pagado) {
 		this.id = id;
 		this.metodoDePago = metodoDePago;
 		this.cantidadPersonas = cantidadPersonas;
@@ -42,8 +50,31 @@ public class Reserva {
 		this.planConsumo = planConsumo;
 		this.idUsuario = idUsuario;
 		this.idProducto = idProducto;
+		this.pagado = pagado;
 	}
 
+
+
+
+
+
+	public String getPagado() {
+		return pagado;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	public void setPagado(String pagado) {
+		this.pagado = pagado;
+	}
 
 
 
