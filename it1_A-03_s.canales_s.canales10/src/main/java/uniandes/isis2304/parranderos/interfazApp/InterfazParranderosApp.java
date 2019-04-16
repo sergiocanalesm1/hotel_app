@@ -696,6 +696,42 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(resultado);
 		}
 	}
+    public void cancelarReservasConvencion()
+    {
+    	try 
+    	{
+    		String idUsuario = JOptionPane.showInputDialog (this, "Digite por favor el documento de identidad", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
+    		
+    		
+    		if(idUsuario != null  )
+    		{
+    			if( hotelAndes.getUsuario(idUsuario) == null) throw new Exception ("No existe el usuario");
+    			hotelAndes.cancelarReservaConvencion( idUsuario );
+    		}
+    				
+    		
+    		else 
+			{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+    	}
+    	catch( Exception e)
+    	{
+			panelDatos.actualizarInterfaz(generarMensajeError(e));
+    	}
+    }
+    public void registrarFinConvencion()
+    {
+    	
+    }
+    public void registrarEntradaMantenimientoAlojamientosYServicios()
+    {
+    	
+    }
+    public void registrarFinMantenimientoAlojamientosYServicios()
+    {
+    	
+    }
     
     
 	/* ****************************************************************

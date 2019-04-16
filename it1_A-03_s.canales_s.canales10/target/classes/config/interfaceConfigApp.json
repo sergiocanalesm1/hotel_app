@@ -5,7 +5,7 @@
 	"bannerPath": "./src/main/resources/config/logo.png",
 	"menuBar":
 	[
-		{ "menuTitle": "Requerimientos I1",
+		{ "menuTitle": "Requerimientos de I1",
 		  "options":
 			[
 				{
@@ -58,12 +58,28 @@
 				}
 			]
 		},		
-		{ "menuTitle": "Requerimientos I2",
+		{ "menuTitle": "Requerimientos de I2",
 		  "options":
 			[
 				{
 					"label": "RF12: Reservar alojamiento y servicios para una convención",
 					"event": "reservarAlojamientoYServicios"
+				},
+				{
+					"label": "RF13: Cancelar reservas asociadas a una convención",
+					"event": "cancelarReservasConvencion"
+				},
+				{
+					"label": "RF14: Registrar el fin de una convención",
+					"event": "registrarFinConvencion"
+				},
+				{
+					"label": "RF15: Registrar entrada a mantenimiento de alojamientos o servicios",
+					"event": "registrarEntradaMantenimientoAlojamientosYServicios"
+				},
+				{
+					"label": "RF16: Registrar el fin de mantenimiento de alojamientos o servicios",
+					"event": "registrarFinMantenimientoAlojamientosYServicios"
 				}
 			]
 		},
