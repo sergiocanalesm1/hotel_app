@@ -47,7 +47,7 @@ public class SQLProducto {
 	{
 		Query q = pm.newQuery(SQL, "DELETE " + persistencia.darTablaProducto() + " WHERE nombre like ?");//no tiene set result class
 		q.setParameters(idOrganizador);
-		return (long)q.executeUnique();
+		return (long) q.executeUnique();
 		
 	}
 

@@ -722,12 +722,13 @@ public class Persistencia
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         idOrganizador += ":%";//: para coger el id del organizador y % para que el LIKE funcione
-        System.out.println(idOrganizador);
+        //System.out.println(idOrganizador);
         try
         {
             tx.begin();
             long tuplasBorradasServicios = sqlProducto.cancelarReservasConvencion(pmf.getPersistenceManager(), idOrganizador);//se borra el producto para que la reserva desaparezca
             long tuplasBorradasAlojamiento = sqlReserva.cancelarReservasConvencion(pmf.getPersistenceManager(), idOrganizador);
+            System.out.println(tuplasBorradasAlojamiento);
             tx.commit();
 
             log.trace ("id organizador de las reservas borradas: " + idOrganizador + " - sql answer: " + tuplasBorradasAlojamiento + tuplasBorradasServicios);

@@ -101,9 +101,10 @@ public class SQLReserva {
 		q.setResultClass(Integer.class);
 		q.setParameters(id ,fechaCo, fechaFi, fechaCo, fechaFi, fechaCo, fechaFi );
 		return (Integer) q.executeUnique();
+		
 	}
 
-	public long cancelarReservasConvencion(PersistenceManager pm, String idOrganizador) {
+	public long cancelarReservasConvencion(PersistenceManager pm, String idOrganizador) throws Exception{
 		Query q = pm.newQuery(SQL, "DELETE " + persistencia.darTablaReserva() + " WHERE idUsuario = ?");// no tiene set result class
 		q.setParameters(idOrganizador);
 		return (long) q.executeUnique();
