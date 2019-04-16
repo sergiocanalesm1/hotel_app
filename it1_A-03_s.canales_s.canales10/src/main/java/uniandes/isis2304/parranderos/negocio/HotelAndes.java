@@ -377,10 +377,11 @@ public class HotelAndes
 		
 	}
 
-	public void cancelarReservaConvencion(String idUsuario) throws Exception
+	public long cancelarReservaConvencion(String idUsuario) throws Exception
 	{
-		if( p.getRolDeUsuarioById( idUsuario ).equals( "Organizador Eventos")) throw new Exception("El usuario no es organizador de eventos");
-		long a = p.cancelarReservasConvencion( idUsuario );
-		System.out.println(a);
+		if( getUsuario(idUsuario) == null) throw new Exception ("No existe el usuario.");
+		if( !p.getRolDeUsuarioById( idUsuario ).equals( "Organizador Eventos")) throw new Exception("El usuario no es organizador de eventos");
+		return p.cancelarReservasConvencion( idUsuario );
+		
 	}
 }

@@ -703,11 +703,10 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		String idUsuario = JOptionPane.showInputDialog (this, "Digite por favor el documento de identidad", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
     		
     		
-    		if(idUsuario != null  )
+    		if(idUsuario != null )
     		{
-    			if( hotelAndes.getUsuario(idUsuario) == null) throw new Exception ("No existe el usuario");
-    			hotelAndes.cancelarReservaConvencion( idUsuario );
-    			panelDatos.actualizarInterfaz("Fin del requerimiento");
+    			String message = "Se borraron "+hotelAndes.cancelarReservaConvencion( idUsuario )+" reservas de la base de datos.";
+    			panelDatos.actualizarInterfaz(message+"\nSuccess");
     		}
     		else 
 			{
