@@ -567,12 +567,12 @@ public class Persistencia
         {
             tx.begin();
             long id = nextval ();
-            long tuplasInsertadas = sqlReserva.adicionarReserva(pmf.getPersistenceManager(), id, metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario, idProducto);
+            long tuplasInsertadas = sqlReserva.adicionarReserva(pmf.getPersistenceManager(), id, metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario, idProducto ,'N');
             tx.commit();
 
             log.trace ("Inserción de Reserva: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Reserva (id+"", metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario, idProducto);
+            return new Reserva (id+"", metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario, idProducto , 'N');
         }
         catch (Exception e)
         {
@@ -727,7 +727,6 @@ public class Persistencia
             tx.begin();
             long tuplasBorradasServicios = sqlProducto.cancelarReservasConvencion(pmf.getPersistenceManager(), idOrganizador  +  ":%");//se borra el producto para que la reserva desaparezca
             long tuplasBorradasAlojamiento = sqlReserva.cancelarReservasConvencion(pmf.getPersistenceManager(), idOrganizador);
-            System.out.println(tuplasBorradasAlojamiento);
             tx.commit();
 
             log.trace ("id organizador de las reservas borradas: " + idOrganizador + " - sql answer: " + tuplasBorradasAlojamiento + tuplasBorradasServicios);
@@ -749,6 +748,35 @@ public class Persistencia
         }
 	}
 
+	//RF14 REGISTRAR EL FIN DE UNA CONVENCIÓN
+	public long finDeConvencion(String idOrganizador) {
+		
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            //
+            tx.commit();
+
+            log.trace ("id organizador de las reservas borradas: " + idOrganizador + " - sql answer: " );
+            return  0 ;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
 
 	
 	
