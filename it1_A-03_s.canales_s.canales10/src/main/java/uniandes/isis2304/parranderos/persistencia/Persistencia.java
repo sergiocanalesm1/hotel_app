@@ -567,12 +567,12 @@ public class Persistencia
         {
             tx.begin();
             long id = nextval ();
-            long tuplasInsertadas = sqlReserva.adicionarReserva(pmf.getPersistenceManager(), id, metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario, idProducto ,'N');
+            long tuplasInsertadas = sqlReserva.adicionarReserva(pmf.getPersistenceManager(), id, metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario, idProducto ,"N");
             tx.commit();
 
             log.trace ("Inserción de Reserva: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
             
-            return new Reserva (id+"", metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario, idProducto , 'N');
+            return new Reserva (id+"", metodoDePago, numeroPersonas, fechaComienzo, fechaFin, tipoHabitacion, planConsumo, idUsuario, idProducto , "N");
         }
         catch (Exception e)
         {
