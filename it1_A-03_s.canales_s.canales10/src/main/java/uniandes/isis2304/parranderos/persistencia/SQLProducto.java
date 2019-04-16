@@ -43,11 +43,11 @@ public class SQLProducto {
 
 	
 
-	public long cancelarReservasConvencion(PersistenceManager pm, String idOrganizador) {
-		
-		Query q = pm.newQuery(SQL, "DELETE FROM " + persistencia.darTablaProducto() + " WHERE nombre LIKE ?");
+	public long cancelarReservasConvencion(PersistenceManager pm, String idOrganizador) throws Exception
+	{
+		Query q = pm.newQuery(SQL, "DELETE " + persistencia.darTablaProducto() + " WHERE nombre like ?");
 		q.setParameters(idOrganizador);
-		return (long) q.executeUnique();
+		return (long)q.executeUnique();
 		
 	}
 
