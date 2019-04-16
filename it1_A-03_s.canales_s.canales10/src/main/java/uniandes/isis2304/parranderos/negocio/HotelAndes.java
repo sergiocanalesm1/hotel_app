@@ -902,6 +902,10 @@ public class HotelAndes
 		log.info ("Adicionando plan consumo: "+ idUsuario);
 		return s;
 	}
+	public Usuario getUsuario(String idUsuario) throws Exception
+	{
+		return p.getUsuario( idUsuario) ;
+	}
 	public boolean registrarLlegadaCliente(String idUsuario, String fechaLlegada) throws Exception
 	{
 		log.info("Adicionando reserva para usuario: "+ idUsuario);
@@ -963,12 +967,10 @@ public class HotelAndes
 		log.info ("Adicionando plan consumo: "+ logrado);
 		return !logrado.equals("");	}
 
-	public void reservarAlojamientoYServicio(String alojamientos, String fechaInicio, String fechaFin) throws Exception
+	public void reservarAlojamientoYServicio(String alojamientos, String fechaInicioAloja, String fechaFinAloja, String infoServicios, String idUsuario ) throws Exception
 	{
-		//Ver cantidad maxima de tipo de habitacion. int getCantidadDeHabitacionPorTipo( String (tipo))
+		//Verificar si se puede alojar
 		String[] ar = alojamientos.split(";");
-		//Map<String, String> tipoHabitacionCanFechas = new HashMap<String, String>();
-		//map.put("dog", "type of animal");
 		int cantidadSolicitada = 0;
 		for (int i = 0; i < ar.length; i++) 
 		{
@@ -981,30 +983,51 @@ public class HotelAndes
 			if( cantidadSolicitada > cantidadMaxima ) throw new Exception ("No hay suficientes habitaciones disponibles en el hotel de tipo "+nombreTipoHabitacion);
 			System.out.println("Hay suficientes habitaciones en el hotel");
 			//Ver cantidad en esas fechas para los tipos de habitacion. int getReservasTipoHabitacionXFecha(fechaInicio, fechaFin, tipo)
-			int cantidadTipoHabitacionReservadas = p.getReservasTipoHabitacionXFecha(Timestamp.valueOf(fechaInicio), Timestamp.valueOf(fechaFin), nombreTipoHabitacion);
+			int cantidadTipoHabitacionReservadas = p.getReservasTipoHabitacionXFecha(Timestamp.valueOf(fechaInicioAloja), Timestamp.valueOf(fechaFinAloja), nombreTipoHabitacion);
 			System.out.println("Cantidad de habitaciones reservadas en el rango de fechas: " + cantidadTipoHabitacionReservadas );
 			if( cantidadTipoHabitacionReservadas + cantidadSolicitada > cantidadMaxima ) throw new Exception ("Para el rango de fechas definido, no hay suficientes habitaciones de tipo "+nombreTipoHabitacion);
 			System.out.println("Hay habitaciones para el rango definido de fechas");
 			
 		}
-		//Ver si existe el servicio String getDescripcionServicio( nombreServicio )
-		
-		
+		//Verificar si se puede reservar servicios
+		ArrayList<String[]> infoServiciosAAgregar = reservarServicioParaConvencion(infoServicios, idUsuario);
+		if( infoServiciosAAgregar.isEmpty() ) throw new Exception( "No se pudo agregar el servicio. Ver el log para mas informacion");
 		
 		//Reservar habitaciones
 		for (int j = 0; j < ar.length; j++) 
 		{
 			String[] it = ar[j].split(":");
-			for (int i = 0; i < Integer.parseInt(it[1]); i++) adicionarReserva("Tarjeta de credito", "1", fechaInicio, fechaFin, it[0], "", "1", "-1");
+			for (int i = 0; i < Integer.parseInt(it[1]); i++) adicionarReserva("Tarjeta de credito", "1", fechaInicioAloja, fechaFinAloja, it[0], "", "1", "-1");
 		}
-		System.out.println("Termino 1");
+		
+		//Reservar servicios
+		
+		//0idUsuario,1nombreServicio,2idServicio,3cantidad,4fechaCom,5fechaFin
+		for (String[] itInfo : infoServiciosAAgregar) 
+		{
+			String idUsuarioo = itInfo[0];
+			String duracion = ""+ (int)(Math.random()*150)+50;
+			int cantidad = Integer.parseInt(itInfo[3]);
+			Timestamp fechaComienzServicio = Timestamp.valueOf(itInfo[4]);
+			Timestamp fechaFinServicio = Timestamp.valueOf(itInfo[5]);
+			Producto pro = p.adicionarProducto(idUsuarioo+":"+itInfo[1], duracion, itInfo[2]);
+			String idproducto = pro.getId(); 
+			p.adicionarReserva("Tarjeta de Credito", cantidad, fechaComienzServicio, fechaFinServicio, null, "", idUsuarioo, idproducto);
+			
+			
+		}
+		
+		
+		
+		
+	
 		
 		
 		//if(nombreServicio == salon ) ver la cantidad reservada para esos servicios para esas fechas int getCantidadReservada( fechaInicio, fechaFin, nombreServicio)	
 		//else ver si hay reserva para esas fechas int( fechaInicio, fechaFin, nombreServicio )
 		//Reservar ambos dos 
 	}
-	public void reservarServicioParaConvencion( String infoServicios, String idUsuario ) throws Exception
+	private ArrayList<String[]> reservarServicioParaConvencion( String infoServicios, String idUsuario ) throws Exception
 	{
 		List<String> serviciosPermitidos = new ArrayList<>(Arrays.asList("Restaurante", "Bar","Salon de Reunion", "Salon de Conferencia"));
 		String[] servicios = infoServicios.split(";");
@@ -1013,24 +1036,24 @@ public class HotelAndes
 		
 		for (int i = 0; i < servicios.length; i++) 
 		{
-			String[] servicio = servicios[i].split(":");
+			String[] servicio = servicios[i].split("#");
 			String nombre = servicio[0];
 			if( !serviciosPermitidos.contains(nombre)) throw new Exception("No se puede reservar el servicio con el nombre: "+nombre);
 			String cantidad = servicio[1];
-			String fechaComienzo = servicio[2];
-			String fechaFin = servicio[3];
-			ArrayList<Servicio> serv = p.getServicios( nombre );
+			String fechaComienzo = servicio[2]+":00";
+			String fechaFin = servicio[3]+":00";
+			List<Servicio> serv =  p.getServicios( nombre );
 			if( serv.isEmpty() )throw new Exception( "No existe el servicio: "+nombre);
-			String mensaje = "";
 			for (Servicio itServ : serv) 
 			{
 				String capacidadSt = itServ.getDescripcion().split(";")[0];
+				System.out.println("capacidad " +capacidadSt);
 				if(  Integer.parseInt(cantidad)> Integer.parseInt(capacidadSt.split(":")[1]) ) 
 				{
 					log.info("id servicio " +itServ.getId()+"\tError: La cantidad solicitada es mayor a la cantidad del servicio");
 					continue;
 				}
-				int numeroReservas = getCantidadReservada( itServ.getId(), Timestamp.valueOf(fechaComienzo), Timestamp.valueOf(fechaFin));
+				int numeroReservas = p.getCantidadReservada( itServ.getId(), Timestamp.valueOf(fechaComienzo), Timestamp.valueOf(fechaFin));
 				if(nombre.contains("Salon") && numeroReservas > 0) 
 				{
 					log.info("id servicio " +itServ.getId()+"\tError: No se pudo reservar el salon para esas fechas");
@@ -1054,19 +1077,8 @@ public class HotelAndes
 			}
 		
 		}
-		//0idUsuario,1nombreServicio,2idServicio,3cantidad,4fechaCom,5fechaFin
-		//hay que pasar ademas del servicio, las fechas y el id del usuario (1), cantidad
-		for (String[] itInfo : infoServiciosAAgregar) 
-		{
-			String idUsuarioo = itInfo[0];
-			String duracion = ""+ (int)(Math.random()*150)+50;
-			int cantidad = Integer.parseInt(itInfo[3]);
-			Timestamp fechaComienzo = Timestamp.valueOf(itInfo[4]);
-			Timestamp fechaFin = Timestamp.valueOf(itInfo[5]);
-			Producto pro = p.adicionarProducto(idUsuarioo+":"+itInfo[1], duracion, itInfo[2]);
-			p.adicionarReserva("Tarjeta de Credito", cantidad, fechaComienzo, fechaFin, null, "", idUsuarioo, ""+pro.getId());
-			
-		}
+		return infoServiciosAAgregar;
+		
 		
 		
 	}

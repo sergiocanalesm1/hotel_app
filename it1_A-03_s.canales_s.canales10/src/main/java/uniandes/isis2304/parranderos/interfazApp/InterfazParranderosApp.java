@@ -664,14 +664,18 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 	{
     	try 
     	{
+    		String idUsuario = JOptionPane.showInputDialog (this, "Digite por favor el documento de identidad", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
+    		if( hotelAndes.getUsuario(idUsuario) == null) throw new Exception ("No existe el usuario");
     		String alojamientos = JOptionPane.showInputDialog (this, "Alojamiento(s)\nFormato:<Tipo Habitacion 1>:<Cantidad>; ...", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
     		String fechaComienzoAlojamiento = JOptionPane.showInputDialog (this, "Fecha inicio del alojamiento\nFormato:yyyy-mm-dd", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
     		String fechaFinAlojamiento = JOptionPane.showInputDialog (this, "Fecha fin del alojamiento\nFormato:yyyy-mm-dd", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
+    		String servicios = JOptionPane.showInputDialog (this, "Ingrese nombre de servicios, cantidad personas, fecha comienzo, fecha fin\n"
+    				+ "<Nombre>#<Cantidad>#yyyy-mm-dd hh:mm#yyyy-mm-dd hh:mm", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
 
     		//String servicio = JOptionPane.showInputDialog (this, "Servicios\nFormato:<Nombre servicio 1>;<Nombre servicio 2>; ...", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
-    		if(alojamientos != null && fechaComienzoAlojamiento != null && fechaFinAlojamiento != null )
+    		if(alojamientos != null && fechaComienzoAlojamiento != null && fechaFinAlojamiento != null && servicios != null  )
     		{
-    			hotelAndes.reservarAlojamientoYServicio(alojamientos, fechaComienzoAlojamiento+" 00:00:00", fechaFinAlojamiento+" 00:00:00");
+    			hotelAndes.reservarAlojamientoYServicio(alojamientos, fechaComienzoAlojamiento+" 00:00:00", fechaFinAlojamiento+" 00:00:00",servicios,idUsuario );
     			panelDatos.actualizarInterfaz("Fin del requerimiento");
     				
     		}
@@ -679,13 +683,15 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			{
     			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
 			}
+    		
+    		
+
     			
     		
 		} 
     	catch (Exception e) 
     	{
-//			e.printStackTrace();
-    		System.out.println("wan");
+//			exception.printStackTrace()
 			String resultado = generarMensajeError(e);
 			panelDatos.actualizarInterfaz(resultado);
 		}

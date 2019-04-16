@@ -56,7 +56,7 @@ public class SQLReserva {
 			comparacion = "idProducto";
 		}
 			
-		String sql1 = "AND (fechacomienzo >=  ? AND fechacomienzo < ?) or ( fechafin > ? and fechaFin <= ?) or (fechacomienzo <= ? AND fechafin >= ?)";
+		String sql1 = "AND ((fechacomienzo >=  ? AND fechacomienzo < ?) or ( fechafin > ? and fechaFin <= ?) or (fechacomienzo <= ? AND fechafin >= ?))";
 		Query q = pm.newQuery(SQL, "SELECT COUNT(*) FROM " + persistencia.darTablaReserva() + " WHERE "+comparacion+" = ? "+sql1);
 		
 		q.setParameters(valor, fechaCo, fechaFi, fechaCo, fechaFi, fechaCo, fechaFi);
@@ -81,10 +81,10 @@ public class SQLReserva {
 	}
 
 	public Integer getReservasTipoHabitacionXFecha(PersistenceManager pm, Timestamp fechaCo, Timestamp fechaFi, String tipoHabitacion) {
-		String fechas = " AND (fechacomienzo >=  ? AND fechacomienzo < ?) or ( fechafin > ? and fechaFin <= ?) or (fechacomienzo <= ? AND fechafin >= ?)";
-		Query q = pm.newQuery(SQL, "SELECT DISTINCT COUNT(*) "
-				+ "FROM " + persistencia.darTablaTipoHabitacion() + " tipo, " + persistencia.darTablaReserva() + " reserva"
-						+ " WHERE tipo.nombre = reserva.tipoHabitacion AND tipo.nombre = ? "
+		String fechas = " AND ((fechacomienzo >=  ? AND fechacomienzo < ?) or ( fechafin > ? and fechaFin <= ?) or (fechacomienzo <= ? AND fechafin >= ?))";
+		Query q = pm.newQuery(SQL, "SELECT COUNT(*) "
+				+ "FROM " + persistencia.darTablaReserva()
+						+ " WHERE tipohabitacion = ? "
 						+ fechas);
 		q.setResultClass(Integer.class);
 		q.setParameters(tipoHabitacion, fechaCo, fechaFi, fechaCo, fechaFi, fechaCo, fechaFi);
@@ -95,9 +95,9 @@ public class SQLReserva {
 	public Integer getCanitdadReservada(PersistenceManager pm, Long id, Timestamp fechaCo,
 			Timestamp fechaFi) {
 		
-		String join = " WHERE r.idProducto = p.id AND p.id = ?";
-		String fechas = " AND (fechacomienzo >=  ? AND fechacomienzo < ?) or ( fechafin > ? and fechaFin <= ?) or (fechacomienzo <= ? AND fechafin >= ?)";
-		Query q = pm.newQuery(SQL, "SELECT COUNT(*) FROM Reservas r, Servicios s, Productos p " + join + fechas);
+		String join = " WHERE r.idProducto = p.id AND p.idServicio = s.id AND s.id = ?";
+		String fechas = " AND ((fechacomienzo >=  ? AND fechacomienzo < ?) or ( fechafin > ? and fechaFin <= ?) or (fechacomienzo <= ? AND fechafin >= ?))";
+		Query q = pm.newQuery(SQL, "SELECT COUNT(*) FROM Reserva r, Servicio s, Producto p " + join + fechas);
 		q.setResultClass(Integer.class);
 		q.setParameters(id ,fechaCo, fechaFi, fechaCo, fechaFi, fechaCo, fechaFi );
 		return (Integer) q.executeUnique();
