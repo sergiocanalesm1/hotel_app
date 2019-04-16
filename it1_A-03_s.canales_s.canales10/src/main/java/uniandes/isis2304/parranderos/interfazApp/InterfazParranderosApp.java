@@ -283,10 +283,11 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		String tipoDoc = JOptionPane.showInputDialog (this, "Tipo de Documento", "Registrar Usuario", JOptionPane.QUESTION_MESSAGE);
     		String numeroDoc = JOptionPane.showInputDialog (this, "Numero documento", "Registrar Usuario", JOptionPane.QUESTION_MESSAGE);
     		String correo = JOptionPane.showInputDialog (this, "Correo", "Registrar Usuario", JOptionPane.QUESTION_MESSAGE);
-    		if (nombre != null && rol != null && edad != null && tel != null && tipoDoc != null && numeroDoc != null && correo != null )
+    		String idConvencion  = JOptionPane.showInputDialog (this, "id Convencion.\n En el caso de no tener ingresar N/A", "Registrar Usuario", JOptionPane.QUESTION_MESSAGE);
+    		if (nombre != null && rol != null && edad != null && tel != null && tipoDoc != null && numeroDoc != null && correo != null && idConvencion != null )
     		{
     			
-        		Usuario u = hotelAndes.registrarUsuario ( nombre,  edad,  tel,  tipoDoc, numeroDoc,  correo, rol );
+        		Usuario u = hotelAndes.registrarUsuario ( nombre,  edad,  tel,  tipoDoc, numeroDoc,  correo, rol, idConvencion );
         		if (u == null)
         		{
         			throw new Exception ("No se pudo crear un rol de usuario con nombre: " + numeroDoc);

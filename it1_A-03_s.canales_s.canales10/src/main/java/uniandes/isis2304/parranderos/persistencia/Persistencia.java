@@ -419,7 +419,7 @@ public class Persistencia
           log.trace ("Inserción de usuario: " + numeroDoc + ": " + tuplasInsertadas + " tuplas insertadas");
           
           return new Usuario(  nombre,  edad,  tel,  tipoDoc,  numeroDoc,
-      			 correo,  null,  null,  cargo,  idConvencion);
+      			 correo,  null,  null,  cargo,  null, idConvencion);
       }
       catch (Exception e)
       {

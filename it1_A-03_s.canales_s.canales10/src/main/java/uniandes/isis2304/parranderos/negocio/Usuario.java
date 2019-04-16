@@ -139,6 +139,7 @@ public class Usuario
 		this.numeroHabitacion = numeroHabitacion;
 		this.idConvencion = idConvencion;
 	}
+	
 	public Usuario()
 	{
 		

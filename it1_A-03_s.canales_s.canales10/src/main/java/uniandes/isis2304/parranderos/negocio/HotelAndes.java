@@ -96,14 +96,20 @@ public class HotelAndes
 	}
 
 	public Usuario registrarUsuario(String nombre, String edad, String tel, String tipoDoc, String numeroDoc,
-			String correo, String cargo) throws Exception {
+			String correo, String cargo, String idConvencion) throws Exception {
 		log.info("Adicionando usuario: "+ nombre);
 		Usuario us = null;
 		RolDeUsuario rol = p.getRolDeUsuario( cargo );
 		if( rol != null )
 		{
-			us = p.adicionarUsuario(  nombre,  edad,  tel,  tipoDoc,  numeroDoc,
-					correo,  cargo);
+			if( idConvencion.equals( "N/A") ) idConvencion = null;
+			else
+			{
+				if( !p.getRolDeUsuarioById( idConvencion ).equals( "Organizador Eventos"))throw new Exception("El id de convencion no es valido");
+				us = p.adicionarUsuario(  nombre,  edad,  tel,  tipoDoc,  numeroDoc,
+						correo,  cargo, idConvencion);
+			}
+			
 
 		}
 		else
