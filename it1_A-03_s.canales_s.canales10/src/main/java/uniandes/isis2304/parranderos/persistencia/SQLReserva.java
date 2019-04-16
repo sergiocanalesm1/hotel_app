@@ -106,6 +106,7 @@ public class SQLReserva {
 
 	public long cancelarReservasConvencion(PersistenceManager pm, String idOrganizador) throws Exception{
 		Query q = pm.newQuery(SQL, "DELETE " + persistencia.darTablaReserva() + " WHERE idUsuario = ?");// no tiene set result class
+		q.setResultClass(Long.class);
 		q.setParameters(idOrganizador);
 		return (long) q.executeUnique();
 	}
