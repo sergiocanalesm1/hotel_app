@@ -25,12 +25,28 @@ public class Usuario
 	private String rol;
 	
 	private String numeroHabitacion;
+	
+	private String idConvencion;
 
 
 
 	public String getNombre() {
 		return nombre;
 	}
+	
+	
+
+	public String getIdConvencion() {
+		return idConvencion;
+	}
+
+
+
+	public void setIdConvencion(String idConvencion) {
+		this.idConvencion = idConvencion;
+	}
+
+
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -110,7 +126,7 @@ public class Usuario
 
 	public Usuario( String nombre, String edad, String telefono, String tipoDocumento,
 			String numeroDocumento, String correo, Timestamp fechaLlegada, Timestamp fechaSalida, String rol,
-			String numeroHabitacion) {
+			String numeroHabitacion, String idConvencion) {
 		this.nombre = nombre;
 		this.edad = edad;
 		this.telefono = telefono;
@@ -121,6 +137,7 @@ public class Usuario
 		this.fechaSalida = fechaSalida;
 		this.rol = rol;
 		this.numeroHabitacion = numeroHabitacion;
+		this.idConvencion = idConvencion;
 	}
 	public Usuario()
 	{
