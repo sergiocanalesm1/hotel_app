@@ -730,8 +730,10 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		
     		if(idUsuario != null )
     		{
-    			String message = "Se borraron "+hotelAndes.cancelarReservaConvencion( idUsuario )+" reservas de la base de datos.";
-    			panelDatos.actualizarInterfaz(message+"\nSuccess");
+    			long total = hotelAndes.registrarFinConvencion( idUsuario );
+    			String message1 = "**********************************************************+\n";
+    			String message2 = "La cuenta para la convencion con ID: "+ idUsuario + "\ntiene un total de: "+total;
+    			panelDatos.actualizarInterfaz(message1+message2+"\nSuccess"+message1);
     		}
     		else 
 			{
