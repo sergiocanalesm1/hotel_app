@@ -377,9 +377,9 @@ public class HotelAndes
 		
 	}
 
-	public void cancelarReservaConvencion(String idUsuario) 
+	public void cancelarReservaConvencion(String idUsuario) throws Exception
 	{
-		long a = p.cancelarReservasConvecion( idUsuario );
+		long a = p.cancelarReservasConvencion( idUsuario );
 		System.out.println(a);
 	}
 }

@@ -707,9 +707,8 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		{
     			if( hotelAndes.getUsuario(idUsuario) == null) throw new Exception ("No existe el usuario");
     			hotelAndes.cancelarReservaConvencion( idUsuario );
+    			panelDatos.actualizarInterfaz("Fin del requerimiento");
     		}
-    				
-    		
     		else 
 			{
     			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");

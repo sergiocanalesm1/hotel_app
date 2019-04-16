@@ -718,7 +718,8 @@ public class Persistencia
 	public long cancelarReservasConvencion(String idOrganizador){
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
-        idOrganizador += ":%";//: para coger el id del organizador y % para que el LIKE funcione
+        idOrganizador += ":&";//: para coger el id del organizador y % para que el LIKE funcione
+        System.out.println(idOrganizador);
         try
         {
             tx.begin();
@@ -731,7 +732,7 @@ public class Persistencia
         catch (Exception e)
         {
 //        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	log.error ("Binirin: Exception : " + e.getMessage() + "\n" + darDetalleException(e));
         	return -1;
         }
         finally
