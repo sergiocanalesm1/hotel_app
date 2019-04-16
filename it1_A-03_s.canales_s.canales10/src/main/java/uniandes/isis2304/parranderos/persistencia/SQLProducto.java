@@ -41,4 +41,14 @@ public class SQLProducto {
 		return (Producto) q.executeUnique();
 	}
 
+	
+
+	public long cancelarReservasConvencion(PersistenceManager pm, String idOrganizador) {
+		
+		Query q = pm.newQuery(SQL, "DELETE FROM " + persistencia.darTablaProducto() + " WHERE nombre LIKE ?");
+		q.setParameters(idOrganizador);
+		return (long) q.executeUnique();
+		
+	}
+
 }
