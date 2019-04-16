@@ -718,7 +718,7 @@ public class Persistencia
 	public long cancelarReservasConvencion(String idOrganizador){
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
-        idOrganizador += ":&";//: para coger el id del organizador y % para que el LIKE funcione
+        idOrganizador += ":%";//: para coger el id del organizador y % para que el LIKE funcione
         System.out.println(idOrganizador);
         try
         {

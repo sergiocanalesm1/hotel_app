@@ -716,7 +716,8 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     	}
     	catch( Exception e)
     	{
-			panelDatos.actualizarInterfaz(generarMensajeError(e));
+    		String message = "\nError. Vuelva a intentar";
+			panelDatos.actualizarInterfaz(generarMensajeError(e)+message);
     	}
     }
     public void registrarFinConvencion()
