@@ -736,7 +736,7 @@ public class Persistencia
         catch (Exception e)
         {
 //        	e.printStackTrace();
-        	log.error ("Binirin: Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
         	return -1;
         }
         finally
