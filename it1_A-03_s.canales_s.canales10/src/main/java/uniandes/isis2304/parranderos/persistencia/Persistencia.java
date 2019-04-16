@@ -365,6 +365,9 @@ public class Persistencia
 	public int getCantidadReservada(Long id, Timestamp fechaInic, Timestamp fechaFin){
 		return sqlReserva.getCanitdadReservada(pmf.getPersistenceManager(), id, fechaInic, fechaFin);
 	}
+	public String getRolDeUsuarioById(String id){
+		return sqlUsuario.getRolDeUsuarioById(pmf.getPersistenceManager(), id);
+	}
 
 	/* ****************************************************************
 	 * 			REQUERIMIENTOS FUNCIONALES

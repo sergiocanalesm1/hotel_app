@@ -48,14 +48,24 @@ public class SQLUsuario {
 		public String updateReserva(PersistenceManager pm,String idUsuario, Timestamp llegada) {
 			
 			Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaUsuario () + " SET fechaLlegada = ? WHERE idUsuario = ?");
-		     q.setParameters(llegada, idUsuario );
-		     return  q.executeUnique() + "";
+			q.setResultClass(String.class);
+			q.setParameters(llegada, idUsuario );
+		    return (String) q.executeUnique();
 		}
 
 		public String updateReservaBySalida(PersistenceManager pm, String idUsuario, Timestamp fechaSalida) {
 			Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaUsuario () + " SET fechafin = ? WHERE idUsuario = ?");
-		     q.setParameters(fechaSalida, idUsuario );
-		     return  q.executeUnique() + "";
+			q.setResultClass(String.class);
+		    q.setParameters(fechaSalida, idUsuario );
+		     
+		     return (String) q.executeUnique();
+		}
+
+		public String getRolDeUsuarioById(PersistenceManager pm, String id) {
+			Query q = pm.newQuery(SQL, "SELECT rol FROM " + persistencia.darTablaUsuario() + " WHERE numeroDocumento = ?");
+			q.setResultClass(String.class);
+			q.setParameters(id);
+			return (String) q.executeUnique();
 		}
 	
 	
