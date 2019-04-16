@@ -24,11 +24,19 @@ public class SQLConsumo {
 		
 		persistencia = p;
 	}
-	public long adicionarConsumo(PersistenceManager pm, long id, String valor, Timestamp fechaRegistro,	String numeroHabitacionACargar, String idServicioACargar) {
+	public long adicionarConsumo(PersistenceManager pm, long id, String valor, Timestamp fechaRegistro,	String numeroHabitacionACargar, String idServicioACargar, String idConvencion) {
 		
-		Query q = pm.newQuery(SQL, "INSERT INTO " + persistencia.darTablaConsumo() + " (id, valor, fechaRegistro,numeroHabitacionACargar, idserviciocargado) values (?,?,?,?,?)");
-		q.setParameters(id, valor, fechaRegistro,numeroHabitacionACargar, idServicioACargar);
+		Query q = pm.newQuery(SQL, "INSERT INTO " + persistencia.darTablaConsumo() + " (id, valor, fechaRegistro,numeroHabitacionACargar, idserviciocargado, idConvencion) values (?,?,?,?,?,?)");
+		q.setParameters(id, valor, fechaRegistro,numeroHabitacionACargar, idServicioACargar,idConvencion);
 		return (long) q.executeUnique() ;
+	}
+	public long finDeConvencion(PersistenceManager pm, String idOrganizador) {
+		Query q = pm.newQuery(SQL ," SELECT SUM(con.valor) "
+				+ "FROM CONSUMO con, USUARIO usu "
+				+ "WHERE usu.id = ? AND con.idConvencion = usu.id " );
+		q.setResultClass(Long.class);
+		q.setParameters(idOrganizador);
+		return (long) q.executeUnique();
 	}
 
 }
