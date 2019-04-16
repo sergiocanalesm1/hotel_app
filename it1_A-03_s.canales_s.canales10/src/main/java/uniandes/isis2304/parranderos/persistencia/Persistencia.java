@@ -714,6 +714,35 @@ public class Persistencia
             pm.close();
         }
 	}
+	//RF13 cancelar convención
+	public long cancelarReservasConvencion(String idOrganizador){
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        idOrganizador += ":%";//: para coger el id del organizador y % para que el LIKE funcione
+        try
+        {
+            tx.begin();
+            long answer = sqlProducto.cancelarReservasConvencion(pmf.getPersistenceManager(), idOrganizador);//se borra el producto para que la reserva desaparezca
+            tx.commit();
+
+            log.trace ("id organizador de las reservas borradas: " + idOrganizador + " - sql answer: " + answer);
+            return answer;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
 
 
 	
