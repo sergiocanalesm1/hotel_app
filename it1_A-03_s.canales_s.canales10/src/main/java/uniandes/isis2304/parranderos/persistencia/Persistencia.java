@@ -405,7 +405,7 @@ public class Persistencia
 	
 	//registrarUsuario RF2
 	public Usuario adicionarUsuario(String nombre,  String edad,  String tel,  String tipoDoc, String numeroDoc,
-			 String correo,  String cargo) 
+			 String correo,  String cargo , String idConvencion) 
 	{
 	  PersistenceManager pm = pmf.getPersistenceManager();
       Transaction tx=pm.currentTransaction();
@@ -413,13 +413,13 @@ public class Persistencia
       {
           tx.begin();
           String tuplasInsertadas = sqlUsuario.adicionarUsuario(pm,nombre,  edad,  tel,  tipoDoc,  numeroDoc,
-					 correo,  null,  null,  cargo,  null);
+					 correo,  null,  null,  cargo,  null, idConvencion);//las fechas y la habitación comienzan en nulo
           tx.commit();
           
           log.trace ("Inserción de usuario: " + numeroDoc + ": " + tuplasInsertadas + " tuplas insertadas");
           
           return new Usuario(  nombre,  edad,  tel,  tipoDoc,  numeroDoc,
-      			 correo,  null,  null,  cargo,  null);
+      			 correo,  null,  null,  cargo,  idConvencion);
       }
       catch (Exception e)
       {
