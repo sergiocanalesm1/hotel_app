@@ -726,11 +726,12 @@ public class Persistencia
         try
         {
             tx.begin();
-            long answer = sqlProducto.cancelarReservasConvencion(pmf.getPersistenceManager(), idOrganizador);//se borra el producto para que la reserva desaparezca
+            long tuplasBorradasServicios = sqlProducto.cancelarReservasConvencion(pmf.getPersistenceManager(), idOrganizador);//se borra el producto para que la reserva desaparezca
+            long tuplasBorradasAlojamiento = sqlReserva.cancelarReservasConvencion(pmf.getPersistenceManager(), idOrganizador);
             tx.commit();
 
-            log.trace ("id organizador de las reservas borradas: " + idOrganizador + " - sql answer: " + answer);
-            return answer;
+            log.trace ("id organizador de las reservas borradas: " + idOrganizador + " - sql answer: " + tuplasBorradasAlojamiento + tuplasBorradasServicios);
+            return tuplasBorradasAlojamiento + tuplasBorradasServicios;
         }
         catch (Exception e)
         {

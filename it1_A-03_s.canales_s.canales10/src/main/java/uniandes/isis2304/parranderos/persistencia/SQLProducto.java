@@ -45,7 +45,7 @@ public class SQLProducto {
 
 	public long cancelarReservasConvencion(PersistenceManager pm, String idOrganizador) throws Exception
 	{
-		Query q = pm.newQuery(SQL, "DELETE " + persistencia.darTablaProducto() + " WHERE nombre like ?");
+		Query q = pm.newQuery(SQL, "DELETE " + persistencia.darTablaProducto() + " WHERE nombre like ?");//no tiene set result class
 		q.setParameters(idOrganizador);
 		return (long)q.executeUnique();
 		
