@@ -478,6 +478,15 @@ public class HotelAndes
 		System.out.println("termino 2");
 		
 		//Alojamiento
+		for (int i = 0; i < habitaciones.length; i++) {
+			String numeroHabitacion = habitaciones[i];
+			long a = p.cancelarMantenimientoAlojamiento(numeroHabitacion);
+		}
+		//Servicios
+		for (int j = 0; j < servicios.length; j++) {
+			String idMantenimiento = servicios[j];
+			p.cancelarMantenimientoServicio(idMantenimiento);
+		}
 		
 	}
 }
