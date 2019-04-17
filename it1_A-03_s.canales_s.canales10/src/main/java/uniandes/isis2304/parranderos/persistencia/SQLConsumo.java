@@ -47,7 +47,7 @@ public class SQLConsumo {
 				"                SELECT idServicioCargado , COUNT(idserviciocargado) as conteo\r\n" + 
 				"                FROM CONSUMO\r\n" + 
 				"                GROUP BY idServicioCargado\r\n" + 
-				"                WHERE fechaRegistro >= ? AND fechaRegistro <= ?\r\n" + 
+				"                WHERE fechaRegistro >= ? AND fechaRegistro <= ? \r\n" + 
 				"     \r\n" + 
 				"            )\r\n" + 
 				"        \r\n" + 
