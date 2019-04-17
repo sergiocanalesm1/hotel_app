@@ -754,12 +754,14 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     	try 
     	{
     		String habitacionesParaMantenimiento = JOptionPane.showInputDialog (this, "A cual(es) habitaciones desea hacerle mantenimiento?\nFormato: <Numero de habitacion 1>;<Numero de habitacion 2>...", "Registrar Mantenimiento", JOptionPane.QUESTION_MESSAGE);
+    		String fechaInicioMantenimiento = JOptionPane.showInputDialog (this, "Fecha inicio para mantenimiento de alojamiento\nFormato: yyyy-mm-dd", "Registrar Mantenimiento", JOptionPane.QUESTION_MESSAGE);
+    		String fechaFinMantenimiento = JOptionPane.showInputDialog (this, "Fecha fin para mantenimiento de alojamiento\nFormato: yyyy-mm-dd", "Registrar Mantenimiento", JOptionPane.QUESTION_MESSAGE);
     		String serviciosParaMantenimiento = JOptionPane.showInputDialog (this, "A cual(es) servicios desea hacerle mantenimiento?\nFormato: <ID Servicio 1>;<ID Servicio 2>...", "Registrar Mantenimiento", JOptionPane.QUESTION_MESSAGE);
-    		String fechaInicioMantenimiento = JOptionPane.showInputDialog (this, "Fecha inicio\nFormato: yyyy-mm-dd", "Registrar Mantenimiento", JOptionPane.QUESTION_MESSAGE);
-    		String fechaFinMantenimiento = JOptionPane.showInputDialog (this, "Fecha fin\nFormato: yyyy-mm-dd", "Registrar Mantenimiento", JOptionPane.QUESTION_MESSAGE);
+    		String xxx = JOptionPane.showInputDialog (this, "Fecha inicio para mantenimiento de servicios\nFormato: yyyy-mm-dd", "Registrar Mantenimiento", JOptionPane.QUESTION_MESSAGE);
+    		String xx = JOptionPane.showInputDialog (this, "Fecha para mantenimiento de servicios\nFormato: yyyy-mm-dd", "Registrar Mantenimiento", JOptionPane.QUESTION_MESSAGE);
 
     		
-    		if(habitacionesParaMantenimiento != null && serviciosParaMantenimiento != null && fechaInicioMantenimiento != null && fechaFinMantenimiento != null )
+    		if(habitacionesParaMantenimiento != null && serviciosParaMantenimiento != null && fechaInicioMantenimiento != null && fechaFinMantenimiento != null && xxx != null & xx != null)
     		{
     			hotelAndes.registarMantenimientoParaAlojamientoYServicio( habitacionesParaMantenimiento, serviciosParaMantenimiento, fechaInicioMantenimiento, fechaFinMantenimiento );
     			panelDatos.actualizarInterfaz("Success");
@@ -777,7 +779,27 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     }
     public void registrarFinMantenimientoAlojamientosYServicios()
     {
-    	
+    	try 
+    	{
+    		String habitacionesParaFinalizarMantenimiento = JOptionPane.showInputDialog (this, "A cual(es) habitaciones desea hacerle mantenimiento?\nFormato: <Numero de habitacion 1>;<Numero de habitacion 2>...", "Finalizar Mantenimiento", JOptionPane.QUESTION_MESSAGE);
+    		String serviciosParaFinalizarMantenimiento = JOptionPane.showInputDialog (this, "A cual(es) servicios desea hacerle mantenimiento?\nFormato: <ID Servicio 1>;<ID Servicio 2>...", "Finalizar Mantenimiento", JOptionPane.QUESTION_MESSAGE);
+
+    		
+    		if(habitacionesParaFinalizarMantenimiento != null && serviciosParaFinalizarMantenimiento != null)
+    		{
+    			hotelAndes.finalizarMantenimientoParaAlojamientoYServicio( habitacionesParaFinalizarMantenimiento, serviciosParaFinalizarMantenimiento );
+    			panelDatos.actualizarInterfaz("Success");
+    		}
+    		else 
+			{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+    	}
+    	catch( Exception e)
+    	{
+    		String message = "\nError. Vuelva a intentar";
+			panelDatos.actualizarInterfaz(generarMensajeError(e)+message);
+    	}
     }
     
     

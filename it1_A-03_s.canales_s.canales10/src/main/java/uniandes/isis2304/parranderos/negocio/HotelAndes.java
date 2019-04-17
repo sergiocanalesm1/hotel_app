@@ -411,6 +411,8 @@ public class HotelAndes
 	public void registarMantenimientoParaAlojamientoYServicio(String habitacionesParaMantenimiento,
 			String serviciosParaMantenimiento, String fechaInicioMantenimiento, String fechaFinMantenimiento) throws Exception
 	{
+		fechaInicioMantenimiento+=" 00:00:00";
+		fechaFinMantenimiento+=" 00:00:00";
 		//Verificar la existencia de las habitaciones y los servicios
 		
 		//Ver que existan las habitaciones
@@ -429,14 +431,27 @@ public class HotelAndes
 		updateFechasDeMantenimientoParaAlojamientoYServicios(arrHabitacionesParaMantenimiento, arrServiciosParaMantenimiento, fechaInicioMantenimiento, fechaFinMantenimiento);
 		//ALOJAMIENTO
 		//RESERVAS
+		
 		//Agregar reserva de mantenimiento para el tipo de habitacion del numero de habitacion
+		for (int i = 0; i < arrHabitacionesParaMantenimiento.length; i++) {
+			Reserva res = p.adicionarReserva("MANTENIMIENTO", 0, Timestamp.valueOf(fechaInicioMantenimiento), Timestamp.valueOf(fechaFinMantenimiento), p.getHabitacion(arrHabitacionesParaMantenimiento[i]).getTipoHabitacion(), null, null, "-1");
+			System.out.println(res.getPlanConsumo());
+			//p.adicionarReservaMantenimientoAlojamiento( fechaInicioMantenimiento, fechaFinMantenimiento, p.getHabitacion(arrHabitacionesParaMantenimiento[i]).getTipoHabitacion()  );
+			
+		}
+		for (int i = 0; i < arrServiciosParaMantenimiento.length; i++) {
+			Producto pro = p.adicionarProducto("MANTENIMIENTO", "0", arrServiciosParaMantenimiento[i]);
+			System.out.println("prod: "+ pro.getNombre());
+			Reserva reser = p.adicionarReserva("MANTENIMIENTO", 0, Timestamp.valueOf(fechaInicioMantenimiento), Timestamp.valueOf(fechaFinMantenimiento), null, null, null, pro.getId());
+			System.out.println(reser.getPlanConsumo());
+			//p.adicionarReservaMantenimientoServicios( fechaInicioMantenimiento, fechaFinMantenimiento, arrServiciosParaMantenimiento[i]);
+		}
 		
 	}
 	private void updateFechasDeMantenimientoParaAlojamientoYServicios(String[] arrHabitacionesParaMantenimiento,
 			String[] arrServiciosParaMantenimiento, String fechaInicioMantenimiento, String fechaFinMantenimiento)
 	{
-		fechaInicioMantenimiento+=" 00:00:00";
-		fechaFinMantenimiento+=" 00:00:00";
+		
 		//update fechas de mantenimiento para habitaciones
 		for (int i = 0; i < arrHabitacionesParaMantenimiento.length; i++) {
 			p.registrarMantenimientoAlojamiento(arrHabitacionesParaMantenimiento[i], fechaInicioMantenimiento, fechaFinMantenimiento);
@@ -447,5 +462,22 @@ public class HotelAndes
 			p.registrarMantenimientoServicios( arrServiciosParaMantenimiento[j], fechaInicioMantenimiento, fechaFinMantenimiento);
 		}
 		System.out.println("termino 4");
+	}
+
+	public void finalizarMantenimientoParaAlojamientoYServicio(String habitacionesParaFinalizarMantenimiento,
+			String serviciosParaFinalizarMantenimiento)throws Exception {
+		String[] habitaciones = habitacionesParaFinalizarMantenimiento.split(";");
+		String[] servicios = serviciosParaFinalizarMantenimiento.split(";");
+		for (int i = 0; i < habitaciones.length; i++) {
+			if( p.getHabitacion(habitaciones[i]) == null ) throw new Exception("No existe la habitacion " +habitaciones[i]);
+		}
+		System.out.println("termino 1");
+		for (int j = 0; j < servicios.length; j++) {
+			if(p.getServicio(servicios[j]) == null ) throw new Exception("No existe el servicio con ID " + servicios[j]);
+		}
+		System.out.println("termino 2");
+		
+		//Alojamiento
+		
 	}
 }

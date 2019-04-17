@@ -481,7 +481,7 @@ public class Persistencia
 
 			log.trace ("Inserción de tipo de habitación: " + numero + ": " + tuplasInsertadas + " tuplas insertadas");
 
-			return new Habitacion(numero, getTipoHabitacion(tipoHabitacion), null, null);//fechas de mantenimiento null
+			return new Habitacion(numero, tipoHabitacion, null, null);//fechas de mantenimiento null
 		}
 		catch (Exception e)
 		{

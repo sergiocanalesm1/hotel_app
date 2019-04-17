@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class Habitacion {
 	private String numero;
 	
-	private TipoHabitacion tipoHabitacion;
+	private String tipoHabitacion;
 	
 	private Timestamp inicioMantenimiento;
 	
@@ -13,7 +13,7 @@ public class Habitacion {
 
 
 
-	public Habitacion(String numero, TipoHabitacion tipoHabitacion, Timestamp inicioMantenimiento,
+	public Habitacion(String numero, String tipoHabitacion, Timestamp inicioMantenimiento,
 			Timestamp finMantenimiento) {
 		this.numero = numero;
 		this.tipoHabitacion = tipoHabitacion;
@@ -29,10 +29,10 @@ public class Habitacion {
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-	public TipoHabitacion getTipoHabitacion() {
+	public String getTipoHabitacion() {
 		return tipoHabitacion;
 	}
-	public void setTipoHabitacion(TipoHabitacion tipoHabitacion) {
+	public void setTipoHabitacion(String tipoHabitacion) {
 		this.tipoHabitacion = tipoHabitacion;
 	}
 	public Timestamp getInicioMantenimiento() {
