@@ -26,6 +26,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.JDODataStoreException;
@@ -605,10 +606,11 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     	{
     		String idUsuario = JOptionPane.showInputDialog (this, "Id Usuario", "Registrar Llegada Cliente", JOptionPane.QUESTION_MESSAGE);
     		String fechaLlegada = JOptionPane.showInputDialog (this, "Fecha comienzo\nFormato: yyyy-mm-dd", "Registrar Llegada Cliente", JOptionPane.QUESTION_MESSAGE);
-    		if (idUsuario != null && fechaLlegada != null   )
+    		String idConvencion = JOptionPane.showInputDialog (this, "ID Convencion", "Registrar Llegada Cliente", JOptionPane.QUESTION_MESSAGE);
+    		if (idUsuario != null && fechaLlegada != null && idConvencion != null  )
     		{
     			
-        		if (!hotelAndes.registrarLlegadaCliente(  idUsuario, fechaLlegada+" 00:00:00" ))
+    			if (!hotelAndes.registrarLlegadaCliente(  idUsuario, fechaLlegada+" 00:00:00", idConvencion ) )
         		{
         			throw new Exception ("No se pudo registrar la llegada del cliente con id" + idUsuario);
         		}
@@ -825,11 +827,18 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     {
     	try 
     	{
-    		String[] respuesta = hotelAndes.serviciosSinMuchaDemanda();
+    		ArrayList<String> respuesta = hotelAndes.serviciosSinMuchaDemanda();
+    		String message = "No hay servicios que sean demandados menos de tres veces semanalmente";
+    		if( !respuesta.isEmpty() ) message = "Los servicios sin mucha demanda son:\n\n";
+    		panelDatos.actualizarInterfaz(message);
+    		for (String it : respuesta) {
+				panelDatos.actualizarInterfaz(it+"\n");
+			}
+    		panelDatos.actualizarInterfaz("Fin requerimiento");
 		} 
     	catch (Exception e) 
     	{
-			
+			panelDatos.actualizarInterfaz(e.getMessage());
 		}
     }
     

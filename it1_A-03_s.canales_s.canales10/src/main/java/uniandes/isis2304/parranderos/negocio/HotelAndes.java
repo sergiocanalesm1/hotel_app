@@ -15,6 +15,7 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
+import java.math.BigInteger;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -211,19 +212,25 @@ public class HotelAndes
 	{
 		log.info("Adicionando reserva para usuario: "+ idUsuario);
 
-		if( p.getUsuario( idUsuario) == null )
-			throw new Exception("No existe el usuario");
-		//TODO arreglar interfaz para saber el id de la convención
+		if( p.getUsuario( idUsuario) == null ) throw new Exception("No existe el usuario");
+		if( idConvencion.equals("N/A")) idConvencion = null;
+		else
+		{
+			if( p.getRolDeUsuario(idConvencion) == null ) throw new Exception( "El id de convencion no existe.");
+		}
 		String logrado = p.registrarLlegadaUsuario( idUsuario, fechaLlegada,idConvencion);
-		//TODO calcular valor que sale de multiplicar el costo por noche del tipo de habitación por el número de noches (opcional) por el plan consumo
 		String numeroHabitacion = p.getNumeroHabitacion(idUsuario);
 		Reserva reserva = p.getReserva(idUsuario, fechaLlegada);
 		//el de la reserva por si hubo cambios por MANTENIMIENTO
 		Double costoPorNoche = p.getTipoHabitacion(reserva.getTipoHabitacion()).getCostoPorNoche();
 		Timestamp llegadaTS = Timestamp.valueOf(fechaLlegada);
 		Timestamp salidaTs = reserva.getFechaFin();
+		
+		long milliseconds = salidaTs.getTime() - llegadaTS.getTime();
+		int days = (int) (milliseconds / 1000 / 60 / 60 / 24);
+		double valor = days * costoPorNoche;
 		//adicionar consumo
-		p.adicionarConsumo(valor, fechaLlegada, p.getNumeroHabitacion(idUsuario), null, idConvencion);
+		p.adicionarConsumo(valor+"", llegadaTS, p.getNumeroHabitacion(idUsuario), null, idConvencion);
 		log.info ("Adicionando plan consumo: "+ logrado);
 		return !logrado.equals("");
 	}
@@ -500,25 +507,28 @@ public class HotelAndes
 		
 	}
 
-	public String[] serviciosSinMuchaDemanda() 
+	public ArrayList<String> serviciosSinMuchaDemanda() 
 	{
+		
 		Calendar ca = Calendar.getInstance();
 		Date timeNow = ca.getTime();
 		ca.add(Calendar.YEAR, -1);
 		Date startTime = ca.getTime();
 		System.out.println("Present year: "+timeNow);
 		System.out.println("Past year: "+startTime);
-		int contador = 0;
+		ArrayList<String> servicios = p.getAllServices();
 		while( startTime.before(timeNow) )
 		{
+			Date base = (Date) startTime.clone();
 			ca.add(Calendar.WEEK_OF_YEAR, 1);
 			startTime = ca.getTime();
-			System.out.println(startTime);
-			contador++;
+			ArrayList<String> mayores = p.demandaMayorA3Semanal( new Timestamp(base.getTime()),new Timestamp(startTime.getTime()) );
+			for (int i = 0; i < mayores.size(); i++) {
+				if( servicios.contains(mayores.get(i))) servicios.remove(mayores.get(i));
+			}
 		}
-		System.out.println(contador);
 			
 			
-		return null;
+		return servicios;
 	}
 }
