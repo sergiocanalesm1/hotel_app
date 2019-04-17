@@ -374,9 +374,9 @@ public class Persistencia
 	public String getPagosUsuario(String idUsuario) {
 		return sqlUsuario.getPagosUsuarios(pmf.getPersistenceManager() , idUsuario);
 	}
-//public void updatePagosUsuario(String idUsuario, String pago ) {
-//		
-//	}
+	public List<Usuario> getBuenosClientes(){
+		return sqlUsuario.getBuenosCLientes(pmf.getPersistenceManager());
+	}
 
 
 	/* ****************************************************************
@@ -919,6 +919,40 @@ public class Persistencia
 			pm.close();
 		}
 		
+	}
+	public void updatePagosUsuario(String idUsuario, String pago ) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			
+			tx.begin();
+			sqlUsuario.updatePagos(pm, pago, idUsuario);
+			tx.commit();
+
+			log.trace ("modificando pagos de usuario con id " + idUsuario + "  nuevo número de pagos: " + pago );
+
+		}
+		catch (Exception e)
+		{
+			//	      	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+	
+	public List<String> getAllServices(){
+		return sqlServicio.getAllServices(pmf.getPersistenceManager());
+	}
+	public List<String> demandaMayorA3Semanal(Timestamp inicio, Timestamp fin){
+		return sqlConsumo.demandaMayorA3Semanal(pmf.getPersistenceManager(), inicio , fin);
 	}
 
 

@@ -1,6 +1,7 @@
 package uniandes.isis2304.parranderos.persistencia;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
@@ -110,7 +111,24 @@ public class SQLUsuario {
 			q.setParameters(idUsuario);
 			return (String) q.executeUnique();
 		}
-	
-	
 
+		public void updatePagos(PersistenceManager pm, String pago, String idUsuario) {
+			
+			Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaUsuario () + " SET pagos = ? WHERE numeroDocumento = ?");
+		    q.setParameters(pago, idUsuario );
+		     
+		    q.executeUnique();
+			
+		}
+
+		public List<Usuario> getBuenosCLientes(PersistenceManager pm) {
+	
+	return null;
+//			Query q = pm.newQuery(SQL,"SELECT pagos FROM USUARIO WHERE numeroDocumento = ?" );
+//			q.setResultClass(String.class);
+//			q.setParameters(idUsuario);
+//			return (String) q.executeUnique();
+		}
+		
 }
+

@@ -1,9 +1,12 @@
 package uniandes.isis2304.parranderos.persistencia;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+
+import uniandes.isis2304.parranderos.negocio.Consumo;
 
 public class SQLConsumo {
 
@@ -37,6 +40,22 @@ public class SQLConsumo {
 		q.setResultClass(Long.class);
 		q.setParameters(idOrganizador);
 		return (long) q.executeUnique();
+	}
+	public List<String> demandaMayorA3Semanal(PersistenceManager persistenceManager, Timestamp inicio, Timestamp fin) {
+		String sql = "SELECT  idServicioCargado\r\n" + 
+				"        FROM(\r\n" + 
+				"                SELECT idServicioCargado , COUNT(idserviciocargado) as conteo\r\n" + 
+				"                FROM CONSUMO\r\n" + 
+				"                GROUP BY idServicioCargado\r\n" + 
+				"                WHERE fechaRegistro >= ? AND fechaRegistro <= ? \r\n" + 
+				"     \r\n" + 
+				"            )\r\n" + 
+				"        \r\n" + 
+				"        WHERE conteo >= 3";
+		Query q = persistenceManager.newQuery(SQL, sql );
+		q.setResultClass(Consumo.class);
+		q.setParameters(inicio, fin);
+		return (List<String>) q.executeList();
 	}
 
 }
