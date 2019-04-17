@@ -507,7 +507,7 @@ public class HotelAndes
 		
 	}
 
-	public ArrayList<String> serviciosSinMuchaDemanda() 
+	public List<String> serviciosSinMuchaDemanda() 
 	{
 		
 		Calendar ca = Calendar.getInstance();
@@ -516,13 +516,13 @@ public class HotelAndes
 		Date startTime = ca.getTime();
 		System.out.println("Present year: "+timeNow);
 		System.out.println("Past year: "+startTime);
-		ArrayList<String> servicios = p.getAllServices();
+		List<String> servicios = p.getAllServices();
 		while( startTime.before(timeNow) )
 		{
 			Date base = (Date) startTime.clone();
 			ca.add(Calendar.WEEK_OF_YEAR, 1);
 			startTime = ca.getTime();
-			ArrayList<String> mayores = p.demandaMayorA3Semanal( new Timestamp(base.getTime()),new Timestamp(startTime.getTime()) );
+			List<String> mayores = p.demandaMayorA3Semanal( new Timestamp(base.getTime()),new Timestamp(startTime.getTime()) );
 			for (int i = 0; i < mayores.size(); i++) {
 				if( servicios.contains(mayores.get(i))) servicios.remove(mayores.get(i));
 			}

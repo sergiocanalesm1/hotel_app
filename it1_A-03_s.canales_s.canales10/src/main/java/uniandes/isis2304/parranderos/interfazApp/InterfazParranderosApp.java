@@ -827,7 +827,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     {
     	try 
     	{
-    		ArrayList<String> respuesta = hotelAndes.serviciosSinMuchaDemanda();
+    		List<String> respuesta = hotelAndes.serviciosSinMuchaDemanda();
     		String message = "No hay servicios que sean demandados menos de tres veces semanalmente";
     		if( !respuesta.isEmpty() ) message = "Los servicios sin mucha demanda son:\n\n";
     		panelDatos.actualizarInterfaz(message);
