@@ -481,7 +481,7 @@ public class Persistencia
 
 			log.trace ("Inserción de tipo de habitación: " + numero + ": " + tuplasInsertadas + " tuplas insertadas");
 
-			return new Habitacion(numero, getTipoHabitacion(tipoHabitacion), null, null);//fechas de mantenimiento null
+			return new Habitacion(numero, tipoHabitacion, null, null);//fechas de mantenimiento null
 		}
 		catch (Exception e)
 		{
@@ -660,6 +660,7 @@ public class Persistencia
 	//RF9
 	public String registrarLlegadaUsuario(String idUsuario, Timestamp llegada, Integer costoReserva){
 
+		//falta asociarlo con la habitación
 		Reserva reserva = getReserva(idUsuario, llegada);
 		if( reserva== null) return "";
 
@@ -671,6 +672,7 @@ public class Persistencia
 		{
 			tx.begin();
 			String id = sqlUsuario.updateReserva(pm,idUsuario, llegada);
+			sqlUsuario.asociarHabitacion(pm, idUsuario);
 			//            sqlConsumo.agregarLlegadaUsuario(pm,);
 			tx.commit();
 			return id;
