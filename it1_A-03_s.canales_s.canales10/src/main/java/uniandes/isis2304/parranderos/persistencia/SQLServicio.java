@@ -63,11 +63,11 @@ public class SQLServicio {
 		return (List<Servicio>) q.executeList();
 	}
 
-	public String registrarMantenimiento(PersistenceManager pm, String idServicio, Timestamp fechaInic, Timestamp fechaFin) {
-			Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaServicio() + " SET inicioMantenimiento = ? , finMantenimiento = ? WHERE idServicio = ?");
-			q.setResultClass(String.class);
-		    q.setParameters(fechaInic, fechaFin, idServicio);
-		    return (String) q.executeUnique();
+	public long registrarMantenimiento(PersistenceManager pm, String idServicio, String fechaInicioMantenimiento, String fechaFinMantenimiento) {
+			Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaServicio() + " SET inicioMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') , finMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') WHERE id = ? ");
+			q.setResultClass(Long.class);
+		    q.setParameters(fechaInicioMantenimiento, fechaFinMantenimiento, Integer.parseInt(idServicio));
+		    return (long) q.executeUnique();
 		
 
 	}

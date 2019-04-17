@@ -220,3 +220,133 @@ ORA-00904: "USU"."ID": invalid identifier
 23:30:04,560 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
 23:30:04,561 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
 23:30:04,597 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:33:08,384 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+23:33:08,387 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+23:33:08,445 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:39:03,477 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+23:39:03,480 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+23:39:03,542 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:39:45,326 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+23:39:45,328 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+23:39:45,392 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:42:42,633 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+23:42:42,635 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+23:42:42,692 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:43:46,392 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+23:43:46,394 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+23:43:46,451 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:45:19,305 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+23:45:19,308 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+23:45:19,360 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:51:15,912 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+23:51:15,914 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+23:51:15,970 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:53:19,065 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+23:53:19,070 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+23:53:19,131 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:57:35,752 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+23:57:35,754 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+23:57:35,806 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+23:58:34,890 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : java.lang.Long cannot be cast to java.lang.String
+
+23:58:34,905 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : java.lang.Long cannot be cast to java.lang.String
+
+23:58:34,913 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : java.lang.Long cannot be cast to java.lang.String
+
+23:58:34,947 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE SERVICIO SET inicioMantenimiento = ? , finMantenimiento = ? WHERE idServicio = ?".
+ORA-00904: "IDSERVICIO": identificador no válido
+
+23:58:34,955 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE SERVICIO SET inicioMantenimiento = ? , finMantenimiento = ? WHERE idServicio = ?".
+ORA-00904: "IDSERVICIO": identificador no válido
+
+00:00:30,059 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+00:00:30,062 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+00:00:30,122 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:00:56,604 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : java.lang.Long cannot be cast to java.lang.String
+
+00:00:56,619 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : java.lang.Long cannot be cast to java.lang.String
+
+00:00:56,626 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : java.lang.Long cannot be cast to java.lang.String
+
+00:00:56,657 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE SERVICIO SET inicioMantenimiento = ? , finMantenimiento = ? WHERE idServicio = ?".
+ORA-00904: "IDSERVICIO": identificador no válido
+
+00:00:56,666 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE SERVICIO SET inicioMantenimiento = ? , finMantenimiento = ? WHERE idServicio = ?".
+ORA-00904: "IDSERVICIO": identificador no válido
+
+00:19:24,103 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+00:19:24,108 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+00:19:24,176 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:20:02,342 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE HABITACION SET inicioMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') , finMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') WHERE numero = ?".
+ORA-01830: la máscara de formato de fecha termina antes de convertir toda la cadena de entrada
+
+00:20:02,358 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE SERVICIO SET inicioMantenimiento = ? , finMantenimiento = ? WHERE idServicio = ?".
+ORA-00904: "IDSERVICIO": identificador no válido
+
+00:28:31,638 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+00:28:31,641 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+00:28:31,674 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:33:44,231 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+00:33:44,234 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+00:33:44,302 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:34:15,831 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : java.lang.Long cannot be cast to java.lang.String
+
+00:34:15,855 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE SERVICIO SET inicioMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') , finMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') WHERE idServicio = ?".
+ORA-00904: "IDSERVICIO": identificador no válido
+
+00:35:35,483 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : java.lang.Long cannot be cast to java.lang.String
+
+00:35:35,494 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE SERVICIO SET inicioMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') , finMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') WHERE idServicio = ?".
+ORA-00904: "IDSERVICIO": identificador no válido
+
+00:40:10,580 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+00:40:10,583 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+00:40:10,649 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:41:42,346 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+00:41:42,348 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+00:41:42,401 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:48:51,522 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+00:48:51,525 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+00:48:51,553 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:49:22,668 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE SERVICIO inicioMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') , finMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') WHERE idServicio = ?".
+ORA-00971: falta la palabra clave SET
+
+00:51:21,531 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+00:51:21,534 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+00:51:21,597 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:51:48,122 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+00:51:48,124 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+00:51:48,175 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:53:32,405 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE SERVICIO inicioMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') , finMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') WHERE id = ?".
+ORA-00971: falta la palabra clave SET
+
+00:53:32,413 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE SERVICIO inicioMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') , finMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') WHERE id = ?".
+ORA-00971: falta la palabra clave SET
+
+00:55:38,984 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+00:55:38,987 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+00:55:39,050 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:56:14,575 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE SERVICIO inicioMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') , finMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') WHERE id = ?".
+ORA-00971: falta la palabra clave SET
+
+00:57:08,976 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+00:57:08,979 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+00:57:09,041 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:57:39,065 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE SERVICIO inicioMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') , finMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') WHERE id = ?".
+ORA-00971: falta la palabra clave SET
+
+00:58:39,386 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+00:58:39,388 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+00:58:39,451 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+00:59:02,613 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE SERVICIO inicioMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') , finMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') WHERE id = ?".
+ORA-00971: falta la palabra clave SET
+
+01:00:58,587 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+01:00:58,590 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+01:00:58,651 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+01:01:25,080 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE SERVICIO inicioMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') , finMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') WHERE id = ?".
+ORA-00971: falta la palabra clave SET
+
+01:06:25,356 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+01:06:25,359 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+01:06:25,421 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD

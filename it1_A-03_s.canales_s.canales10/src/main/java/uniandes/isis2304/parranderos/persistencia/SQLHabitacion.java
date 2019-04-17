@@ -47,6 +47,8 @@ public class SQLHabitacion {
 		q.setResultClass(Habitacion.class);
 		q.setParameters(numeroHab);
 		return (Habitacion) q.executeUnique();
+//		System.out.println(h.getNumeroHabitacion() + " es el número de la hab");
+//		return h;
 
 	}
 	public Integer getCantidadDeHabitacionPorTipo(PersistenceManager pm, String tipo) {
@@ -57,11 +59,11 @@ public class SQLHabitacion {
 		return (Integer) q.executeUnique();
 	}
 
-	public String registrarMantenimiento(PersistenceManager pm, String numeroHabitacion, Timestamp fechaInic, Timestamp fechaFin) {
-			Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaHabitacion () + " SET inicioMantenimiento = ? , finMantenimiento = ? WHERE numero = ?");
+	public long registrarMantenimiento(PersistenceManager pm, String numeroHabitacion, String fechaInic, String fechaFin) {
+			Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaHabitacion () + " SET inicioMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') , finMantenimiento = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') WHERE numero = ?");
 			q.setResultClass(String.class);
 		    q.setParameters(fechaInic, fechaFin, numeroHabitacion);
-		    return (String) q.executeUnique();
+		    return (long) q.executeUnique();
 		
 
 	}

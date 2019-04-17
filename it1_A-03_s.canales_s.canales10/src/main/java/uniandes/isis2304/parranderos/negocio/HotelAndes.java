@@ -435,16 +435,16 @@ public class HotelAndes
 	private void updateFechasDeMantenimientoParaAlojamientoYServicios(String[] arrHabitacionesParaMantenimiento,
 			String[] arrServiciosParaMantenimiento, String fechaInicioMantenimiento, String fechaFinMantenimiento)
 	{
-		Timestamp fechaInicioMantenimientoTS = Timestamp.valueOf(fechaInicioMantenimiento+" 00:00:00");
-		Timestamp fechaFinMantenimientoTS = Timestamp.valueOf(fechaFinMantenimiento+" 00:00:00");
+		fechaInicioMantenimiento+=" 00:00:00";
+		fechaFinMantenimiento+=" 00:00:00";
 		//update fechas de mantenimiento para habitaciones
 		for (int i = 0; i < arrHabitacionesParaMantenimiento.length; i++) {
-			p.registrarMantenimientoAlojamiento(arrHabitacionesParaMantenimiento[i], fechaInicioMantenimientoTS, fechaFinMantenimientoTS);
+			p.registrarMantenimientoAlojamiento(arrHabitacionesParaMantenimiento[i], fechaInicioMantenimiento, fechaFinMantenimiento);
 		}
 		System.out.println("termino 3");
 		//update fechas de mantenimiento para servicios
 		for (int j = 0; j < arrServiciosParaMantenimiento.length; j++) {
-			p.registrarMantenimientoServicios( arrServiciosParaMantenimiento[j], fechaInicioMantenimientoTS, fechaFinMantenimientoTS);
+			p.registrarMantenimientoServicios( arrServiciosParaMantenimiento[j], fechaInicioMantenimiento, fechaFinMantenimiento);
 		}
 		System.out.println("termino 4");
 	}

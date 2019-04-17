@@ -762,6 +762,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		if(habitacionesParaMantenimiento != null && serviciosParaMantenimiento != null && fechaInicioMantenimiento != null && fechaFinMantenimiento != null )
     		{
     			hotelAndes.registarMantenimientoParaAlojamientoYServicio( habitacionesParaMantenimiento, serviciosParaMantenimiento, fechaInicioMantenimiento, fechaFinMantenimiento );
+    			panelDatos.actualizarInterfaz("Success");
     		}
     		else 
 			{

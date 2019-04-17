@@ -787,7 +787,7 @@ public class Persistencia
 
 
 	//REGISTRAR LA ENTRADA A MANTENIMIENTO DE ALOJAMIENTOS DEL HOTEL RF15
-	public String registrarMantenimientoAlojamiento( String numeroHabitacion, Timestamp fechaInic, Timestamp fechaFin){
+	public String registrarMantenimientoAlojamiento( String numeroHabitacion, String fechaInic, String fechaFin){
 
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -795,11 +795,11 @@ public class Persistencia
 		{
 			//Habitaciones
 			tx.begin();
-			String answer = sqlHabitacion.registrarMantenimiento(pm,numeroHabitacion,fechaInic, fechaFin);
+			long answer = sqlHabitacion.registrarMantenimiento(pm,numeroHabitacion,fechaInic, fechaFin);
 			tx.commit();
 
 			log.trace ("mantenimiento en habitación: " + numeroHabitacion + ": sql- " + answer );
-			return answer;
+			return answer + "";
 
 		}
 		catch (Exception e)
@@ -817,7 +817,7 @@ public class Persistencia
 			pm.close();
 		}
 	}
-	public String registrarMantenimientoServicios( String idServicio, Timestamp fechaInic, Timestamp fechaFin){
+	public String registrarMantenimientoServicios( String idServicio, String fechaInicioMantenimiento, String fechaFinMantenimiento){
 
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -825,11 +825,11 @@ public class Persistencia
 		{
 			
 			tx.begin();
-			String answer = sqlServicio.registrarMantenimiento(pm,idServicio,fechaInic, fechaFin);
+			long answer = sqlServicio.registrarMantenimiento(pm,idServicio,fechaInicioMantenimiento, fechaFinMantenimiento);
 			tx.commit();
 
 			log.trace ("mantenimiento a servicio: " + idServicio + ": sql- " + answer );
-			return answer;
+			return answer + "";
 
 		}
 		catch (Exception e)
