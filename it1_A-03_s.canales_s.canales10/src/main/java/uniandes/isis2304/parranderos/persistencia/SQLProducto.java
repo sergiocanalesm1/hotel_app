@@ -51,4 +51,10 @@ public class SQLProducto {
 		
 	}
 
+	public long cancelarMantenimiento(PersistenceManager pm, String idMantenimiento) {
+		Query q = pm.newQuery(SQL, "DELETE " + persistencia.darTablaProducto() + " WHERE idServicio = ?");//no tiene set result class
+		q.setParameters(idMantenimiento);
+		return (long) q.executeUnique();
+	}
+
 }

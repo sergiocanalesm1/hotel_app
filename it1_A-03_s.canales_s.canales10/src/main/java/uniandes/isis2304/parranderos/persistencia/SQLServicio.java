@@ -72,4 +72,11 @@ public class SQLServicio {
 
 	}
 
+	public long cancelarMantenimiento(PersistenceManager pm, String idMantenimiento) {
+		Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaServicio() + " SET inicioMantenimiento = ? , finMantenimiento = ? WHERE id = ?");
+		q.setParameters(null, null, idMantenimiento);
+		q.setResultClass(Long.class);
+		return (long)q.executeUnique();
+	}
+
 }
