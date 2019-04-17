@@ -706,7 +706,6 @@ public class Persistencia
 		{
 			tx.begin();
 			String id = sqlUsuario.updateReservaBySalida(pm,idUsuario, fechaSalida);
-			System.out.println("sale de updateReserva");
 			tx.commit();
 			return id;
 		}
