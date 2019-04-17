@@ -818,6 +818,7 @@ public class Persistencia
 			pm.close();
 		}
 	}
+	//RF 14
 	public String registrarMantenimientoServicios( String idServicio, String fechaInicioMantenimiento, String fechaFinMantenimiento){
 
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -847,6 +848,71 @@ public class Persistencia
 			}
 			pm.close();
 		}
+	}
+	
+	//RF15
+	public long cancelarMantenimientoAlojamiento(String numeroHabitacion) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			
+			tx.begin();
+			long habitacion = sqlHabitacion.cancelarMantenimiento(pm, numeroHabitacion);
+			long reservas = sqlReserva.cancelarMantenimiento(pm, numeroHabitacion);
+			tx.commit();
+
+			log.trace ("cancelando mantenimiento en: " + habitacion + " habitaciones y eliminando:  " + reservas + " reservas" );
+			return habitacion;
+
+		}
+		catch (Exception e)
+		{
+			//	      	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return -1;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+	
+	//RF15
+	public long cancelarMantenimientoServicio(String idMantenimiento) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			
+			tx.begin();
+			long servicios = sqlServicio.cancelarMantenimiento(pm, idMantenimiento);
+			long reservas = sqlProducto.cancelarMantenimiento(pm, idMantenimiento);
+			tx.commit();
+
+			log.trace ("cancelando: " + servicios + " servicios en mantenimiento y: " + reservas + " reservas" );
+			return servicios + reservas;
+
+		}
+		catch (Exception e)
+		{
+			//	      	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return -1;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+		
 	}
 
 

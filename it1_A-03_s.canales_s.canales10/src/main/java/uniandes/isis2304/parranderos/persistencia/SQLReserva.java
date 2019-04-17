@@ -119,6 +119,22 @@ public class SQLReserva {
 		    q.executeUnique();
 		}
 
+	public long cancelarMantenimiento(PersistenceManager pm, String numeroHabitacion) {
+		Query q = pm.newQuery(SQL, "delete reserva where id = (\r\n" + 
+				"select *\r\n" + 
+				"from(\r\n" + 
+				"     select res.id\r\n" + 
+				"     from habitacion hab, reserva res\r\n" + 
+				"     where hab.tipohabitacion = res.tipohabitacion AND res.metododepago = 'MANTENIMIENTO' AND hab.numero = ? AND hab.iniciomantenimiento = res.fechacomienzo AND hab.finmantenimiento = res.fechafin\r\n" + 
+				" )\r\n" + 
+				" where rownum = 1\r\n" + 
+				" )");
+		q.setResultClass(Long.class);
+		q.setParameters(numeroHabitacion);
+		return (long) q.executeUnique();
+		
+	}
+
 	
 
 	

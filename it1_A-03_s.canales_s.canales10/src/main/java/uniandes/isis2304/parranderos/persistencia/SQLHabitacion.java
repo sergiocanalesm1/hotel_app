@@ -68,4 +68,11 @@ public class SQLHabitacion {
 
 	}
 
+	public long cancelarMantenimiento(PersistenceManager pm, String numeroHabitacion) {
+		Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaHabitacion() + " SET inicioMantenimiento = ? , finMantenimiento = ? WHERE numero = ?");
+		q.setParameters(null, null, numeroHabitacion);
+		q.setResultClass(Long.class);
+		return (long)q.executeUnique();
+	}
+
 }
