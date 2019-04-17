@@ -727,15 +727,15 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 
     	try 
     	{
-    		String idUsuario = JOptionPane.showInputDialog (this, "Digite por favor el documento de identidad", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
+    		String idUsuario = JOptionPane.showInputDialog (this, "Digite por favor el documento de identidad de la convencion", "Reservar alojamiento y servicios", JOptionPane.QUESTION_MESSAGE);
     		
     		
     		if(idUsuario != null )
     		{
     			long total = hotelAndes.registrarFinConvencion( idUsuario );
     			String message1 = "**********************************************************\n";
-    			String message2 = "La cuenta para la convencion con ID: "+ idUsuario + "\ntiene un total de: "+total;
-    			panelDatos.actualizarInterfaz(message1+message2+message1+"\nSuccess");
+    			String message2 = "La cuenta para la convencion con ID: "+ idUsuario + "\ntiene un total de: "+total+"\n";
+    			panelDatos.actualizarInterfaz(message1+message2+message1+"Success");
     		}
     		else 
 			{
@@ -751,7 +751,28 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     }
     public void registrarEntradaMantenimientoAlojamientosYServicios()
     {
-    	
+    	try 
+    	{
+    		String habitacionesParaMantenimiento = JOptionPane.showInputDialog (this, "A cual(es) habitaciones desea hacerle mantenimiento?\nFormato: <Numero de habitacion 1>;<Numero de habitacion 2>...", "Registrar Mantenimiento", JOptionPane.QUESTION_MESSAGE);
+    		String serviciosParaMantenimiento = JOptionPane.showInputDialog (this, "A cual(es) servicios desea hacerle mantenimiento?\nFormato: <ID Servicio 1>;<ID Servicio 2>...", "Registrar Mantenimiento", JOptionPane.QUESTION_MESSAGE);
+    		String fechaInicioMantenimiento = JOptionPane.showInputDialog (this, "Fecha inicio\nFormato: yyyy-mm-dd", "Registrar Mantenimiento", JOptionPane.QUESTION_MESSAGE);
+    		String fechaFinMantenimiento = JOptionPane.showInputDialog (this, "Fecha fin\nFormato: yyyy-mm-dd", "Registrar Mantenimiento", JOptionPane.QUESTION_MESSAGE);
+
+    		
+    		if(habitacionesParaMantenimiento != null && serviciosParaMantenimiento != null && fechaInicioMantenimiento != null && fechaFinMantenimiento != null )
+    		{
+    			hotelAndes.registarMantenimientoParaAlojamientoYServicio( habitacionesParaMantenimiento, serviciosParaMantenimiento, fechaInicioMantenimiento, fechaFinMantenimiento );
+    		}
+    		else 
+			{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+    	}
+    	catch( Exception e)
+    	{
+    		String message = "\nError. Vuelva a intentar";
+			panelDatos.actualizarInterfaz(generarMensajeError(e)+message);
+    	}
     }
     public void registrarFinMantenimientoAlojamientosYServicios()
     {

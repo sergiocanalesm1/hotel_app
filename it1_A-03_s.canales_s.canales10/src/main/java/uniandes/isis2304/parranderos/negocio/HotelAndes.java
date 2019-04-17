@@ -407,4 +407,42 @@ public class HotelAndes
 		if( !p.getRolDeUsuarioById( idUsuario ).equals( "Organizador Eventos")) throw new Exception("El usuario no es organizador de eventos");
 		return p.finDeConvencion(idUsuario);
 	}
+
+	public void registarMantenimientoParaAlojamientoYServicio(String habitacionesParaMantenimiento,
+			String serviciosParaMantenimiento, String fechaInicioMantenimiento, String fechaFinMantenimiento) throws Exception
+	{
+		//Verificar la existencia de las habitaciones y los servicios
+		
+		//Ver que existan las habitaciones
+		String[] arrHabitacionesParaMantenimiento = habitacionesParaMantenimiento.split(";");
+		for (int i = 0; i < arrHabitacionesParaMantenimiento.length; i++) {
+			if( p.getHabitacion(arrHabitacionesParaMantenimiento[i]) == null ) throw new Exception("No existe la habitacion " +arrHabitacionesParaMantenimiento[i]);
+		}
+		//Ver que existan los servicios
+		String[] arrServiciosParaMantenimiento = serviciosParaMantenimiento.split(";");
+		for (int j = 0; j < arrServiciosParaMantenimiento.length; j++) {
+			if(p.getServicio(arrServiciosParaMantenimiento[j]) == null ) throw new Exception("No existe el servicio con ID " + arrServiciosParaMantenimiento[j]);
+		}
+		
+		//Update en las fechas de mantenimiento para los servicios y las habitaciones
+		updateFechasDeMantenimientoParaAlojamientoYServicios(arrHabitacionesParaMantenimiento, arrServiciosParaMantenimiento, fechaInicioMantenimiento, fechaFinMantenimiento);
+		//ALOJAMIENTO
+		//RESERVAS
+		//Agregar reserva de mantenimiento para el tipo de habitacion del numero de habitacion
+		
+	}
+	private void updateFechasDeMantenimientoParaAlojamientoYServicios(String[] arrHabitacionesParaMantenimiento,
+			String[] arrServiciosParaMantenimiento, String fechaInicioMantenimiento, String fechaFinMantenimiento)
+	{
+		Timestamp fechaInicioMantenimientoTS = Timestamp.valueOf(fechaInicioMantenimiento+" 00:00:00");
+		Timestamp fechaFinMantenimientoTS = Timestamp.valueOf(fechaFinMantenimiento+" 00:00:00");
+		//update fechas de mantenimiento para habitaciones
+		for (int i = 0; i < arrHabitacionesParaMantenimiento.length; i++) {
+			p.registrarMantenimientoAlojamiento(arrHabitacionesParaMantenimiento[i], fechaInicioMantenimientoTS, fechaFinMantenimientoTS);
+		}
+		//update fechas de mantenimiento para servicios
+		for (int j = 0; j < arrServiciosParaMantenimiento.length; j++) {
+			p.registrarMantenimientoServicios( arrServiciosParaMantenimiento[j], fechaInicioMantenimientoTS, fechaFinMantenimientoTS);
+		}
+	}
 }
