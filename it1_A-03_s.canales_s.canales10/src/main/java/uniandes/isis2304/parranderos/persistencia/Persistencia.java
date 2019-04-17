@@ -787,7 +787,7 @@ public class Persistencia
 
 
 	//REGISTRAR LA ENTRADA A MANTENIMIENTO DE ALOJAMIENTOS DEL HOTEL RF15
-	public String registrarMantenimientoAlojemiento( String numeroHabitacion, Timestamp fechaInic, Timestamp fechaFin){
+	public String registrarMantenimientoAlojamiento( String numeroHabitacion, Timestamp fechaInic, Timestamp fechaFin){
 
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();

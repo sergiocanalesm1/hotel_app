@@ -43,7 +43,7 @@ public class SQLHabitacion {
 
 	public Habitacion getHabitacion(PersistenceManager pm, String numeroHab) {
 
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaHabitacion() + "WHERE numero = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaHabitacion() + " WHERE numero = ?");
 		q.setResultClass(Habitacion.class);
 		q.setParameters(numeroHab);
 		return (Habitacion) q.executeUnique();

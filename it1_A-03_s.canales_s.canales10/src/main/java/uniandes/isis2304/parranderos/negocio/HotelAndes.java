@@ -213,7 +213,7 @@ public class HotelAndes
 		Timestamp fechaLleg = Timestamp.valueOf(fechaLlegada);
 		if( p.getUsuario( idUsuario) == null )
 			throw new Exception("No existe el usuario");
-		String logrado = p.registrarLlegadaUsuario( idUsuario, fechaLleg );
+		String logrado = p.registrarLlegadaUsuario( idUsuario, fechaLleg,0 );//areglar 0
 		log.info ("Adicionando plan consumo: "+ logrado);
 		return !logrado.equals("");
 	}
@@ -418,12 +418,13 @@ public class HotelAndes
 		for (int i = 0; i < arrHabitacionesParaMantenimiento.length; i++) {
 			if( p.getHabitacion(arrHabitacionesParaMantenimiento[i]) == null ) throw new Exception("No existe la habitacion " +arrHabitacionesParaMantenimiento[i]);
 		}
+		System.out.println("termino 1");
 		//Ver que existan los servicios
 		String[] arrServiciosParaMantenimiento = serviciosParaMantenimiento.split(";");
 		for (int j = 0; j < arrServiciosParaMantenimiento.length; j++) {
 			if(p.getServicio(arrServiciosParaMantenimiento[j]) == null ) throw new Exception("No existe el servicio con ID " + arrServiciosParaMantenimiento[j]);
 		}
-		
+		System.out.println("termino 2");
 		//Update en las fechas de mantenimiento para los servicios y las habitaciones
 		updateFechasDeMantenimientoParaAlojamientoYServicios(arrHabitacionesParaMantenimiento, arrServiciosParaMantenimiento, fechaInicioMantenimiento, fechaFinMantenimiento);
 		//ALOJAMIENTO
@@ -440,9 +441,11 @@ public class HotelAndes
 		for (int i = 0; i < arrHabitacionesParaMantenimiento.length; i++) {
 			p.registrarMantenimientoAlojamiento(arrHabitacionesParaMantenimiento[i], fechaInicioMantenimientoTS, fechaFinMantenimientoTS);
 		}
+		System.out.println("termino 3");
 		//update fechas de mantenimiento para servicios
 		for (int j = 0; j < arrServiciosParaMantenimiento.length; j++) {
 			p.registrarMantenimientoServicios( arrServiciosParaMantenimiento[j], fechaInicioMantenimientoTS, fechaFinMantenimientoTS);
 		}
+		System.out.println("termino 4");
 	}
 }
