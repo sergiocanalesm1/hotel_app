@@ -95,6 +95,13 @@ public class SQLUsuario {
 			q.executeUnique();
 
 		}
+
+		public String getNumeroHabitacion(PersistenceManager pm, String idUsuario) {
+			Query q = pm.newQuery(SQL,"SELECT numeroHabitacion FROM USUARIO WHERE numeroDocumento = ?" );
+			q.setResultClass(String.class);
+			q.setParameters(idUsuario);
+			return (String) q.executeUnique();
+		}
 	
 	
 

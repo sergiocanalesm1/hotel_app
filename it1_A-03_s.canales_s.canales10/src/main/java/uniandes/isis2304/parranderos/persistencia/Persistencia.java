@@ -368,6 +368,9 @@ public class Persistencia
 	public String getRolDeUsuarioById(String id){
 		return sqlUsuario.getRolDeUsuarioById(pmf.getPersistenceManager(), id);
 	}
+	public String getNumeroHabitacion(String idUsuario) {
+		return sqlUsuario.getNumeroHabitacion( pmf.getPersistenceManager(), idUsuario);
+	}
 
 	//public Integer getCostoPorNocheReserva(Str)
 
@@ -658,7 +661,7 @@ public class Persistencia
 		}
 	}
 	//RF9
-	public String registrarLlegadaUsuario(String idUsuario, String llegada, Integer costoReserva){
+	public String registrarLlegadaUsuario(String idUsuario, String llegada, String idConvencion){
 
 		Reserva reserva = getReserva(idUsuario, llegada);
 		if( reserva== null) return "";
@@ -671,7 +674,6 @@ public class Persistencia
 			tx.begin();
 			long id = sqlUsuario.updateReserva(pm,idUsuario, llegada);
 			sqlUsuario.asociarHabitacion(pm, idUsuario);
-			//            sqlConsumo.agregarLlegadaUsuario(pm,);
 			tx.commit();
 			return id + "";
 		}
