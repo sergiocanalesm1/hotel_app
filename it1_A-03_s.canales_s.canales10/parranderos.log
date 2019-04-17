@@ -382,45 +382,95 @@ ORA-01400: cannot insert NULL into ("ISIS2304A031910"."RESERVA"."IDUSUARIO")
 02:57:55,100 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
 02:57:55,101 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
 02:57:55,121 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-12:47:13,856 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-12:47:13,857 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-12:47:13,875 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-13:07:39,619 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-13:07:39,620 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-13:07:39,637 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-13:13:38,214 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-13:13:38,215 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-13:13:38,235 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-13:18:33,756 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-13:18:33,757 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-13:18:33,776 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-13:19:18,447 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-13:19:18,448 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-13:19:18,470 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-13:24:56,258 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-13:24:56,259 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-13:24:56,278 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-13:28:01,683 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-13:28:01,684 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-13:28:01,702 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-13:29:44,328 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-13:29:44,329 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-13:29:44,350 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-13:34:55,396 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-13:34:55,398 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-13:34:55,415 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-13:35:51,305 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-13:35:51,306 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-13:35:51,324 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-13:36:14,060 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-13:36:14,060 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-13:36:14,078 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-13:37:27,085 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-13:37:27,086 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-13:37:27,106 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-13:38:31,421 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-13:38:31,421 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-13:38:31,447 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
-13:39:16,925 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
-13:39:16,926 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
-13:39:16,946 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+12:44:03,569 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+12:44:03,572 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+12:44:03,634 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+12:44:36,589 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
+12:45:28,280 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+12:45:28,283 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+12:45:28,342 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+12:46:21,658 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
+12:46:22,110 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE USUARIO SET fechLlegada = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS')  WHERE idUsuario = ?".
+ORA-00904: "IDUSUARIO": identificador no válido
+
+12:46:22,120 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: 
+12:47:35,061 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+12:47:35,064 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+12:47:35,126 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+12:48:00,825 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
+12:48:01,262 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE USUARIO SET fechaLlegada = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS')  WHERE idUsuario = ?".
+ORA-00904: "IDUSUARIO": identificador no válido
+
+12:48:01,271 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: 
+12:49:46,674 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+12:49:46,676 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+12:49:46,704 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+12:50:05,784 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
+12:50:06,245 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE USUARIO SET fechaLlegada = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS')  WHERE numeroDocumento = ?".
+ORA-01830: la máscara de formato de fecha termina antes de convertir toda la cadena de entrada
+
+12:50:06,254 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: 
+12:59:32,718 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+12:59:32,721 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+12:59:32,783 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+13:00:10,026 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
+13:00:10,504 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE USUARIO SET fechaLlegada = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS')  WHERE numeroDocumento = ?".
+ORA-12899: el valor es demasiado grande para la columna "ISIS2304A031910"."USUARIO"."FECHALLEGADA" (real: 30, máximo: 20)
+
+13:00:10,513 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: 
+13:08:53,181 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+13:08:53,184 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+13:08:53,250 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+13:09:28,317 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
+13:17:25,935 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+13:17:25,938 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+13:17:25,998 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+13:17:48,071 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
+13:17:48,500 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : java.lang.Long cannot be cast to java.lang.String
+
+13:17:48,509 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: 
+13:20:27,508 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+13:20:27,510 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+13:20:27,567 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+13:20:44,481 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
+13:20:44,895 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : java.lang.Long cannot be cast to java.lang.String
+
+13:20:44,905 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: 
+13:21:00,602 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+13:21:00,605 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+13:21:00,668 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+13:21:21,545 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
+13:26:38,541 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+13:26:38,544 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+13:26:38,606 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+13:26:57,049 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
+13:26:57,509 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: 1
+13:37:54,743 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+13:37:54,745 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+13:37:54,806 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+13:38:10,782 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
+13:38:11,235 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: 1
+13:39:31,014 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+13:39:31,017 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+13:39:31,080 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+13:40:13,455 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
+13:40:13,909 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE USUARIO SET fechaFin = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') , numeroHabitacion = ? WHERE numeroDocumento = ?".
+ORA-00904: "FECHAFIN": identificador no válido
+
+13:40:13,919 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: 
+13:46:13,794 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+13:46:13,796 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+13:46:13,859 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+13:47:26,863 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+13:47:26,866 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+13:47:26,932 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+13:47:44,160 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
+13:47:44,360 (AWT-EventQueue-0) ERROR [uniandes.isis2304.parranderos.persistencia.Persistencia] - Exception : Error con la ejecucion de Query de SQL "UPDATE USUARIO SET fechaFin = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') , numeroHabitacion = ? WHERE numeroDocumento = ?".
+ORA-00904: "FECHAFIN": identificador no válido
+
+13:47:44,364 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: 
+13:51:22,308 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Interfaz
+13:51:22,311 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se aplica configuración indicada en el archivo de configuración
+13:51:22,378 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazParranderosApp] - Se encontró un archivo de configuración válido: Tablas BD
+13:51:39,621 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando reserva para usuario: 112233
+13:51:40,049 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.HotelAndes] - Adicionando plan consumo: 1

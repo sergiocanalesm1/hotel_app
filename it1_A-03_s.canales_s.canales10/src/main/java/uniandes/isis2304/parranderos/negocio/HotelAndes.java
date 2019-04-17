@@ -207,14 +207,23 @@ public class HotelAndes
 	{
 		return p.getUsuario( idUsuario) ;
 	}
-	public boolean registrarLlegadaCliente(String idUsuario, String fechaLlegada) throws Exception
+	public boolean registrarLlegadaCliente(String idUsuario, String fechaLlegada, String idConvencion) throws Exception
 	{
 		log.info("Adicionando reserva para usuario: "+ idUsuario);
 
-		Timestamp fechaLleg = Timestamp.valueOf(fechaLlegada);
 		if( p.getUsuario( idUsuario) == null )
 			throw new Exception("No existe el usuario");
-		String logrado = p.registrarLlegadaUsuario( idUsuario, fechaLleg,0 );//areglar 0
+		//TODO arreglar interfaz para saber el id de la convención
+		String logrado = p.registrarLlegadaUsuario( idUsuario, fechaLlegada,idConvencion);
+		//TODO calcular valor que sale de multiplicar el costo por noche del tipo de habitación por el número de noches (opcional) por el plan consumo
+		String numeroHabitacion = p.getNumeroHabitacion(idUsuario);
+		Reserva reserva = p.getReserva(idUsuario, fechaLlegada);
+		//el de la reserva por si hubo cambios por MANTENIMIENTO
+		Double costoPorNoche = p.getTipoHabitacion(reserva.getTipoHabitacion()).getCostoPorNoche();
+		Timestamp llegadaTS = Timestamp.valueOf(fechaLlegada);
+		Timestamp salidaTs = reserva.getFechaFin();
+		//adicionar consumo
+		p.adicionarConsumo(valor, fechaLlegada, p.getNumeroHabitacion(idUsuario), null, idConvencion);
 		log.info ("Adicionando plan consumo: "+ logrado);
 		return !logrado.equals("");
 	}
@@ -271,10 +280,9 @@ public class HotelAndes
 		
 		log.info("Adicionando reserva para usuario: "+ idUsuario);
 
-		Timestamp fechaSalida = Timestamp.valueOf(salida);
 		if( p.getUsuario( idUsuario) == null )
 			throw new Exception("No existe el usuario");
-		String logrado = p.registrarSalidaUsuario( idUsuario, fechaSalida );
+		String logrado = p.registrarSalidaUsuario( idUsuario, salida );
 		log.info ("Adicionando plan consumo: "+ logrado);
 		return !logrado.equals("");	}
 

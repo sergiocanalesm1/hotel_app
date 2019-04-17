@@ -347,10 +347,10 @@ public class Persistencia
 		return sqlServicio.getServicio(pmf.getPersistenceManager(), id);
 
 	}
-	public Reserva getReserva(String idUsuario, Timestamp llegada){
+	public Reserva getReserva(String idUsuario, String llegada){
 		return sqlReserva.getReservado(pmf.getPersistenceManager(),idUsuario, llegada);
 	}
-	public Reserva getReservaBySalida(String idUsuario, Timestamp fechaSalida) {
+	public Reserva getReservaBySalida(String idUsuario, String fechaSalida) {
 		return sqlReserva.getReservadoBySalida(pmf.getPersistenceManager(),idUsuario, fechaSalida);
 	}
 	public int getCantidadDeHabitacionPorTipo(String tipo){
@@ -367,6 +367,9 @@ public class Persistencia
 	}
 	public String getRolDeUsuarioById(String id){
 		return sqlUsuario.getRolDeUsuarioById(pmf.getPersistenceManager(), id);
+	}
+	public String getNumeroHabitacion(String idUsuario) {
+		return sqlUsuario.getNumeroHabitacion( pmf.getPersistenceManager(), idUsuario);
 	}
 
 	//public Integer getCostoPorNocheReserva(Str)
@@ -658,28 +661,26 @@ public class Persistencia
 		}
 	}
 	//RF9
-	public String registrarLlegadaUsuario(String idUsuario, Timestamp llegada, Integer costoReserva){
+	public String registrarLlegadaUsuario(String idUsuario, String llegada, String idConvencion){
 
-		//falta asociarlo con la habitación
 		Reserva reserva = getReserva(idUsuario, llegada);
 		if( reserva== null) return "";
 
-		System.out.println("existe reserva con el usuario, id: ");
-		System.out.println(reserva.getId());
+		System.out.println("existe reserva con el usuario, id: " + reserva.getId());
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
 		{
 			tx.begin();
-			String id = sqlUsuario.updateReserva(pm,idUsuario, llegada);
+			long id = sqlUsuario.updateReserva(pm,idUsuario, llegada);
 			sqlUsuario.asociarHabitacion(pm, idUsuario);
-			//            sqlConsumo.agregarLlegadaUsuario(pm,);
 			tx.commit();
-			return id;
+			return id + "";
 		}
 		catch (Exception e)
 		{
 			//        	e.printStackTrace();
+			System.out.println(e.getCause());
 			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
 			return "";
 		}
@@ -694,7 +695,7 @@ public class Persistencia
 
 	}
 
-	public String registrarSalidaUsuario(String idUsuario, Timestamp fechaSalida) {
+	public String registrarSalidaUsuario(String idUsuario, String fechaSalida) {
 		Reserva reserva = getReservaBySalida(idUsuario, fechaSalida);
 		if( reserva== null) return "";
 
@@ -705,9 +706,9 @@ public class Persistencia
 		try
 		{
 			tx.begin();
-			String id = sqlUsuario.updateReservaBySalida(pm,idUsuario, fechaSalida);
+			long id = sqlUsuario.updateReservaBySalida(pm,idUsuario, fechaSalida);
 			tx.commit();
-			return id;
+			return id + "";
 		}
 		catch (Exception e)
 		{
