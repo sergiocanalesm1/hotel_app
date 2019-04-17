@@ -102,6 +102,14 @@ public class SQLUsuario {
 			q.setParameters(idUsuario);
 			return (String) q.executeUnique();
 		}
+
+		public String getPagosUsuarios(PersistenceManager pm, String idUsuario) {
+			
+			Query q = pm.newQuery(SQL,"SELECT pagos FROM USUARIO WHERE numeroDocumento = ?" );
+			q.setResultClass(String.class);
+			q.setParameters(idUsuario);
+			return (String) q.executeUnique();
+		}
 	
 	
 

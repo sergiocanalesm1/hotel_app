@@ -371,8 +371,13 @@ public class Persistencia
 	public String getNumeroHabitacion(String idUsuario) {
 		return sqlUsuario.getNumeroHabitacion( pmf.getPersistenceManager(), idUsuario);
 	}
+	public String getPagosUsuario(String idUsuario) {
+		return sqlUsuario.getPagosUsuarios(pmf.getPersistenceManager() , idUsuario);
+	}
+//public void updatePagosUsuario(String idUsuario, String pago ) {
+//		
+//	}
 
-	//public Integer getCostoPorNocheReserva(Str)
 
 	/* ****************************************************************
 	 * 			REQUERIMIENTOS FUNCIONALES
