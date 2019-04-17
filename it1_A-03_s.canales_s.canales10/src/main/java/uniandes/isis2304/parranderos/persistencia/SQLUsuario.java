@@ -47,14 +47,14 @@ public class SQLUsuario {
 
 		public String updateReserva(PersistenceManager pm,String idUsuario, Timestamp llegada) {
 			
-			Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaUsuario () + " SET fechaLlegada = ? WHERE idUsuario = ?");
+			Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaUsuario () + " SET fechLlegada = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS')  WHERE idUsuario = ?");
 			q.setResultClass(String.class);
 			q.setParameters(llegada, idUsuario );
 		    return (String) q.executeUnique();
 		}
 
 		public String updateReservaBySalida(PersistenceManager pm, String idUsuario, Timestamp fechaSalida) {
-			Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaUsuario () + " SET fechafin = ? WHERE idUsuario = ?");
+			Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaUsuario () + " SET fechaFin = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') WHERE idUsuario = ?");
 			q.setResultClass(String.class);
 		    q.setParameters(fechaSalida, idUsuario );
 		     
@@ -66,6 +66,33 @@ public class SQLUsuario {
 			q.setResultClass(String.class);
 			q.setParameters(id);
 			return (String) q.executeUnique();
+		}
+
+		public void asociarHabitacion(PersistenceManager pm, String idUsuario) {
+			
+			String sql = "UPDATE USUARIO\r\n" + 
+					" SET numeroHabitacion = \r\n" + 
+					"   (\r\n" + 
+					"    SELECT *\r\n" + 
+					"    FROM (\r\n" + 
+					"            SELECT numero\r\n" + 
+					"            FROM HABITACION\r\n" + 
+					"            WHERE numero not in\r\n" + 
+					"            (\r\n" + 
+					"                SELECT numeroHabitacion\r\n" + 
+					"                FROM USUARIO\r\n" + 
+					"\r\n" + 
+					"            ) \r\n" + 
+					"\r\n" + 
+					"         )\r\n" + 
+					"     WHERE rownum = 1  \r\n" + 
+					"    )\r\n" + 
+					"WHERE numerodocumento = ?" ;
+					
+			Query q = pm.newQuery(SQL, sql );
+			q.setParameters(idUsuario);
+			q.executeUnique();
+
 		}
 	
 	
