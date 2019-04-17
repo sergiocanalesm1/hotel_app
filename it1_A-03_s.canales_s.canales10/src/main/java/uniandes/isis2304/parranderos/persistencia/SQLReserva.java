@@ -111,6 +111,14 @@ public class SQLReserva {
 		return (long) q.executeUnique();
 	}
 
+	public void pagar(PersistenceManager pm,String idOrganizador) {
+			
+			Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaReserva () + " SET pagado = ? WHERE idUsuario = ?");
+			q.setResultClass(String.class);
+			q.setParameters("Y", idOrganizador );
+		    q.executeUnique();
+		}
+
 	
 
 	

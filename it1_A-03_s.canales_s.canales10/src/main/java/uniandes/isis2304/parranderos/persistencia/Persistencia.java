@@ -763,6 +763,7 @@ public class Persistencia
             //
             tx.commit();
             long acumuladoConvencion = sqlConsumo.finDeConvencion(pmf.getPersistenceManager(), idOrganizador);
+            sqlReserva.pagar(pmf.getPersistenceManager(), idOrganizador);
             log.trace ("id organizador de la convención finalizada: " + idOrganizador + " - sql answer: " + acumuladoConvencion );
             return  acumuladoConvencion ;
         }
