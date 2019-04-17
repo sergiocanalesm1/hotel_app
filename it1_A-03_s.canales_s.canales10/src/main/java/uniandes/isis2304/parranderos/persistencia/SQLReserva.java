@@ -63,18 +63,18 @@ public class SQLReserva {
 		return ((BigDecimal) q.executeUnique()).longValue();
 	}
 
-	public Reserva getReservado(PersistenceManager pm,String idUsuario, Timestamp llegada) {
+	public Reserva getReservado(PersistenceManager pm,String idUsuario, String llegada) {
 		
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaReserva() + " WHERE idUsuario = ? AND fechaComienzo = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaReserva() + " WHERE idUsuario = ? AND fechaComienzo = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS')");
 		q.setResultClass(Reserva.class);
 		q.setParameters(idUsuario, llegada);
-		return ((List<Reserva>) q.executeList()).get(0);
+		return ((List<Reserva>) q.executeList()).get(0); 
 	}
 
 	public Reserva getReservadoBySalida(PersistenceManager pm, String idUsuario,
-			Timestamp fechaSalida) {
+			String fechaSalida) {
 
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaReserva() + " WHERE idUsuario = ? AND fechafin = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + persistencia.darTablaReserva() + " WHERE idUsuario = ? AND fechafin = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS')");
 		q.setResultClass(Reserva.class);
 		q.setParameters(idUsuario, fechaSalida);
 		return ((List<Reserva>) q.executeList()).get(0);

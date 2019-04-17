@@ -45,20 +45,20 @@ public class SQLUsuario {
 		}
 
 
-		public String updateReserva(PersistenceManager pm,String idUsuario, Timestamp llegada) {
+		public long updateReserva(PersistenceManager pm,String idUsuario, String llegada) {
 			
-			Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaUsuario () + " SET fechLlegada = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS')  WHERE idUsuario = ?");
-			q.setResultClass(String.class);
+			Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaUsuario () + " SET fechaLlegada = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS')  WHERE numeroDocumento = ?");
+			q.setResultClass(Long.class);
 			q.setParameters(llegada, idUsuario );
-		    return (String) q.executeUnique();
+		    return (long) q.executeUnique();
 		}
 
-		public String updateReservaBySalida(PersistenceManager pm, String idUsuario, Timestamp fechaSalida) {
-			Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaUsuario () + " SET fechaFin = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') , numeroHabitacion = ? WHERE idUsuario = ?");
-			q.setResultClass(String.class);
+		public long updateReservaBySalida(PersistenceManager pm, String idUsuario, String fechaSalida) {
+			Query q = pm.newQuery(SQL, "UPDATE " + persistencia.darTablaUsuario () + " SET fechaSalida = to_timestamp(?, 'YYYY-MM-DD HH24:MI:SS') , numeroHabitacion = ? WHERE numeroDocumento = ?");
+			q.setResultClass(Long.class);
 		    q.setParameters(fechaSalida, null, idUsuario );
 		     
-		     return (String) q.executeUnique();
+		     return (long) q.executeUnique();
 		}
 
 		public String getRolDeUsuarioById(PersistenceManager pm, String id) {
@@ -81,6 +81,7 @@ public class SQLUsuario {
 					"            (\r\n" + 
 					"                SELECT numeroHabitacion\r\n" + 
 					"                FROM USUARIO\r\n" + 
+					"				 WHERE numeroHabitacion is not null" +
 					"\r\n" + 
 					"            ) \r\n" + 
 					"\r\n" + 
