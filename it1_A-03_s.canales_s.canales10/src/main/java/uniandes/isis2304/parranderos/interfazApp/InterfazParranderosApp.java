@@ -568,8 +568,8 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     	{
     		String valor = JOptionPane.showInputDialog (this, "Valor de consumo", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
     		String numeroHabitacionACargar = JOptionPane.showInputDialog (this, "Numero Habitacion a cargar\nDe no requerir por favor escribir N/A", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
-    		String idServicio = JOptionPane.showInputDialog (this, "id del Servicio\nDe no requerir por favor escribir N/A", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
-    		String idConvencion = JOptionPane.showInputDialog (this, "id de la convencion\nDe no requerir por favor escribir N/A", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
+    		String idServicio = JOptionPane.showInputDialog (this, "Id del Servicio\nDe no requerir por favor escribir N/A", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
+    		String idConvencion = JOptionPane.showInputDialog (this, "Id de la convencion\nDe no requerir por favor escribir N/A", "Registrar Consumo", JOptionPane.QUESTION_MESSAGE);
 
 
     		
@@ -577,7 +577,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		if (valor != null && numeroHabitacionACargar != null && idServicio != null && idConvencion != null  )
     		{
     			
-        		Consumo th = hotelAndes.adicionarConsumo(  valor, numeroHabitacionACargar, idServicio idConvencion);
+        		Consumo th = hotelAndes.adicionarConsumo(  valor, numeroHabitacionACargar, idServicio, idConvencion );
         		if (th == null)
         		{
         			throw new Exception ("No se pudo crear el consumo con valor "+ valor+ " para el servicio "+idServicio);
@@ -733,9 +733,9 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     		if(idUsuario != null )
     		{
     			long total = hotelAndes.registrarFinConvencion( idUsuario );
-    			String message1 = "**********************************************************+\n";
+    			String message1 = "**********************************************************\n";
     			String message2 = "La cuenta para la convencion con ID: "+ idUsuario + "\ntiene un total de: "+total;
-    			panelDatos.actualizarInterfaz(message1+message2+"\nSuccess"+message1);
+    			panelDatos.actualizarInterfaz(message1+message2+message1+"\nSuccess");
     		}
     		else 
 			{

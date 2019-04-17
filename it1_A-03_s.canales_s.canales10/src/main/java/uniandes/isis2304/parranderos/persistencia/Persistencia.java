@@ -633,8 +633,12 @@ public class Persistencia
             tx.commit();
 
             log.trace ("Inserción de consumo: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            if( idServicioACargar == null ) return new Consumo (id, Integer.parseInt(valor), fechaRegistro, numeroHabitacionACargar, -1, idConvencion);
+            else
+            {
+            	return new Consumo (id, Integer.parseInt(valor), fechaRegistro, numeroHabitacionACargar, Long.parseLong(idServicioACargar), idConvencion);
+            }
             
-            return new Consumo (id, Integer.parseInt(valor), fechaRegistro, numeroHabitacionACargar, Long.parseLong(idServicioACargar), idConvencion);
         }
         catch (Exception e)
         {

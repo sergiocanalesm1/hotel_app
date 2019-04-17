@@ -33,7 +33,7 @@ public class SQLConsumo {
 	public long finDeConvencion(PersistenceManager pm, String idOrganizador) {
 		Query q = pm.newQuery(SQL ," SELECT SUM(con.valor) "
 				+ "FROM CONSUMO con, USUARIO usu "
-				+ "WHERE usu.id = ? AND con.idConvencion = usu.id " );
+				+ "WHERE usu.numeroDocumento = ? AND con.idConvencion = usu.numeroDocumento " );
 		q.setResultClass(Long.class);
 		q.setParameters(idOrganizador);
 		return (long) q.executeUnique();
