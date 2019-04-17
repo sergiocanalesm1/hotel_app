@@ -83,6 +83,23 @@
 				}
 			]
 		},
+		{ "menuTitle": "Requerimientos de consulta I2",
+		  "options":
+			[
+				{
+					"label": "RFC6 - Analizar la operacion de Hotelandes",
+					"event": "reqConsultaAnalizarOperacionHotelAndes"
+				},
+				{
+					"label": "RFC7 - Encontrar los buenos clientes",
+					"event": "reqConsultaEncontrarBuenosClientes"
+				},
+				{
+					"label": "RFC8 - Encontrar los servicios que no tienen mucha demanda",
+					"event": "reqConsultaServiciosSinMuchaDemanda"
+				}
+			]
+		},		
 		{ "menuTitle": "Mantenimiento",
 		  "options":
 			[

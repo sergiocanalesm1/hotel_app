@@ -801,6 +801,37 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 			panelDatos.actualizarInterfaz(generarMensajeError(e)+message);
     	}
     }
+    /**
+     * REQUERIMIENTOS DE CONSULTA
+     */
+    public void reqConsultaAnalizarOperacionHotelAndes()
+    {
+    	try 
+    	{
+			
+		} 
+    	catch (Exception e) 
+    	{
+			
+		}
+    }
+    
+    public void reqConsultaEncontrarBuenosClientes()
+    {
+    	
+    }
+    
+    public void reqConsultaServiciosSinMuchaDemanda()
+    {
+    	try 
+    	{
+    		String[] respuesta = hotelAndes.serviciosSinMuchaDemanda();
+		} 
+    	catch (Exception e) 
+    	{
+			
+		}
+    }
     
     
 	/* ****************************************************************

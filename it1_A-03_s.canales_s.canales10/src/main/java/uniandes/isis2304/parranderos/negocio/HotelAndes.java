@@ -15,12 +15,13 @@
 
 package uniandes.isis2304.parranderos.negocio;
 
-import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -497,5 +498,27 @@ public class HotelAndes
 			p.cancelarMantenimientoServicio(idMantenimiento);
 		}
 		
+	}
+
+	public String[] serviciosSinMuchaDemanda() 
+	{
+		Calendar ca = Calendar.getInstance();
+		Date timeNow = ca.getTime();
+		ca.add(Calendar.YEAR, -1);
+		Date startTime = ca.getTime();
+		System.out.println("Present year: "+timeNow);
+		System.out.println("Past year: "+startTime);
+		int contador = 0;
+		while( startTime.before(timeNow) )
+		{
+			ca.add(Calendar.WEEK_OF_YEAR, 1);
+			startTime = ca.getTime();
+			System.out.println(startTime);
+			contador++;
+		}
+		System.out.println(contador);
+			
+			
+		return null;
 	}
 }
