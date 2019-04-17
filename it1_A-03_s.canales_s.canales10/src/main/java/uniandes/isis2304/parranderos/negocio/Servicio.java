@@ -1,5 +1,7 @@
 package uniandes.isis2304.parranderos.negocio;
 
+import java.sql.Timestamp;
+
 public class Servicio 
 {
 	private long id;
@@ -10,12 +12,31 @@ public class Servicio
 	
 	private int costo;
 	
+	private Timestamp inicioMantenimiento;
 	
-	public Servicio(long id, String cantidad, String descripcion, int costo) {
+	private Timestamp finMantenimiento;
+	
+
+	public Servicio(long id, String nombre, String descripcion, int costo, Timestamp inicioMantenimiento,
+			Timestamp finMantenimiento) {
 		this.id = id;
-		this.nombre = cantidad;
+		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.costo = costo;
+		this.inicioMantenimiento = inicioMantenimiento;
+		this.finMantenimiento = finMantenimiento;
+	}
+	public Timestamp getInicioMantenimiento() {
+		return inicioMantenimiento;
+	}
+	public void setInicioMantenimiento(Timestamp inicioMantenimiento) {
+		this.inicioMantenimiento = inicioMantenimiento;
+	}
+	public Timestamp getFinMantenimiento() {
+		return finMantenimiento;
+	}
+	public void setFinMantenimiento(Timestamp finMantenimiento) {
+		this.finMantenimiento = finMantenimiento;
 	}
 	public Servicio()
 	{
