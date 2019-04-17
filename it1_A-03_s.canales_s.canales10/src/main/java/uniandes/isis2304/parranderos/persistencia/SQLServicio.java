@@ -1,5 +1,6 @@
 package uniandes.isis2304.parranderos.persistencia;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -60,6 +61,15 @@ public class SQLServicio {
 		q.setResultClass(Servicio.class);
 		q.setParameters(nombre);
 		return (List<Servicio>) q.executeList();
+	}
+
+	public String registrarMantenimiento(PersistenceManager pm, String idServicio, Timestamp fechaInic, Timestamp fechaFin) {
+			Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaServicio() + " SET inicioMantenimiento = ? , finMantenimiento = ? WHERE idServicio = ?");
+			q.setResultClass(String.class);
+		    q.setParameters(fechaInic, fechaFin, idServicio);
+		    return (String) q.executeUnique();
+		
+
 	}
 
 }
