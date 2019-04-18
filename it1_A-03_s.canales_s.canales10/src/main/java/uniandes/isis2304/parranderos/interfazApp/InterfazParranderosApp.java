@@ -810,7 +810,20 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     {
     	try 
     	{
-			
+    		String unidadDeTiempo = JOptionPane.showInputDialog (this, "Cual unidad de tiempo desea analizar: Mensual o semanal", "Analisis operacion HotelAndes", JOptionPane.QUESTION_MESSAGE);
+    		String tipoDeHabitacionOServicio = JOptionPane.showInputDialog (this, "Que desea analizar?\nDigite 1 para tipo de habitacion\t2 para servicio", "Analisis operacion HotelAndes", JOptionPane.QUESTION_MESSAGE);
+    		String respuesta = "";
+    		if( tipoDeHabitacionOServicio.equals("1"))
+    		{
+    			respuesta = JOptionPane.showInputDialog (this, "Cual tipo de habitacion desea analizar?", "Analisis operacion HotelAndes", JOptionPane.QUESTION_MESSAGE);
+    		}
+    		else
+    		{
+    			respuesta = JOptionPane.showInputDialog (this, "Cual servicio de habitacion desea analizar?\nPor favor digite el ID", "Analisis operacion HotelAndes", JOptionPane.QUESTION_MESSAGE);
+    		}
+    		hotelAndes.analizarOperacion( respuesta, unidadDeTiempo );
+
+
 		} 
     	catch (Exception e) 
     	{
