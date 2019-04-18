@@ -81,7 +81,7 @@ public class SQLServicio {
 
 	public List<String> getAllServices(PersistenceManager pm) {
 		Query q = pm.newQuery(SQL, "SELECT id FROM " + pp.darTablaServicio());
-		q.setResultClass(Servicio.class);
+		q.setResultClass(String.class);
 		return (List<String>) q.executeList();
 	}
 
