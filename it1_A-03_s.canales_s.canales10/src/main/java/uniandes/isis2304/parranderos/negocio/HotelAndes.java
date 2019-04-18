@@ -531,4 +531,42 @@ public class HotelAndes
 			
 		return servicios;
 	}
+
+	public void analizarOperacion(String respuesta, String unidadDeTiempo) 
+	{
+		List<Date> fechasMayorDemanda = new List() <Date>;
+		List<Date> fechasMayoresIngresos = new List() <Date>;
+		List<Date> fechasMenorDemanda = new List() <Date>;
+		int unitOfTime = Calendar.MONTH;
+		if( unidadDeTiempo.equals("Semana")) unitOfTime = Calendar.WEEK_OF_YEAR;
+		Calendar ca = Calendar.getInstance();
+		Date timeNow = ca.getTime();
+		Date timeStart = new Date(2014, 1, 1);
+		while( timeStart.before(timeNow))
+		{
+			Date base = (Date) timeStart.clone();
+			ca.add(unitOfTime, 1);
+			timeStart = ca.getTime();
+			if( respuesta.length() < 3 )
+			{
+				fechasMayorDemanda = p.analizarServicioMayorDemanda( respuesta, base, timeStart );
+				fechasMayoresIngresos = p.analizarServicioMayorIngreso( respuesta, base, timeStart  );
+				fechasMenorDemanda = p.analizarServicioMenorDemanda( respuesta, base, timeStart  );
+			}
+			else
+			{
+				fechasMayorDemanda = p.analizarTHMayorDemanda( respuesta, base, timeStart  );
+				fechasMayoresIngresos = p.analizarTHMayorIngreso( respuesta, base, timeStart  );
+				fechasMenorDemanda = p.analizarTHMenorDemanda( respuesta, base, timeStart  );
+			}
+			
+		}
+		for (int i = 0; i < mayores.size(); i++) {
+			if( servicios.contains(mayores.get(i))) servicios.remove(mayores.get(i));
+		}
+		
+		
+
+
+	}
 }
