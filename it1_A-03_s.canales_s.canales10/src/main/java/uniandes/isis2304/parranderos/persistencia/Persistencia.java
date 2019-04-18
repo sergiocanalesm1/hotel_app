@@ -954,6 +954,9 @@ public class Persistencia
 	public List<String> demandaMayorA3Semanal(Timestamp inicio, Timestamp fin){
 		return sqlConsumo.demandaMayorA3Semanal(pmf.getPersistenceManager(), inicio , fin);
 	}
+	public List<String > mejoresClientes(Timestamp añoAtras){
+		return sqlConsumo.mejoresClientes(pmf.getPersistenceManager() , añoAtras);
+	}
 
 
 }

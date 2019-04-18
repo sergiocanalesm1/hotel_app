@@ -57,5 +57,20 @@ public class SQLConsumo {
 		q.setParameters(inicio, fin);
 		return (List<String>) q.executeList();
 	}
+	public List<String> mejoresClientes(PersistenceManager persistenceManager, Timestamp añoAtras) {
+		
+		String sql = "SELECT usuario.nombre\r\n" + 
+				"FROM(\r\n" + 
+				"        SELECT con.idUsuario as idNecesitado, sum(con.valor) as suma\r\n" + 
+				"        FROM USUARIO usu , CONSUMO con\r\n" + 
+				"        WHERE con.idUsuario = usu.numerodocumento AND con.fechaRegistro >= ?\r\n" + 
+				"        GROUP BY con.idUsuario\r\n" + 
+				"    ), Usuario usuario\r\n" + 
+				"WHERE suma > 15000000 AND usuario.numeroDocumento = idNecesitado";
+		Query q = persistenceManager.newQuery(SQL, sql );
+		q.setResultClass(Consumo.class);
+		q.setParameters(añoAtras);
+		return (List<String>) q.executeList();
+	}
 
 }

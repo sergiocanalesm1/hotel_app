@@ -569,4 +569,8 @@ public class HotelAndes
 
 
 	}
+	public List<String> mejoresClientes(String fechaAñoAtras){
+		
+		return p.mejoresClientes(Timestamp.valueOf(fechaAñoAtras));
+	}
 }

@@ -833,7 +833,20 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     
     public void reqConsultaEncontrarBuenosClientes()
     {
-    	
+    	try {
+    		String fechaAñoAtras = JOptionPane.showInputDialog (this, "Ingrese la fecha de hace un año para obtener los mejores clientes", JOptionPane.QUESTION_MESSAGE);
+    		if(fechaAñoAtras != null) {
+    			List<String> mejoresClientes = hotelAndes.mejoresClientes(fechaAñoAtras);
+    			String lista = "";
+    			for (int i = 0; i < mejoresClientes.size(); i++) lista += mejoresClientes.get(i) + "/n";
+					
+    			panelDatos.actualizarInterfaz(lista);
+    		}
+    		
+    	}
+    	catch(Exception e) {
+    		System.out.println("no se pudo");
+    	}
     }
     
     public void reqConsultaServiciosSinMuchaDemanda()
