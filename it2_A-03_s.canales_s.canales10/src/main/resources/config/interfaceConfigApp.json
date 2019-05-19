@@ -99,7 +99,16 @@
 					"event": "reqConsultaServiciosSinMuchaDemanda"
 				}
 			]
-		},		
+		},	
+		{ "menuTitle": "RFC 3",
+		  "options":
+			[
+				{
+					"label": "RFC9 - Consumo de servicios",
+					"event": "reqRFC9"
+				}
+			]
+		},	
 		{ "menuTitle": "Mantenimiento",
 		  "options":
 			[

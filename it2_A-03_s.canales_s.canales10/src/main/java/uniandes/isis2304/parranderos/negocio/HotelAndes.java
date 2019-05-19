@@ -534,36 +534,36 @@ public class HotelAndes
 
 	public void analizarOperacion(String respuesta, String unidadDeTiempo) 
 	{
-		List<Date> fechasMayorDemanda = new List() <Date>;
-		List<Date> fechasMayoresIngresos = new List() <Date>;
-		List<Date> fechasMenorDemanda = new List() <Date>;
-		int unitOfTime = Calendar.MONTH;
-		if( unidadDeTiempo.equals("Semana")) unitOfTime = Calendar.WEEK_OF_YEAR;
-		Calendar ca = Calendar.getInstance();
-		Date timeNow = ca.getTime();
-		Date timeStart = new Date(2014, 1, 1);
-		while( timeStart.before(timeNow))
-		{
-			Date base = (Date) timeStart.clone();
-			ca.add(unitOfTime, 1);
-			timeStart = ca.getTime();
-			if( respuesta.length() < 3 )
-			{
-				fechasMayorDemanda = p.analizarServicioMayorDemanda( respuesta, base, timeStart );
-				fechasMayoresIngresos = p.analizarServicioMayorIngreso( respuesta, base, timeStart  );
-				fechasMenorDemanda = p.analizarServicioMenorDemanda( respuesta, base, timeStart  );
-			}
-			else
-			{
-				fechasMayorDemanda = p.analizarTHMayorDemanda( respuesta, base, timeStart  );
-				fechasMayoresIngresos = p.analizarTHMayorIngreso( respuesta, base, timeStart  );
-				fechasMenorDemanda = p.analizarTHMenorDemanda( respuesta, base, timeStart  );
-			}
-			
-		}
-		for (int i = 0; i < mayores.size(); i++) {
-			if( servicios.contains(mayores.get(i))) servicios.remove(mayores.get(i));
-		}
+//		List<Date> fechasMayorDemanda = new List() <Date>;
+//		List<Date> fechasMayoresIngresos = new List() <Date>;
+//		List<Date> fechasMenorDemanda = new List() <Date>;
+//		int unitOfTime = Calendar.MONTH;
+//		if( unidadDeTiempo.equals("Semana")) unitOfTime = Calendar.WEEK_OF_YEAR;
+//		Calendar ca = Calendar.getInstance();
+//		Date timeNow = ca.getTime();
+//		Date timeStart = new Date(2014, 1, 1);
+//		while( timeStart.before(timeNow))
+//		{
+//			Date base = (Date) timeStart.clone();
+//			ca.add(unitOfTime, 1);
+//			timeStart = ca.getTime();
+//			if( respuesta.length() < 3 )
+//			{
+//				fechasMayorDemanda = p.analizarServicioMayorDemanda( respuesta, base, timeStart );
+//				fechasMayoresIngresos = p.analizarServicioMayorIngreso( respuesta, base, timeStart  );
+//				fechasMenorDemanda = p.analizarServicioMenorDemanda( respuesta, base, timeStart  );
+//			}
+//			else
+//			{
+//				fechasMayorDemanda = p.analizarTHMayorDemanda( respuesta, base, timeStart  );
+//				fechasMayoresIngresos = p.analizarTHMayorIngreso( respuesta, base, timeStart  );
+//				fechasMenorDemanda = p.analizarTHMenorDemanda( respuesta, base, timeStart  );
+//			}
+//			
+//		}
+//		for (int i = 0; i < mayores.size(); i++) {
+//			if( servicios.contains(mayores.get(i))) servicios.remove(mayores.get(i));
+//		}
 		
 		
 
@@ -572,5 +572,29 @@ public class HotelAndes
 	public List<String> mejoresClientes(String fechaAñoAtras){
 		
 		return p.mejoresClientes(Timestamp.valueOf(fechaAñoAtras));
+	}
+	
+	public String getClientsByServiceConsumption(String serviceName, String inicialDate, String endDate, 
+			 String groupByColumn, String orderByColumn){
+		
+		String tabla = "";
+		List<Object[]> lista = p.getClientsByServiceConsumption(serviceName, inicialDate, endDate, groupByColumn, orderByColumn);
+		
+		for(int i = 0; i < lista.size(); i++) {			
+			for(int j = 0; j < lista.get(i).length ; j++) {		
+				
+				tabla += lista.get(i)[j] + ",  ";
+			}
+			tabla += "\n \n";
+		}
+		System.out.println(tabla);
+		
+		return tabla;
+	}
+
+	public void getClientsNotInServiceConsumption(Object object, Object object2, Object object3, Object object4,
+			Object object5) {
+		// TODO Auto-generated method stub
+		
 	}
 }

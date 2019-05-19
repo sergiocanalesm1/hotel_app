@@ -84,5 +84,7 @@ public class SQLServicio {
 		q.setResultClass(String.class);
 		return (List<String>) q.executeList();
 	}
+	
+	
 
 }

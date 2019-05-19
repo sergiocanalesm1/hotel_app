@@ -868,6 +868,95 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		}
     }
     
+    public void reqRFC9() {
+    	
+    	try {
+    		
+    		//verficar si el usuario existe
+    		String idUsuarioConsultando = JOptionPane.showInputDialog (this, "ingrese su usuario para verificar si es recepcionista o gerente", "Verficación de Usuario", JOptionPane.QUESTION_MESSAGE);
+    		Usuario verificado = hotelAndes.getUsuario(idUsuarioConsultando);
+    		if(verificado == null) {
+    			panelDatos.actualizarInterfaz("el usuario no existe");
+    		}
+    		else {
+    			
+    			//verificar si es gerente o recepcionista
+    			String verificacion = verificado.getRol();
+    			if(!(verificacion.equals("Recepcionista") || verificacion.equals("Gerente")))
+    				panelDatos.actualizarInterfaz("No tiene las credenciales adecuadas");
+    			else {
+    				
+    				//método
+    	    		String nombreServicio = JOptionPane.showInputDialog (this, "ingrese el nombre del servicio", "RFC9", JOptionPane.QUESTION_MESSAGE);
+    	    		String fechaComienzo = JOptionPane.showInputDialog (this, "Fecha comienzo\nFormato: yyyy-mm-dd hh:mm", "RFC9", JOptionPane.QUESTION_MESSAGE);
+    	    		String fechaFin = JOptionPane.showInputDialog (this, "Fecha fin\nFormato: yyyy-mm-dd hh:mm", "RFC9", JOptionPane.QUESTION_MESSAGE);
+    	    		
+    	    		String groupBy = JOptionPane.showInputDialog (this, " ingrese la(s) columna(s) por la(s) que quiere AGRUPAR desúes de escribir u. \n"
+    	    				+ " ej: u.nombre , u.numerodocumento \n"
+    	    				+ ", N/A de no necesitarlo", "RFC9", JOptionPane.QUESTION_MESSAGE);
+    	    		String orderBy = JOptionPane.showInputDialog (this, " ingrese la columna por la que quiere ORDENAR ascendentemente después de escribir u. \n"
+    	    				+ " Si la quiere descendentemente, escriba la palabra DESC después del nombre de la columna.\n"
+    	    				+ " si quiere saber cúantos hay, escriba COUTN(*) "
+    	    				+ "\n ej1: u.edad DESC  ej2: COUNT(*)\n"
+    	    				+ "\n N/A de no necesitarlo", "RFC9v2", JOptionPane.QUESTION_MESSAGE);
+    	    		
+    				String tabla = hotelAndes.getClientsByServiceConsumption(nombreServicio, fechaComienzo, fechaFin, groupBy, orderBy);
+    				panelDatos.actualizarInterfaz(tabla);
+    	    		
+    			}
+    		}
+
+    	}
+    	catch (Exception e) 
+    	{
+			panelDatos.actualizarInterfaz(e.getMessage());
+		}
+    }
+    
+public void reqRFC9v2() {
+    	
+    	try {
+    		
+    		//verficar si el usuario existe
+    		String idUsuarioConsultando = JOptionPane.showInputDialog (this, "ingrese su usuario para verificar si es recepcionista o gerente", "Verficación de Usuario", JOptionPane.QUESTION_MESSAGE);
+    		Usuario verificado = hotelAndes.getUsuario(idUsuarioConsultando);
+    		if(verificado == null) {
+    			panelDatos.actualizarInterfaz("el usuario no existe");
+    		}
+    		else {
+    			
+    			//verificar si es gerente o recepcionista
+    			String verificacion = verificado.getRol();
+    			if(!(verificacion.equals("Recepcionista") || verificacion.equals("Gerente")))
+    				panelDatos.actualizarInterfaz("No tiene las credenciales adecuadas");
+    			else {
+    				
+    				//método
+    	    		String nombreServicio = JOptionPane.showInputDialog (this, "ingrese el nombre del servicio", "RFC9v2", JOptionPane.QUESTION_MESSAGE);
+    	    		String fechaComienzo = JOptionPane.showInputDialog (this, "Fecha comienzo\nFormato: yyyy-mm-dd hh:mm", "RFC9", JOptionPane.QUESTION_MESSAGE);
+    	    		String fechaFin = JOptionPane.showInputDialog (this, "Fecha fin\nFormato: yyyy-mm-dd hh:mm", "RFC9v2", JOptionPane.QUESTION_MESSAGE);
+    	    		
+    	    		String groupBy = JOptionPane.showInputDialog (this, "ingrese la columna por la que quiere AGRUPAR desúes de escribir u. \n"
+    	    				+ ""
+    	    				+ ", N/A de no necesitarlo", "RFC9v2", JOptionPane.QUESTION_MESSAGE);
+    	    		String orderBy = JOptionPane.showInputDialog (this, "ingrese la columna por la que quiere ORDENAR ascendentemente después de escribir u. \n"
+    	    				+ " Si la quiere descendentemente, escriba la palabra DESC después del nombre de la columna.\n"
+    	    				+ " si quiere saber cúantos hay, escriba COUTN(*) "
+    	    				+ "\n ej1: u.nombre DESC  ej2: COUNT(*)\n"
+    	    				+ "\n N/A de no necesitarlo", "RFC9v2", JOptionPane.QUESTION_MESSAGE);
+    	    		
+    				hotelAndes.getClientsNotInServiceConsumption(nombreServicio, fechaComienzo , fechaFin, groupBy, orderBy);
+    	    		
+    			}
+    		}
+
+    	}
+    	catch (Exception e) 
+    	{
+			panelDatos.actualizarInterfaz(e.getMessage());
+		}
+    }
+    
     
 	/* ****************************************************************
 	 * 			CRUD de TipoBebida

@@ -130,5 +130,29 @@ public class SQLUsuario {
 //			return (String) q.executeUnique();
 		}
 		
+		public List<Object[]> getClientsByServiceConsumption(PersistenceManager pm , String serviceName, String inicialDate, String endDate, String groupByColumn, String orderByColumn){
+			
+			String select = "*";//select all por defecto
+			if(groupByColumn.equals("N/A"))
+				groupByColumn = "";
+			else{
+				select =  groupByColumn + " , COUNT(*) ";
+				groupByColumn = " GROUP BY " + groupByColumn;
+			}
+			if(orderByColumn.equals("N/A"))
+				orderByColumn = "";
+			else{
+				orderByColumn = " ORDER BY " + orderByColumn;
+			}
+			
+			Query<Object[]> q = pm.newQuery(SQL,  "SELECT " + select + "FROM usuario u ,consumo c,servicio s \r\n" + 
+					"    where  s.id = c.idserviciocargado AND s.nombre = ? AND c.idusuario = u.numerodocumento \r\n" + 
+					"    AND c.fecharegistro BETWEEN TO_TIMESTAMP(?, 'YYYY-MM-DD HH24:MI:SS') AND TO_TIMESTAMP(?, 'YYYY-MM-DD HH24:MI:SS') " + groupByColumn + " " + orderByColumn);
+			
+			q.setParameters(serviceName , inicialDate, endDate);
+//			q.setResultClass(Usuario.class);
+			return q.executeList();
+		}
+		
 }
 

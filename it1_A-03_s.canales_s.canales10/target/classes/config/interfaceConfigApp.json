@@ -1,0 +1,178 @@
+﻿{
+	"title": "Aplicación transaccional de HotelAndes",
+	"frameH": 600,
+	"frameW": 800,
+	"bannerPath": "./src/main/resources/config/logo.png",
+	"menuBar":
+	[
+		{ "menuTitle": "Requerimientos de I1",
+		  "options":
+			[
+				{
+					"label": "RF1: Adicionar roles de usuario",
+					"event": "adicionarRolDeUsuario"
+				},
+				{
+					"label": "RF2: Registrar usuario",
+					"event": "registrarUsuario"
+				},
+				{
+					"label": "RF3: Registrar Tipo de Habitacion",
+					"event": "adicionarTipoDeHabitacion"
+				},
+				{
+					"label": "RF4: Registrar Habitacion",
+					"event": "adicionarHabitacion"
+				},
+				{
+					"label": "RF5: Registrar Servicio",
+					"event": "adicionarServicio"
+				},
+				{
+					"label": "RF6: Registrar Plan Consumo",
+					"event": "adicionarPlanConsumo"
+				},
+				{
+					"label": "RF7: Registrar Reserva de alojamiento",
+					"event": "adicionarReservaAlojamiento"
+				},
+				{
+					"label": "RF8: Registrar Reserva de servicio",
+					"event": "adicionarReservaServicio"
+				},
+				{
+					"label": "Registrar Producto",
+					"event": "adicionarProducto"
+				},
+				{
+					"label": "RF9: Registrar Llegada Cliente",
+					"event": "registrarLlegadaCliente"
+				},
+				{
+					"label": "RF10: Registrar Consumo",
+					"event": "adicionarConsumo"
+				},
+				{
+					"label": "RF11: Registrar Salida Cliente",
+					"event": "registrarSalidaCliente"
+				}
+			]
+		},		
+		{ "menuTitle": "Requerimientos de I2",
+		  "options":
+			[
+				{
+					"label": "RF12: Reservar alojamiento y servicios para una convención",
+					"event": "reservarAlojamientoYServicios"
+				},
+				{
+					"label": "RF13: Cancelar reservas asociadas a una convención",
+					"event": "cancelarReservasConvencion"
+				},
+				{
+					"label": "RF14: Registrar el fin de una convención",
+					"event": "registrarFinConvencion"
+				},
+				{
+					"label": "RF15: Registrar entrada a mantenimiento de alojamientos o servicios",
+					"event": "registrarEntradaMantenimientoAlojamientosYServicios"
+				},
+				{
+					"label": "RF16: Registrar el fin de mantenimiento de alojamientos o servicios",
+					"event": "registrarFinMantenimientoAlojamientosYServicios"
+				}
+			]
+		},
+		{ "menuTitle": "Requerimientos de consulta I2",
+		  "options":
+			[
+				{
+					"label": "RFC6 - Analizar la operacion de Hotelandes",
+					"event": "reqConsultaAnalizarOperacionHotelAndes"
+				},
+				{
+					"label": "RFC7 - Encontrar los buenos clientes",
+					"event": "reqConsultaEncontrarBuenosClientes"
+				},
+				{
+					"label": "RFC8 - Encontrar los servicios que no tienen mucha demanda",
+					"event": "reqConsultaServiciosSinMuchaDemanda"
+				}
+			]
+		},	
+		{ "menuTitle": "RFC 3",
+		  "options":
+			[
+				{
+					"label": "RFC9 - Consumo de servicios",
+					"event": "reqRFC9"
+				}
+			]
+		},	
+		{ "menuTitle": "Mantenimiento",
+		  "options":
+			[
+				{
+					"label": "Mostrar log Parranderos",
+					"event": "mostrarLogParranderos"
+				},
+				{
+					"label": "Mostrar log datanucleus",
+					"event": "mostrarLogDatanuecleus"
+				},
+				{
+					"label": "Limpiar log de parranderos",
+					"event": "limpiarLogParranderos"
+				},
+				{
+					"label": "Limpiar log de datanucleus",
+					"event": "limpiarLogDatanucleus"
+				},
+				{
+					"label": "Limpiar Base de Datos",
+					"event": "limpiarBD"
+				}
+			]
+		},		
+		{ "menuTitle": "Documentación",
+		  "options":
+			[
+				{
+					"label": "Presentación general",
+					"event": "mostrarPresentacionGeneral"
+				},
+				{
+					"label": "Modelo conceptual",
+					"event": "mostrarModeloConceptual"
+				},
+				{
+					"label": "Esquema de la BD",
+					"event": "mostrarEsquemaBD"
+				},
+				{
+					"label": "Script creación de la BD",
+					"event": "mostrarScriptBD"
+				},
+				{
+					"label": "Arquitectura de referencia",
+					"event": "mostrarArqRef"
+				},
+				{
+					"label": "Javadoc Parranderos",
+					"event": "mostrarJavadoc"
+				}
+			]
+		},		
+		{ "menuTitle": "Acerca de ...",
+		  "options":
+			[
+				{
+					"label": "Acerca de ...",
+					"event": "acercaDe"
+				}
+			]
+		}		
+		
+	]
+}
+	
