@@ -573,4 +573,28 @@ public class HotelAndes
 		
 		return p.mejoresClientes(Timestamp.valueOf(fechaAñoAtras));
 	}
+	
+	public String getClientsByServiceConsumption(String serviceName, String inicialDate, String endDate, 
+			 String groupByColumn, String orderByColumn){
+		
+		String tabla = "";
+		List<Object[]> lista = p.getClientsByServiceConsumption(serviceName, inicialDate, endDate, groupByColumn, orderByColumn);
+		
+		for(int i = 0; i < lista.size(); i++) {			
+			for(int j = 0; j < lista.get(i).length ; j++) {		
+				
+				tabla += lista.get(i)[j] + ",  ";
+			}
+			tabla += "\n \n";
+		}
+		System.out.println(tabla);
+		
+		return tabla;
+	}
+
+	public void getClientsNotInServiceConsumption(Object object, Object object2, Object object3, Object object4,
+			Object object5) {
+		// TODO Auto-generated method stub
+		
+	}
 }

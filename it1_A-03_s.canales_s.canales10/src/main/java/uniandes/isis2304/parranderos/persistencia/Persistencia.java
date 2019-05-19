@@ -704,8 +704,7 @@ public class Persistencia
 		Reserva reserva = getReservaBySalida(idUsuario, fechaSalida);
 		if( reserva== null) return "";
 
-		System.out.println("existe reserva con el usuario, id: ");
-		System.out.println(reserva.getId());
+		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
@@ -956,6 +955,12 @@ public class Persistencia
 	}
 	public List<String > mejoresClientes(Timestamp añoAtras){
 		return sqlConsumo.mejoresClientes(pmf.getPersistenceManager() , añoAtras);
+	}
+	
+	public List<Object[]> getClientsByServiceConsumption(String serviceName, String inicialDate, String endDate, 
+			 String groupByColumn, String orderByColumn){
+		
+		return sqlUsuario.getClientsByServiceConsumption(pmf.getPersistenceManager(),serviceName, inicialDate, endDate, groupByColumn, orderByColumn);
 	}
 
 
