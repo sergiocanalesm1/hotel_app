@@ -962,8 +962,14 @@ public class Persistencia
 		
 		return sqlUsuario.getClientsByServiceConsumption(pmf.getPersistenceManager(),serviceName, inicialDate, endDate, groupByColumn, orderByColumn);
 	}
+	
+	public List<Object[]> getClientsNotInServiceConsumptio(String serviceName, String inicialDate, String endDate, 
+			 String groupByColumn, String orderByColumn){
+		
+		return sqlUsuario.getClientsNotInServiceConsumptio(pmf.getPersistenceManager(), serviceName, inicialDate, endDate, groupByColumn, orderByColumn);
+	}
 
-
+	
 }
 
 

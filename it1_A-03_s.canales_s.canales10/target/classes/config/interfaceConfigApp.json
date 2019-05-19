@@ -104,8 +104,12 @@
 		  "options":
 			[
 				{
-					"label": "RFC9 - Consumo de servicios",
+					"label": "RFC9 - Consulta de clientes consumidores",
 					"event": "reqRFC9"
+				},
+				{
+					"label": "RFC10 - Consulta de clientes no consumidores",
+					"event": "reqRFC10"
 				}
 			]
 		},	

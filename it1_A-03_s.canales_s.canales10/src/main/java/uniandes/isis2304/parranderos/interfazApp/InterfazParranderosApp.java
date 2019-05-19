@@ -913,7 +913,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		}
     }
     
-public void reqRFC9v2() {
+public void reqRFC10() {
     	
     	try {
     		
@@ -939,13 +939,14 @@ public void reqRFC9v2() {
     	    		String groupBy = JOptionPane.showInputDialog (this, "ingrese la columna por la que quiere AGRUPAR desúes de escribir u. \n"
     	    				+ ""
     	    				+ ", N/A de no necesitarlo", "RFC9v2", JOptionPane.QUESTION_MESSAGE);
-    	    		String orderBy = JOptionPane.showInputDialog (this, "ingrese la columna por la que quiere ORDENAR ascendentemente después de escribir u. \n"
+    	    		String orderBy = JOptionPane.showInputDialog (this, "ingrese la columna por la que quiere ORDENAR ascendentemente después de escribir \n"
     	    				+ " Si la quiere descendentemente, escriba la palabra DESC después del nombre de la columna.\n"
-    	    				+ " si quiere saber cúantos hay, escriba COUTN(*) "
-    	    				+ "\n ej1: u.nombre DESC  ej2: COUNT(*)\n"
+    	    				+ " si quiere saber cúantos hay, escriba COUNT(*) "
+    	    				+ "\n ej1: edad DESC  ej2: COUNT(*)\n"
     	    				+ "\n N/A de no necesitarlo", "RFC9v2", JOptionPane.QUESTION_MESSAGE);
     	    		
-    				hotelAndes.getClientsNotInServiceConsumption(nombreServicio, fechaComienzo , fechaFin, groupBy, orderBy);
+    				String tabla = hotelAndes.getClientsNotInServiceConsumption(nombreServicio, fechaComienzo , fechaFin, groupBy, orderBy);
+    				panelDatos.actualizarInterfaz(tabla);
     	    		
     			}
     		}
