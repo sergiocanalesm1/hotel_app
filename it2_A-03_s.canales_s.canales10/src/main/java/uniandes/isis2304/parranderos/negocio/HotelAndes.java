@@ -592,9 +592,27 @@ public class HotelAndes
 		return tabla;
 	}
 
-	public void getClientsNotInServiceConsumption(Object object, Object object2, Object object3, Object object4,
-			Object object5) {
-		// TODO Auto-generated method stub
+	public String getClientsNotInServiceConsumption(String serviceName, String inicialDate, String endDate, 
+			 String groupByColumn, String orderByColumn) {
+		
+		String tabla = "";
+		List<Object[]> lista = p.getClientsNotInServiceConsumptio(serviceName, inicialDate, endDate, groupByColumn, orderByColumn);
+		
+				
+		for(int i = 0; i < lista.size(); i++) {			
+			for(int j = 0; j < lista.get(i).length ; j++) {		
+				
+				tabla += lista.get(i)[j] + ",  ";
+				System.out.println(lista.get(i)[j]);
+			}
+			tabla += "\n \n";
+		}
+		System.out.println(tabla);
+		
+		return tabla;
+	
 		
 	}
+
+	
 }
