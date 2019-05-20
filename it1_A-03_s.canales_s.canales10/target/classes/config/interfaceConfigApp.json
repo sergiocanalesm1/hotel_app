@@ -110,6 +110,14 @@
 				{
 					"label": "RFC10 - Consulta de clientes no consumidores",
 					"event": "reqRFC10"
+				},
+				{
+					"label": "RFC11 - Consulta de funcionamiento",
+					"event": "reqRFC11"
+				},
+				{
+					"label": "RFC12 - Consulta de buenos clientes",
+					"event": "reqRFC12"
 				}
 			]
 		},	
